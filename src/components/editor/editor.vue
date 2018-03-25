@@ -1,0 +1,216 @@
+<template>
+  <div
+    id="editor"
+    class="editor"
+  ></div>
+</template>
+
+<script lang="ts">
+import * as monaco from '@timkendrick/monaco-editor';
+import editorSettings from './editor-settings';
+
+// window.MonacoEnvironment = {
+//   getWorkerUrl: function(moduleId, label) {
+//     console.log(arguments);
+//     if (label === 'json') {
+//       return './json.worker.js';
+//     }
+//     if (label === 'css') {
+//       return './css.worker.js';
+//     }
+//     if (label === 'html') {
+//       return './html.worker.js';
+//     }
+//     if (label === 'typescript' || label === 'javascript') {
+//       return './ts.worker.js';
+//     }
+//     return './editor.worker.js';
+//   }
+// };
+
+export default {
+  name: '',
+
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    state: {
+      type: Object,
+      default: () => ({})
+    },
+    theme: {
+      type: String,
+      default: 'vs'
+    },
+    listenToStateChanges: {
+      type: Boolean,
+      default: false
+    },
+    language: {
+      type: String,
+      default: 'snippet'
+    },
+    options: Object
+  },
+
+  data() {
+    return {
+      editor: null,
+      completionProvider: null
+    };
+  },
+
+  computed: {
+    height() {
+      return this.$store.getters.getContentAreaSize('height');
+    },
+
+    width() {
+      return this.$store.getters.getContentAreaSize('width');
+    }
+  },
+
+  watch: {
+    value(newValue) {
+      if (this.editor) {
+        if (newValue !== this.editor.getValue()) {
+          this.editor.setValue(newValue);
+        }
+      }
+    },
+
+    state(model) {
+      if (this.editor) {
+        this.editor.setModel(model);
+      }
+    },
+
+    height() {
+      this.editor.layout({ height: this.height, width: this.width });
+    },
+
+    width() {
+      this.editor.layout({ height: this.height, width: this.width });
+    }
+  },
+
+  mounted() {
+    const options = Object.assign(editorSettings, {
+      value: this.value,
+      theme: this.theme,
+      language: this.language,
+      ...this.options
+    });
+
+    monaco.languages.register({ id: 'snippet' });
+    monaco.languages.register({ id: 'status' });
+
+    this.editor = monaco.editor.create(
+      document.getElementById('editor'),
+      options
+    );
+
+    if (Object.keys(this.state).length > 0) {
+      this.editor.restoreViewState(this.state);
+    }
+
+    // Events
+    this.editor.onDidBlurEditor((...args) => this.emitBeforeLeave(args));
+    this.editor.addCommand(
+      monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S,
+      (...args) => this.emitBeforeLeave(args)
+    );
+    this.editor.onDidChangeModelContent((...args) => this.emitChange(args));
+    // this.editor.onDidFocusEditor(event => this.editor.layout());
+    this.editor.onDidChangeCursorSelection(
+      (...args) => null /* TODO: use to keep track of cursor position */
+    );
+    this.editor.onDidLayoutChange(
+      (...args) => null
+      /* TODO: use to debug layout changes */
+    );
+    this.editor.onDidFocusEditor((...args) => {
+      // This set the initial value of the editor
+      this.handleResize();
+    });
+    this.editor.onKeyDown((...args) => this.emitChange(args));
+    this.editor.onDidDispose(
+      (...args) => null /* TODO: proper cleanup, serialization */
+    );
+
+    this.completionProvider = monaco.languages.registerCompletionItemProvider(
+      'status',
+      {
+        provideCompletionItems: (model, position) => {
+          return [
+            ...this.$store.getters.findAllFolderCompletions(
+              monaco.languages.CompletionItemKind.Snippet
+            ),
+            ...this.$store.getters.findAllFileCompletions(
+              monaco.languages.CompletionItemKind.Snippet
+            )
+          ];
+        }
+      }
+    );
+
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+    this.editor.layout({
+      width: this.width,
+      height: this.height
+    });
+  },
+
+  beforeDestroy() {
+    this.editor.dispose();
+    this.completionProvider.dispose();
+    this.editor = null;
+    this.completionProvider = null;
+    window.removeEventListener('resize', this.handleResize);
+  },
+
+  methods: {
+    getEditor() {
+      return this.editor;
+    },
+
+    handleResize() {
+      let viewportHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+      let viewportWidth = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      );
+      const handleWidth = 10;
+      const navbarFooterHeight = 64 + 36;
+      let sidebarWidth = this.$store.getters.getSidebarWidth();
+
+      this.$store.commit('setContentAreaSize', {
+        height: viewportHeight - navbarFooterHeight,
+        width: viewportWidth - (sidebarWidth + handleWidth)
+      });
+    },
+
+    emitBeforeLeave() {
+      let value = this.editor.getValue();
+      let state = this.editor.getModel();
+
+      this.$emit('before-leave', value);
+      this.$emit('before-leave-state', state);
+    },
+
+    emitChange() {
+      let value = this.editor.getValue();
+      let state = this.editor.getModel();
+
+      this.$emit('change', value);
+      this.$emit('change-state', state);
+    }
+  }
+};
+</script>
