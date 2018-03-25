@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import * as monaco from './monaco';
+import * as monaco from '@timkendrick/monaco-editor';
 import editorSettings from './editor-settings';
 
 export default {
