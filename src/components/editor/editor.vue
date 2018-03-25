@@ -103,31 +103,32 @@ export default {
     // Events
     this.editor.onDidBlurEditor((...args) => this.emitBeforeLeave(args));
     this.editor.addCommand(
-      monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S,
+      monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, // eslint-disable-line
       (...args) => this.emitBeforeLeave(args)
     );
     this.editor.onDidChangeModelContent((...args) => this.emitChange(args));
     // this.editor.onDidFocusEditor(event => this.editor.layout());
     this.editor.onDidChangeCursorSelection(
-      (...args) => null /* TODO: use to keep track of cursor position */
+      (...args) => null // eslint-disable-line
     );
     this.editor.onDidLayoutChange(
-      (...args) => null
+      (...args) => null // eslint-disable-line
       /* TODO: use to debug layout changes */
     );
+    // eslint-disable-next-line
     this.editor.onDidFocusEditor((...args) => {
       // This set the initial value of the editor
       this.handleResize();
     });
     this.editor.onKeyDown((...args) => this.emitChange(args));
     this.editor.onDidDispose(
-      (...args) => null /* TODO: proper cleanup, serialization */
+      (...args) => null // eslint-disable-line
     );
 
     this.completionProvider = monaco.languages.registerCompletionItemProvider(
       'status',
       {
-        provideCompletionItems: (model, position) => [
+        provideCompletionItems: () => [
           ...this.$store.getters.findAllFolderCompletions(
             monaco.languages.CompletionItemKind.Snippet
           ),
