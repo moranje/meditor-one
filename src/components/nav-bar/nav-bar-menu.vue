@@ -71,7 +71,7 @@ export default {
           this.$store.commit('signIn', { displayName, email, uid });
         })
         .catch(error => {
-          console.error(error.code, error.message, error);
+          throw error;
         });
     },
 
@@ -82,7 +82,7 @@ export default {
         .then(() => this.$store.commit('signOut'))
         .catch(error => {
           // An error happened.
-          console.error(error);
+          throw error;
         });
     }
   }

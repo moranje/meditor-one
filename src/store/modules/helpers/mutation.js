@@ -8,6 +8,7 @@ export function update(records = [], id, key, value) {
       (record['.key'] === id || record.id === id) &&
       record[key] !== undefined
     ) {
+      // eslint-disable-next-line
       record = Object.assign(record, { [key]: value });
     }
   });

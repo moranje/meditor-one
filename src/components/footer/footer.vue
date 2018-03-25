@@ -35,10 +35,6 @@
 
 <script>
 import M1FooterBlock from './footer-item';
-import M1Editor from '../editor/editor';
-
-console.log('M1FooterBlock', M1FooterBlock);
-console.log('M1Editor', M1Editor);
 
 export default {
   components: {
