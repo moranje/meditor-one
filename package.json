@@ -14,7 +14,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "2.5.16"
+    "@timkendrick/monaco-editor": "0.0.9",
+    "firebase": "4.12.0",
+    "lodash": "4.17.5",
+    "vue": "2.5.16",
+    "vue-multipane": "0.9.5",
+    "vue-router": "3.0.1",
+    "vue-template-compiler": "2.5.16",
+    "vuetify": "1.0.10",
+    "vuex": "3.0.1",
+    "vuexfire": "2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
