@@ -6,8 +6,8 @@
     <v-toolbar-title class="grey--text text--darken-2">FILES</v-toolbar-title>
     <v-spacer/>
     <v-btn
-      icon
       :to="{ name: 'document'}"
+      icon
       exact
     >
       <v-icon color="grey darken-2">mdi-file-document-box</v-icon>
@@ -22,7 +22,7 @@
   </v-toolbar>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   computed: {
     isEmpty() {

@@ -1,7 +1,7 @@
-import { find, findAll } from './helpers/getter';
+import { find } from './helpers/getter';
 import { create, update } from './helpers/mutation';
 
-const state = {
+const stateObject = {
   documents: [],
   saveState: null,
   contentHeight: 0,
@@ -10,13 +10,9 @@ const state = {
 };
 
 const getters = {
-  getSaveState: state => () => {
-    return state.saveState;
-  },
+  getSaveState: state => () => state.saveState,
 
-  findDocument: state => id => {
-    return find(state.documents, 'id', id);
-  },
+  findDocument: state => id => find(state.documents, 'id', id),
 
   // getContentAreaHeight: state => state.contentHeight,
 
@@ -37,9 +33,7 @@ const getters = {
     };
   },
 
-  getSidebarWidth: state => type => {
-    return state.sidebarWidth;
-  }
+  getSidebarWidth: state => () => state.sidebarWidth
 };
 
 const mutations = {
@@ -48,8 +42,8 @@ const mutations = {
   },
 
   createDocument(state, document) {
-    let id = state.documents.length;
-    let created = Object.assign({}, document, { id });
+    const id = state.documents.length;
+    const created = Object.assign({}, document, { id });
 
     return create(state.documents, created);
   },
@@ -76,7 +70,7 @@ const mutations = {
 const actions = {};
 
 export default {
-  state,
+  state: stateObject,
   getters,
   mutations,
   actions

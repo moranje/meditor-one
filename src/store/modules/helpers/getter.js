@@ -3,7 +3,7 @@ export function find(records = [], key, value) {
 }
 
 export function findMany(records = [], relationships = {}) {
-  let ids = Object.keys(relationships);
+  const ids = Object.keys(relationships);
   return records.filter(record => ids.indexOf(record['.key']) !== -1);
 }
 

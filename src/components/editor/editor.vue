@@ -2,10 +2,10 @@
   <div
     id="editor"
     class="editor"
-  ></div>
+  />
 </template>
 
-<script lang="ts">
+<script>
 import * as monaco from '@timkendrick/monaco-editor';
 import editorSettings from './editor-settings';
 
@@ -52,7 +52,10 @@ export default {
       type: String,
       default: 'snippet'
     },
-    options: Object
+    options: {
+      type: Object,
+      default: () => ({})
+    }
   },
 
   data() {
@@ -143,16 +146,14 @@ export default {
     this.completionProvider = monaco.languages.registerCompletionItemProvider(
       'status',
       {
-        provideCompletionItems: (model, position) => {
-          return [
-            ...this.$store.getters.findAllFolderCompletions(
-              monaco.languages.CompletionItemKind.Snippet
-            ),
-            ...this.$store.getters.findAllFileCompletions(
-              monaco.languages.CompletionItemKind.Snippet
-            )
-          ];
-        }
+        provideCompletionItems: (model, position) => [
+          ...this.$store.getters.findAllFolderCompletions(
+            monaco.languages.CompletionItemKind.Snippet
+          ),
+          ...this.$store.getters.findAllFileCompletions(
+            monaco.languages.CompletionItemKind.Snippet
+          )
+        ]
       }
     );
 
@@ -178,17 +179,17 @@ export default {
     },
 
     handleResize() {
-      let viewportHeight = Math.max(
+      const viewportHeight = Math.max(
         document.documentElement.clientHeight,
         window.innerHeight || 0
       );
-      let viewportWidth = Math.max(
+      const viewportWidth = Math.max(
         document.documentElement.clientWidth,
         window.innerWidth || 0
       );
       const handleWidth = 10;
       const navbarFooterHeight = 64 + 36;
-      let sidebarWidth = this.$store.getters.getSidebarWidth();
+      const sidebarWidth = this.$store.getters.getSidebarWidth();
 
       this.$store.commit('setContentAreaSize', {
         height: viewportHeight - navbarFooterHeight,
@@ -197,16 +198,16 @@ export default {
     },
 
     emitBeforeLeave() {
-      let value = this.editor.getValue();
-      let state = this.editor.getModel();
+      const value = this.editor.getValue();
+      const state = this.editor.getModel();
 
       this.$emit('before-leave', value);
       this.$emit('before-leave-state', state);
     },
 
     emitChange() {
-      let value = this.editor.getValue();
-      let state = this.editor.getModel();
+      const value = this.editor.getValue();
+      const state = this.editor.getModel();
 
       this.$emit('change', value);
       this.$emit('change-state', state);

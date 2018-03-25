@@ -4,17 +4,18 @@
     text-xs-center
     white--text
   >
-    <slot></slot>
+    <slot/>
   </v-flex>
 </template>
 
 <script>
 export default {
-  name: 'm1-footer-block',
+  name: 'M1FooterBlock',
 
   props: {
     properties: {
-      type: Object
+      type: Object,
+      default: () => ({})
     }
   }
 };

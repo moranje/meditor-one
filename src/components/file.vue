@@ -1,7 +1,7 @@
 <template>
   <m1-editor
-    language="snippet"
     :value="value"
+    language="snippet"
     @before-leave="save"
     @change="willSave"
   />
@@ -59,7 +59,7 @@ export default {
       clearTimeout(this.timeOutId);
 
       this.timeOutId = setTimeout(() => {
-        let state = this.$store.getters.getSaveState();
+        const state = this.$store.getters.getSaveState();
         if (state === 'unsaved') {
           this.save(changes);
         }

@@ -4,7 +4,7 @@ import { update as updateLocal } from './helpers/mutation';
 import { create, update, remove } from './helpers/action';
 import { dbFoldersRef } from '../../firebase-config';
 
-const state = {
+const stateObject = {
   folders: []
 };
 
@@ -23,21 +23,20 @@ const getters = {
 
   findAllFolderCompletions: (
     state,
-    getters,
+    gettersRef,
     rootState,
     rootGetters
   ) => kind => {
     if (!state.folders) return [];
 
-    let completions = [];
+    const completions = [];
 
     findAll(state.folders)
       .filter(folder => folder.files && Object.keys(folder.files).length > 0)
       .forEach(folder => {
         Object.keys(folder.files).forEach(id => {
-          let file = rootGetters.findFile('.key', id);
+          const file = rootGetters.findFile('.key', id);
           if (!file) {
-            // state.updateFolder({ id, key: 'files', value: null });
             throw new Error(
               `Folder with id ${
                 folder['.key']
@@ -68,26 +67,19 @@ const actions = {
     bindFirebaseRef('folders', ref);
   }),
 
-  createFolder: ({ state, dispatch }, { parent, folder }) => {
-    return create(dbFoldersRef, folder, child => {
-      return {
-        [`/folders/${parent}/folders/${child}`]: true,
-        [`/folders/${child}/folder/${parent}`]: true
-      };
-    });
-  },
+  createFolder: (state, { parent, folder }) =>
+    create(dbFoldersRef, folder, child => ({
+      [`/folders/${parent}/folders/${child}`]: true,
+      [`/folders/${child}/folder/${parent}`]: true
+    })),
 
-  updateFolder: (state, payload) => {
-    return update(dbFoldersRef, payload);
-  },
+  updateFolder: (state, payload) => update(dbFoldersRef, payload),
 
-  removeFolder: (state, id) => {
-    return remove(dbFoldersRef, id);
-  }
+  removeFolder: (state, id) => remove(dbFoldersRef, id)
 };
 
 export default {
-  state,
+  state: stateObject,
   getters,
   mutations,
   actions

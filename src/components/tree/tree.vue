@@ -49,10 +49,12 @@ export default {
 
   props: {
     folderIds: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     fileIds: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     level: {
       type: Number,

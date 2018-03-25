@@ -47,12 +47,12 @@
     </v-list-tile-action>
     <v-list-tile-action @click.stop="remove">
       <v-tooltip top>
-      <v-icon
-        slot="activator"
-        size="20px"
-        color="grey lighten-1"
-      >mdi-delete</v-icon>
-      <span>delete</span>
+        <v-icon
+          slot="activator"
+          size="20px"
+          color="grey lighten-1"
+        >mdi-delete</v-icon>
+        <span>delete</span>
       </v-tooltip>
     </v-list-tile-action>
   </v-list-tile>
@@ -126,8 +126,14 @@ export default {
   },
 
   props: {
-    folder: Object,
-    level: Number
+    folder: {
+      type: Object,
+      default: () => ({})
+    },
+    level: {
+      type: Number,
+      default: 1
+    }
   },
 
   methods: {

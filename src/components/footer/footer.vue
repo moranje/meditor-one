@@ -1,7 +1,5 @@
 <template>
-  <v-footer
-    color="primary"
-  >
+  <v-footer color="primary">
     <v-layout
       row
       wrap
@@ -23,21 +21,22 @@
       >
         <v-tooltip top>
           <v-icon
-            size="10px"
             slot="activator"
             :color="saveStateStyle"
+            size="10px"
             class="tooltip-top"
           >mdi-circle</v-icon>
-          <span>{{saveState}}</span>
+          <span>{{ saveState }}</span>
         </v-tooltip>
       </v-flex>
     </v-layout>
   </v-footer>
 </template>
 
-<script lang="ts">
+<script>
 import M1FooterBlock from './footer-item';
 import M1Editor from '../editor/editor';
+
 console.log('M1FooterBlock', M1FooterBlock);
 console.log('M1Editor', M1Editor);
 
@@ -47,15 +46,15 @@ export default {
   },
 
   computed: {
-    user(): any {
+    user() {
       return this.$store.getters.getUser;
     },
 
-    saveState(): string {
+    saveState() {
       return this.$store.getters.getSaveState();
     },
 
-    saveStateStyle(): string {
+    saveStateStyle() {
       if (this.saveState === 'saved') {
         return 'success';
       }

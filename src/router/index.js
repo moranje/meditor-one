@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Document from '../components/document.vue';
-import File from '../components/file.vue';
+import Document from '../components/document';
+import File from '../components/file';
 
 Vue.use(VueRouter);
 

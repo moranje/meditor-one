@@ -47,7 +47,10 @@ export default {
   },
 
   props: {
-    file: Object
+    file: {
+      type: Object,
+      default: () => ({})
+    }
   },
 
   computed: {

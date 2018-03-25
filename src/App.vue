@@ -1,7 +1,10 @@
 <template>
   <v-app id="app">
     <m1-nav-bar/>
-    <multipane class="sandwich" @paneResize="resize">
+    <multipane
+      class="sandwich"
+      @paneResize="resize"
+    >
       <m1-side-bar/>
       <multipane-resizer/>
       <main class="content">
@@ -74,12 +77,12 @@ export default {
 
   methods: {
     resize(pane, container, sidebarSize) {
-      let handleWidth = 10;
-      let viewportWidth = Math.max(
+      const handleWidth = 10;
+      const viewportWidth = Math.max(
         document.documentElement.clientWidth,
         window.innerWidth || 0
       );
-      let sidebarWidth = clamp(+sidebarSize.replace('px', ''), 250, 400);
+      const sidebarWidth = clamp(+sidebarSize.replace('px', ''), 250, 400);
 
       this.$store.commit('setContentAreaSize', {
         width: viewportWidth - (sidebarWidth + handleWidth)

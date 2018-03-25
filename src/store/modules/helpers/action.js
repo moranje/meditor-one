@@ -2,17 +2,17 @@ export function find(reference, { key, value }) {
   return reference.orderByChild(key).equalTo(value);
 }
 
-export function findMany(reference, ids = []) {
-  // return reference.orderByChild(key).equalTo(value);
-}
+// export function findMany(reference, ids = []) {
+// return reference.orderByChild(key).equalTo(value);
+// }
 
 export function findAll(reference, { key, value }) {
   return reference.orderByChild(key).equalTo(value);
 }
 
 export function create(reference, values, updateRelationship) {
-  let local = reference.push();
-  let root = reference.getRoot();
+  const local = reference.push();
+  const root = reference.getRoot();
 
   // Create child
   local.set(values);

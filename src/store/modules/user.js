@@ -1,4 +1,4 @@
-const state = {
+const stateObject = {
   user: null
 };
 
@@ -22,7 +22,7 @@ const mutations = {
 const actions = {};
 
 export default {
-  state,
+  state: stateObject,
   getters,
   mutations,
   actions

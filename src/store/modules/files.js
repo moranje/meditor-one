@@ -3,9 +3,8 @@ import { find, findMany, findAll } from './helpers/getter';
 import { update as updateLocal } from './helpers/mutation';
 import { create, update, remove } from './helpers/action';
 import { dbFilesRef } from '../../firebase-config';
-import { monaco } from '../../firebase-config';
 
-const state = {
+const stateObject = {
   files: []
 };
 
@@ -58,26 +57,19 @@ const actions = {
     bindFirebaseRef('files', ref);
   }),
 
-  createFile: ({ state, dispatch }, { parent, file }) => {
-    return create(dbFilesRef, file, child => {
-      return {
-        [`/folders/${parent}/files/${child}`]: true,
-        [`/files/${child}/folder/${parent}`]: true
-      };
-    });
-  },
+  createFile: (state, { parent, file }) =>
+    create(dbFilesRef, file, child => ({
+      [`/folders/${parent}/files/${child}`]: true,
+      [`/files/${child}/folder/${parent}`]: true
+    })),
 
-  updateFile: (state, payload) => {
-    return update(dbFilesRef, payload);
-  },
+  updateFile: (state, payload) => update(dbFilesRef, payload),
 
-  removeFile: (state, { id, parent }) => {
-    return remove(dbFilesRef, id, parent);
-  }
+  removeFile: (state, { id, parent }) => remove(dbFilesRef, id, parent)
 };
 
 export default {
-  state,
+  state: stateObject,
   getters,
   mutations,
   actions
