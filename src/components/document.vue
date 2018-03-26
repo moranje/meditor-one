@@ -1,5 +1,5 @@
 <template>
-  <m1-editor
+  <m1-monaco
     :value="document.value"
     language="status"
     @before-leave="save"
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import M1Editor from './editor/editor';
+import M1Monaco from './editor/monaco';
 
 export default {
   components: {
-    M1Editor
+    M1Monaco
   },
 
   data() {
