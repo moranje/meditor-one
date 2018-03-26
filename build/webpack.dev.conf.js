@@ -64,7 +64,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    new CopyWebpackPlugin([
+      {
+        from: __dirname + '/node_modules/monaco-editor/min/vs',
+        to: 'vs',
+      }
+    ]),
   ]
 })
 

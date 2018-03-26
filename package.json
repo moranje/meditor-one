@@ -5,8 +5,7 @@
   "main": "src/main.js",
   "private": true,
   "scripts": {
-    "dev":
-      "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
@@ -17,6 +16,7 @@
     "@timkendrick/monaco-editor": "0.0.9",
     "firebase": "4.12.0",
     "lodash": "4.17.5",
+    "monaco-editor": "0.11.1",
     "vue": "2.5.16",
     "vue-multipane": "0.9.5",
     "vue-router": "3.0.1",
@@ -85,6 +85,10 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "keywords": []
 }
