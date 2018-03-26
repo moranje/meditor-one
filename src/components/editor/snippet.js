@@ -55,8 +55,8 @@ class Snippet {
 }
 
 class PositionSnippet extends Snippet {
-  constructor(text, start, position = 0) {
-    super(text, start);
+  constructor(template, start, position = 0) {
+    super(template, start);
 
     if (/^\d+$/.test(position) && typeof position === 'number') {
       this._position = position;
@@ -77,6 +77,7 @@ class PositionSnippet extends Snippet {
         `Property postion (${value}) must be a positive integer, was ${typeof value}`
       );
     }
+    w;
   }
 
   incrementBy(number) {
@@ -85,40 +86,40 @@ class PositionSnippet extends Snippet {
 }
 
 export class Field extends PositionSnippet {
-  constructor(text, start, type = null) {
-    super(text, start, extractPosition(text, type));
+  constructor(template, start, type = null) {
+    super(template, start, extractPosition(template, type));
 
     this.type = type;
   }
 }
 
 export class Placeholder extends PositionSnippet {
-  constructor(text, start, type = null) {
-    super(text, start, extractPosition(text, type));
+  constructor(template, start, type = null) {
+    super(template, start, extractPosition(template, type));
 
     this.type = type;
   }
 }
 
 export class Choice extends PositionSnippet {
-  constructor(text, start, type = null) {
-    super(text, start, extractPosition(text, type));
+  constructor(template, start, type = null) {
+    super(template, start, extractPosition(template, type));
 
     this.type = type;
   }
 }
 
 export class Substitution extends Snippet {
-  constructor(text, start, type = null) {
-    super(text, start);
+  constructor(template, start, type = null) {
+    super(template, start);
 
     this.type = type;
   }
 }
 
 export class Expansion extends PositionSnippet {
-  constructor(text, start, type = null) {
-    super(text, start, extractPosition(text, type));
+  constructor(template, start, type = null) {
+    super(template, start, extractPosition(text, type));
 
     this.type = type;
   }
