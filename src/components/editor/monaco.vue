@@ -130,7 +130,8 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.completionProvider.dispose) this.completionProvider.dispose();
+    if (this.completionProvider) this.completionProvider.dispose();
+    if (this.editor) this.editor.dispose();
 
     window.removeEventListener('resize', this.handleResize);
   },
