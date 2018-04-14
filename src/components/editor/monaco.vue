@@ -1,10 +1,13 @@
 <template>
-  <article />
+  <article id="editor" />
 </template>
 
 <script>
 import monacoLoader from './monaco-loader';
-import editorSettings from './editor-settings';
+import { mapGetters } from 'vuex';
+import { first, keys } from 'lodash';
+import { editor as editorSettings, statusSyntax, statusTheme } from './config';
+import { SnippetList } from '@/components/editor/snippet';
 
 export default {
   name: 'M1Monaco',
@@ -15,14 +18,9 @@ export default {
       default: ''
     },
 
-    srcPath: {
+    version: {
       type: String,
-      default: ''
-    },
-
-    language: {
-      type: String,
-      default: 'snippet'
+      default: '0.11.1'
     },
 
     theme: {
@@ -30,9 +28,14 @@ export default {
       default: 'vs'
     },
 
+    language: {
+      type: String,
+      default: 'snippet'
+    },
+
     options: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   },
 
@@ -54,11 +57,43 @@ export default {
 
     editorOptions() {
       return Object.assign({}, editorSettings, this.options, {
-        value: this.code,
+        value: this.value,
         language: this.language,
         theme: this.theme
       });
-    }
+    },
+
+    fileNames() {
+      return this.files.map(file => {
+        const folder = this.$store.getters.findFolder(
+          '.key',
+          first(keys(file.folder))
+        );
+
+        return {
+          name: `${folder.name.toLowerCase()} ${file.name.toLowerCase()}`,
+          value: file.value
+        };
+      });
+    },
+
+    mapCompletionItems() {
+      return this.fileNames.map(file => {
+        const snippet = new SnippetList(file.value, this.fileNames).serialize();
+
+        return {
+          label: file.name,
+          insertText: { value: snippet },
+          // insertText: snippet,
+          kind: monaco.languages.CompletionItemKind.Snippet
+        };
+      });
+    },
+
+    ...mapGetters({
+      folders: 'allFolders',
+      files: 'allFiles'
+    })
   },
 
   watch: {
@@ -90,22 +125,46 @@ export default {
     this.fetchEditor();
   },
 
-  destroyed() {
-    this.destroyMonaco();
+  beforeUpdate() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+
+  beforeDestroy() {
+    if (this.completionProvider.dispose) this.completionProvider.dispose();
+
+    window.removeEventListener('resize', this.handleResize);
   },
 
   methods: {
+    fetchEditor() {
+      monacoLoader.load(this.version, this.setupEditor);
+    },
+
+    setupEditor() {
+      window.monaco.languages.register({ id: 'snippet' });
+      window.monaco.languages.register({ id: 'status' });
+
+      window.monaco.languages.setMonarchTokensProvider('status', statusSyntax);
+      window.monaco.editor.defineTheme('statusTheme', statusTheme);
+
+      this.createEditor(window.monaco);
+    },
+
+    createEditor(monaco) {
+      this.editor = monaco.editor.create(this.$el, this.editorOptions);
+
+      this.editorHasLoaded(this.editor, monaco);
+    },
+
     editorHasLoaded(editor, monaco) {
       this.editor = editor;
       this.monaco = monaco;
-
-      // Languages
-      this.registerLanguages(monaco);
 
       // Events
       this.editor.onDidBlurEditor((...args) => this.emitBeforeLeave(args));
       this.editor.onDidChangeModelContent((...args) => this.emitChange(args));
       this.editor.onKeyDown((...args) => this.emitChange(args));
+      this.editor.onDidDispose((...args) => {}); // eslint-disable-line;
 
       // Keyboard shortcuts
       this.editor.addCommand(
@@ -116,7 +175,7 @@ export default {
       // Completion items
       this.completionProvider = monaco.languages.registerCompletionItemProvider(
         'status',
-        { provideCompletionItems: this.provideCompletionItems(monaco) }
+        { provideCompletionItems: () => this.mapCompletionItems }
       );
 
       window.addEventListener('resize', this.handleResize);
@@ -124,52 +183,6 @@ export default {
       this.editor.layout({ width: this.width, height: this.height });
 
       this.$emit('mounted', editor);
-    },
-
-    fetchEditor() {
-      monacoLoader.load(this.srcPath, this.createMonaco);
-    },
-
-    createMonaco() {
-      this.editor = window.monaco.editor.create(this.$el, this.editorOptions);
-      this.editorHasLoaded(this.editor, window.monaco);
-    },
-
-    registerLanguages(monaco) {
-      monaco.languages.register({ id: 'snippet' });
-      monaco.languages.register({ id: 'status' });
-    },
-
-    provideCompletionItems(monaco) {
-      return () =>
-        this.$store.getters.findAllFolderCompletions(
-          monaco.languages.CompletionItemKind.Snippet
-        );
-    },
-
-    destroyMonaco() {
-      if (typeof this.editor !== 'undefined') {
-        this.editor.dispose();
-        this.completionProvider.dispose();
-      }
-
-      window.removeEventListener('resize', this.handleResize);
-    },
-
-    emitBeforeLeave() {
-      const value = this.editor.getValue();
-      const state = this.editor.getModel();
-
-      this.$emit('before-leave', value);
-      this.$emit('before-leave-state', state);
-    },
-
-    emitChange() {
-      const value = this.editor.getValue();
-      const state = this.editor.getModel();
-
-      this.$emit('change', value);
-      this.$emit('change-state', state);
     },
 
     handleResize() {
@@ -189,7 +202,31 @@ export default {
         height: viewportHeight - navbarFooterHeight,
         width: viewportWidth - (sidebarWidth + handleWidth)
       });
+    },
+
+    emitBeforeLeave() {
+      const value = this.editor.getValue();
+
+      this.$emit('before-leave', value);
+    },
+
+    emitChange() {
+      const value = this.editor.getValue();
+
+      this.$emit('change', value);
     }
   }
 };
 </script>
+
+<style lang="scss">
+@media print {
+  .decorationsOverviewRuler {
+    display: none;
+  }
+
+  .monaco-editor {
+    width: 100%;
+  }
+}
+</style>

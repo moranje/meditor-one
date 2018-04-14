@@ -26,28 +26,37 @@ function onGotAmdLoader(config, callback) {
 }
 
 export default {
-  load(path, callback) {
-    let srcPath = '';
-
-    if (path) {
-      srcPath = path;
-    } else {
-      srcPath =
-        'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.11.1/min';
-    }
-
+  load(version, callback) {
     if (window.monaco) {
       callback();
       return;
     }
 
+    const path = `https://cdn.jsdelivr.net/npm/monaco-editor@${version}/min`;
     const config = {
       paths: {
-        vs: `${srcPath}/vs`
+        vs: `${path}/vs`
       }
     };
 
-    const loaderUrl = `${config.paths.vs}/loader.js`;
+    window.MonacoEnvironment = {
+      getWorkerUrl: () =>
+        URL.createObjectURL(
+          new Blob(
+            [
+              `
+            self.MonacoEnvironment = {
+              baseUrl: '${path}'
+            };
+            importScripts('${path}/vs/base/worker/workerMain.js');
+          `
+            ],
+            {
+              type: 'text/javascript'
+            }
+          )
+        )
+    };
 
     // Load AMD loader if necessary
     if (window.LOADER_PENDING) {
@@ -62,7 +71,7 @@ export default {
       const loaderScript = window.document.createElement('script');
 
       loaderScript.type = 'text/javascript';
-      loaderScript.src = loaderUrl;
+      loaderScript.src = `${config.paths.vs}/loader.js`;
       loaderScript.addEventListener('load', () =>
         onGotAmdLoader(config, callback)
       );

@@ -8,10 +8,11 @@
       <m1-side-bar/>
       <multipane-resizer/>
       <main class="content">
-        <router-view/>
+        <router-view :key="$route.fullPath" />
       </main>
     </multipane>
     <m1-footer/>
+    <m1-dialog/>
   </v-app>
 </template>
 
@@ -27,9 +28,10 @@ import { clamp } from 'lodash';
 import 'vuetify/dist/vuetify.min.css';
 
 import { dbFoldersRef, dbFilesRef } from './firebase-config';
-import M1NavBar from './components/nav-bar/nav-bar';
-import M1SideBar from './components/side-bar/side-bar';
-import M1Footer from './components/footer/footer';
+import M1NavBar from './components/nav-bar';
+import M1SideBar from './components/side-bar';
+import M1Footer from './components/footer';
+import M1Dialog from './components/dialog';
 
 // explicit installation required in module environments
 Vue.use(Vuetify, {
@@ -50,7 +52,8 @@ export default {
     M1SideBar,
     M1Footer,
     Multipane,
-    MultipaneResizer
+    MultipaneResizer,
+    M1Dialog
   },
 
   computed: {
@@ -60,14 +63,12 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('syncFolders', dbFoldersRef);
-    this.$store.dispatch('syncFiles', dbFilesRef);
-
     firebase.auth().onAuthStateChanged(user => {
-      // console.log('Auth', user, arguments);
       if (user) {
         const { displayName, email, uid } = user;
         this.$store.commit('signIn', { displayName, email, uid });
+        this.$store.dispatch('syncFolders', dbFoldersRef.child(uid));
+        this.$store.dispatch('syncFiles', dbFilesRef.child(uid));
       } else {
         // throw new Error('Immediate sign out error');
         this.$store.commit('signOut');

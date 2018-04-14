@@ -2,6 +2,7 @@
   <m1-monaco
     :value="document.value"
     language="status"
+    theme="statusTheme"
     @before-leave="save"
     @change="willSave"
   />
@@ -35,6 +36,11 @@ export default {
 
   mounted() {
     this.$store.commit('setSaveState', 'local');
+  },
+
+  beforeDestroy() {
+    // Cancel saving when changing pages
+    clearTimeout(this.timeOutId);
   },
 
   methods: {

@@ -39,11 +39,12 @@
 </template>
 
 <script>
-import m1TreeItemTitle from './tree-item-title';
+import { first, keys } from 'lodash';
+import M1TreeItemTitle from './tree-item-title';
 
 export default {
   components: {
-    m1TreeItemTitle
+    M1TreeItemTitle
   },
 
   props: {
@@ -55,13 +56,22 @@ export default {
 
   computed: {
     parent() {
-      return this.$store.getters.findFolder(
-        '.key',
-        Object.keys(this.file.folder)[0]
-      );
+      if (this.file.folder) {
+        return this.$store.getters.findFolder(
+          '.key',
+          first(keys(this.file.folder))
+        );
+      }
+
+      return null;
     },
 
     visible() {
+      if (!this.parent) {
+        // Happens when adding new file
+        return true;
+      }
+
       if (this.file.hidden) {
         return false;
       }
@@ -102,7 +112,7 @@ export default {
     remove() {
       this.$store.dispatch('removeFile', {
         id: this.file['.key'],
-        parent: this.file.folder
+        parent: first(keys(this.file.folder))
       });
       this.$router.push({ name: 'document' });
     }

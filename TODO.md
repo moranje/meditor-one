@@ -2,7 +2,6 @@
 
 ## FIX
 
-* Authentication session lost
 * Logical file tree component
 
 ## Features
@@ -19,9 +18,9 @@
 * Create [Monaco syntax](https://microsoft.github.io/monaco-editor/monarch.html) file
 * Allow for status specific styled words, _warning_ and _emphasized_
 * Look into menu entries
-* Set-up keyboard shortcuts (`CMD` + `SHIFT` + `P` for menu)
+* Set-up keyboard shortcuts (`CMD` + `SHIFT` + `P` for menu, selected text formatting snippets) https://microsoft.github.io/monaco-editor/playground.html#interacting-with-the-editor-adding-an-action-to-an-editor-instance
 * Build in a compile step for inserting snippets into other snippets
-* Build in render step to allow for calculations and other functions
+* Build in render step to allow for calculations and other functions, should not immediately execute
 * Connect TM_VARS to the editor, perhaps allow setting global VARS (supervisor etc.)
 * Break open editor to see where snippet variables are stored
 

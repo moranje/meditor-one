@@ -35,6 +35,11 @@ export default {
     this.$store.commit('setSaveState', 'saved');
   },
 
+  beforeDestroy() {
+    // Cancel saving when changing pages
+    clearTimeout(this.timeOutId);
+  },
+
   methods: {
     save(changes) {
       const file = this.$store.getters.findFile('.key', this.$route.params.id);

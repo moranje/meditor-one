@@ -1,0 +1,45 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true",
+        ".write": "auth.uid == $uid || newData.parent().parent().child('users').child(auth.uid).child('isAdmin').val() == true",
+        ".indexOn": [
+          "email"
+        ]
+      }
+    },
+    "reader": {
+      "$resource": {
+        "$uid": {
+          ".read": "auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true",
+          ".write": "newData.parent().parent().parent().child('users').child(auth.uid).child('isAdmin').val() == true"
+        }
+      }
+    },
+    "writer": {
+      "$resource": {
+        "$uid": {
+          ".read": "root.child('users').child(auth.uid).child('isAdmin').val() == true",
+          ".write": "auth.uid == $uid || newData.parent().parent().parent().child('users').child(auth.uid).child('isAdmin').val() == true"
+        }
+      }
+    },
+    "owner": {
+      "$resource": {
+        "$uid": {
+          ".read": "auth.uid == $uid || root.child('users').child(auth.uid).child('isAdmin').val() == true",
+          ".write": "auth.uid == $uid || newData.parent().parent().parent().child('users').child(auth.uid).child('isAdmin').val() == true"
+        }
+      }
+    },
+    "shared": {
+      "$resource": {
+        "$uid": {
+          ".read": "auth != null",
+          ".write": "newData.parent().parent().parent().child('users').child(auth.uid).child('isAdmin').val() == true"
+        }
+      }
+    }
+  }
+}

@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { first, keys } from 'lodash';
 import m1TreeItemTitle from './tree-item-title';
 
 function collapse(folderIds, fileIds) {
@@ -138,9 +139,7 @@ export default {
 
   methods: {
     toggleCollapse() {
-      // if (!this.folder.collapsed) {
       collapse.call(this, this.folder.folders, this.folder.files);
-      // }
 
       this.$store.dispatch('updateFolder', {
         id: this.folder['.key'],
@@ -163,6 +162,34 @@ export default {
         key: 'editable',
         value: isEditable
       });
+    },
+
+    collapse(folderIds, fileIds) {
+      const folders = this.$store.getters.findManyFolders(folderIds);
+      const files = this.$store.getters.findManyFiles(fileIds);
+
+      folders.forEach(folder => {
+        this.$store.dispatch('updateFolder', {
+          id: folder['.key'],
+          key: 'hidden',
+          value: !this.folder.collapsed
+        });
+
+        if (!this.folder.collapsed === false && folder.collapsed === false) {
+          // Only unhide children of folders that aren't collapsed themselves
+          collapse.call(this, folder.folders, []);
+        } else if (!this.folder.collapsed === true) {
+          collapse.call(this, folder.folders, []);
+        }
+      });
+
+      files.forEach(file =>
+        this.$store.dispatch('updateFile', {
+          id: file['.key'],
+          key: 'hidden',
+          value: !this.folder.collapsed
+        })
+      );
     },
 
     addFolder() {
@@ -191,7 +218,10 @@ export default {
     },
 
     remove() {
-      this.$store.dispatch('removeFolder', this.folder['.key']);
+      this.$store.dispatch('removeFolder', {
+        id: this.folder['.key'],
+        parent: first(keys(this.folder.folder))
+      });
     }
   }
 };
