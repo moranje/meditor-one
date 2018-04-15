@@ -20,7 +20,7 @@ export default {
 
     version: {
       type: String,
-      default: '0.11.1'
+      default: '0.12.0'
     },
 
     theme: {
@@ -172,6 +172,50 @@ export default {
         monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, // eslint-disable-line
         (...args) => this.emitBeforeLeave(args)
       );
+      this.editor.addCommand(
+        monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KEY_P, // eslint-disable-line
+        (...args) =>
+          editor.trigger('Command palette', 'editor.action.quickCommand')
+      );
+      this.editor.addAction({
+        // An unique identifier of the contributed action.
+        id: 'format-medication',
+
+        // A label of the action that will be presented to the user.
+        label: 'Medicatie opschonen',
+
+        // An optional array of keybindings for the action.
+        keybindings: [
+          // chord
+          monaco.KeyMod.chord(
+            monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_F,
+            monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M
+          )
+        ],
+
+        contextMenuGroupId: 'navigation',
+
+        // Method that will be executed when the action is triggered.
+        // @param editor The editor instance is passed in as a convinience
+        run: function(editor) {
+          editor.trigger('insert', 'editor.action.insertSnippet', {
+            langId: 'status',
+            name: 'test medicatie opschonen'
+          });
+
+          editor.executeCommand('editor.action.insertSnippet', {
+            langId: 'status',
+            name: 'test medicatie opschonen'
+          });
+          let action = editor
+            .getActions()
+            .map(actions => actions.id)
+            .join('\n');
+          console.log(action, editor.executeCommand);
+
+          return null;
+        }
+      });
 
       // Completion items
       this.completionProvider = monaco.languages.registerCompletionItemProvider(

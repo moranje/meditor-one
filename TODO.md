@@ -23,6 +23,7 @@
 * Build in render step to allow for calculations and other functions, should not immediately execute
 * Connect TM_VARS to the editor, perhaps allow setting global VARS (supervisor etc.)
 * Break open editor to see where snippet variables are stored
+* Check out VSCode's [snippet implementation](https://github.com/Microsoft/vscode/tree/d89ca728f6f55705b5579df89baf5e0316699534/src/vs/workbench/parts/snippets/electron-browser)
 
 ## Maybe's
 

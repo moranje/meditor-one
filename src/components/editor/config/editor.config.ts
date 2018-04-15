@@ -18,7 +18,10 @@ export default {
     vertical: 'hidden'
   },
   scrollBeyondLastLine: false,
-  showFoldingControls: 'always',
+  smoothScrolling: true,
+  snippetSuggestions: 'bottom',
+  wordBasedSuggestions: false,
+  suggestSelection: 'recentlyUsed',
   theme: 'vs',
   value: '',
   wordWrap: 'on',
