@@ -1,4 +1,5 @@
 export default {
+  // contextmenu: false,
   folding: true,
   fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
