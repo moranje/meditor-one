@@ -46,7 +46,9 @@ export default {
   },
 
   methods: {
-    save(changes) {
+    save(changes, route) {
+      if (route && this.$route.fullPath !== route) return;
+
       const file = this.$store.getters.findFile('.key', this.$route.params.id);
       const value =
         typeof changes !== 'object' ? changes : changes.doc.getValue();
@@ -71,7 +73,7 @@ export default {
       this.timeOutId = setTimeout(() => {
         const state = this.$store.getters.getSaveState();
         if (state === 'unsaved') {
-          this.save(changes);
+          this.save(changes, this.$route.fullPath);
         }
       }, 5000);
     }

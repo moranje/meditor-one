@@ -38,11 +38,6 @@ export default {
     this.$store.commit('setSaveState', 'local');
   },
 
-  beforeUpdate() {
-    // Cancel saving when changing pages
-    clearTimeout(this.timeOutId);
-  },
-
   beforeDestroy() {
     // Cancel saving when changing pages
     clearTimeout(this.timeOutId);
