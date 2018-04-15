@@ -13,7 +13,7 @@ export default class Placeholder extends Tabstop {
   }
 
   get placeholder() {
-    return this._placeholder.serialize();
+    return `${this._placeholder}`;
   }
 
   set placeholder(placeholder) {

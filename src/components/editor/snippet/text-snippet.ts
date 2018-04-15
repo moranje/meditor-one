@@ -32,4 +32,8 @@ export default class Text {
       this._template = value;
     }
   }
+
+  toString() {
+    return this.text;
+  }
 }
