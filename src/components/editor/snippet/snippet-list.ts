@@ -135,14 +135,14 @@ export default class SnippetList extends LinkedList {
     }
   }
 
-  parse(text = this.text) {
+  parse() {
     let characterIndex = 0;
     let hasMatch = false;
 
-    this._parse(text, match => {
+    this._parse(this.text, match => {
       if (match.index > characterIndex) {
         this.push(
-          initSnippet(text.substring(characterIndex, match.index), this)
+          initSnippet(this.text.substring(characterIndex, match.index), this)
         );
       }
 
@@ -153,13 +153,15 @@ export default class SnippetList extends LinkedList {
     });
 
     // Handle empty string case
-    if (!hasMatch && text.length === 0) {
+    if (!hasMatch && this.text.length === 0) {
       this.push(initSnippet('', this));
     }
 
     // Add text node after last match
-    if (characterIndex < text.length) {
-      this.push(initSnippet(text.substring(characterIndex, text.length), this));
+    if (characterIndex < this.text.length) {
+      this.push(
+        initSnippet(this.text.substring(characterIndex, this.text.length), this)
+      );
     }
 
     this.compileExpansions();

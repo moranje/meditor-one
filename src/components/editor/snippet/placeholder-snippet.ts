@@ -6,7 +6,6 @@ export default class Placeholder extends Tabstop {
     super(template, parent);
 
     this.type = 'placeholder';
-    // this.text = template;
   }
 
   get text() {
@@ -21,7 +20,7 @@ export default class Placeholder extends Tabstop {
     this._placeholder = new SnippetList(placeholder);
   }
 
-  parse(text: string = this.template) {
+  parse() {
     this.comparator = +this.template.replace(/\$\{(\d+):[^}]*?\}/, '$1');
     this.placeholder = this.template.replace(/\$\{\d+:([^}]*?)\}/, '$1');
   }

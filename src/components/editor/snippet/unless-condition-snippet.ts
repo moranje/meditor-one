@@ -19,7 +19,7 @@ export default class UnlessCondition extends SnippetFunction {
     }}/}`;
   }
 
-  parse(text = this.text) {
+  parse() {
     this.tabstopReference = +this.template.replace(
       /\$\{#unless ([0-9]+):[^:}]+:[^:}]+\}/,
       `$1`

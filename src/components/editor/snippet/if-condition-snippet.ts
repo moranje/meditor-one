@@ -19,7 +19,7 @@ export default class IfCondition extends SnippetFunction {
     }}/}`;
   }
 
-  parse(text = this.text) {
+  parse() {
     this.tabstopReference = +this.template.replace(
       /\$\{#if ([0-9]+):[^:}]+:[^:}]+\}/,
       `$1`
