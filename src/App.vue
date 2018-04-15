@@ -126,4 +126,14 @@ export default {
     padding: 0;
   }
 }
+
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  .multipane-resizer {
+    display: none;
+  }
+}
 </style>
