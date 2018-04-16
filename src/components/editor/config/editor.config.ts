@@ -1,5 +1,5 @@
 export default {
-  // contextmenu: false,
+  acceptSuggestionOnEnter: 'smart',
   folding: true,
   fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
@@ -12,18 +12,18 @@ export default {
   minimap: {
     enabled: false
   },
+  quickSuggestions: false,
   readOnly: false,
   renderWhitespace: 'boundary',
   scrollbar: {
     horizontal: 'hidden',
     vertical: 'hidden'
   },
+  suggestSelection: 'recentlyUsedByPrefix',
   scrollBeyondLastLine: false,
-  smoothScrolling: true,
-  snippetSuggestions: 'bottom',
-  wordBasedSuggestions: false,
-  suggestSelection: 'recentlyUsed',
+  showFoldingControls: 'always',
   theme: 'vs',
+  useTabStops: true,
   value: '',
   wordWrap: 'on',
   wrappingIndent: 'indent'
