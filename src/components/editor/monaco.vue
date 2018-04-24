@@ -155,11 +155,10 @@ export default {
     createEditor(monaco) {
       this.editor = monaco.editor.create(this.$el, this.editorOptions);
 
-      this.editorHasLoaded(this.editor, monaco);
+      this.editorHasLoaded(monaco);
     },
 
-    editorHasLoaded(editor, monaco) {
-      this.editor = editor;
+    editorHasLoaded(monaco) {
       this.monaco = monaco;
 
       // Events
@@ -172,7 +171,7 @@ export default {
       this.editor.addCommand(
         monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KEY_P, // eslint-disable-line
         (...args) =>
-          editor.trigger('Command palette', 'editor.action.quickCommand')
+          this.editor.trigger('Command palette', 'editor.action.quickCommand')
       );
       initActions(monaco, this);
 
@@ -188,7 +187,7 @@ export default {
       this.handleResize();
       this.editor.layout({ width: this.width, height: this.height });
 
-      this.$emit('mounted', editor);
+      this.$emit('mounted', this.editor);
     },
 
     handleResize() {

@@ -2,37 +2,6 @@ import { Tabstop } from '.';
 import LinkedList from '@/components/editor/linked-list';
 
 export default class TabstopList extends LinkedList {
-  // addTabstop(tabstop: Tabstop) {
-  //   let nodeIndex = this.indexOf(tabstop);
-
-  //   if (this.length === 0) {
-  //     this.push(tabstop);
-  //     tabstop.node = this.getNode(this.length - 1);
-  //   } else if (nodeIndex !== -1) {
-  //     let node = this.getNode(nodeIndex);
-
-  //     node.siblings = [tabstop];
-  //     tabstop.node = node;
-  //   } else {
-  //     let insertBefore = 0;
-  //     let didInsert = false;
-
-  //     this.forEach((element, index) => {
-  //       if (element.tabstopId > tabstop.tabstopId) {
-  //         insertBefore = index;
-  //         didInsert = true;
-  //       }
-  //     });
-
-  //     if (!didInsert) {
-  //       insertBefore = this.length;
-  //     }
-
-  //     this.push(tabstop);
-  //     tabstop.node = this.getNode(insertBefore);
-  //   }
-  // }
-
   private _lastTabstop: number = 0;
 
   get lastTabstop() {
