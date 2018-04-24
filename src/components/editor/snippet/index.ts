@@ -5,6 +5,8 @@ export { default as TabstopReference } from './tabstop-reference-snippet';
 export { default as Placeholder } from './placeholder-snippet';
 export { default as Choice } from './choice-snippet';
 export { default as Substitution } from './substitution-snippet';
+export { default as Anchor } from './anchor-snippet';
+export { default as Incrementor } from './incrementor-snippet';
 export { default as Expansion } from './expansion-snippet';
 export { default as TabstopList } from './tabstop-list';
 export { default as SnippetFunction } from './function-snippet';

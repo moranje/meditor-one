@@ -11,7 +11,9 @@ import {
   If,
   IfCondition,
   Unless,
-  UnlessCondition
+  UnlessCondition,
+  Anchor,
+  Incrementor
 } from '.';
 import TabstopList from './tabstop-list';
 
@@ -26,6 +28,10 @@ function initSnippet(text: string, parent: SnippetList) {
     return new Choice(text, parent);
   } else if (/^\$\{[0-9a-zA-Z_]+\/[^}]*?\/[gmi]?\}$/.test(text)) {
     return new Substitution(text, parent);
+  } else if (/^(\$=\d+)|(\$\{=.*?\})$/.test(text)) {
+    return new Anchor(text, parent);
+  } else if (/^(\$\+\d+)|(\$\{\+.*?\})$/.test(text)) {
+    return new Incrementor(text, parent);
   } else if (/^\$\{!.*?\}$/.test(text)) {
     return new Expansion(text, parent);
   } else if (/^\$\{#if [0-9a-zA-Z_]+:[^:}]+\}$/.test(text)) {
@@ -72,7 +78,9 @@ export default class SnippetList extends LinkedList {
     let index = -1;
 
     for (let $index = start; $index < text.length; $index++) {
-      if (/\d/.test(text[$index])) {
+      if (start === $index && /=|\+/.test(text[$index])) {
+        // Modifier, continue
+      } else if (/\d/.test(text[$index])) {
         index = $index;
       } else {
         return index;
@@ -164,15 +172,19 @@ export default class SnippetList extends LinkedList {
       );
     }
 
-    this.compileExpansions();
+    this.editCompilation();
   }
 
   private compile(snippetString: string) {
     let snippet = initSnippet(snippetString, this);
 
-    if (snippet instanceof Tabstop) {
+    if (snippet instanceof Tabstop && !(snippet instanceof Placeholder)) {
       this.tabstops.addTabstop(snippet);
       this.push(snippet);
+    } else if (snippet instanceof Placeholder) {
+      this.tabstops.addTabstop(snippet);
+      this.push(snippet);
+      this.insertNestedTabstops(snippet);
     } else if (snippet instanceof SnippetFunction) {
       this.compileDynamicFunctions(snippet);
     } else {
@@ -180,28 +192,49 @@ export default class SnippetList extends LinkedList {
     }
   }
 
-  private compileExpansions() {
+  editCompilation() {
     for (let walker = this.head, index = 0; walker !== null; index++) {
       let next = walker.next;
+      let orderChanged = false;
 
-      if (walker.value instanceof Expansion) {
-        const expansion = walker.value.expand(this.references);
+      if (
+        walker.value instanceof Expansion ||
+        walker.value instanceof Incrementor
+      ) {
+        orderChanged = this.insertExpansions(walker.value, index);
+      }
 
-        if (expansion) {
-          // Insert tabstops into TabstopList
-          if (expansion.tabstops.length > 0) {
-            this.tabstops.push(expansion.tabstops.toArray());
-            this.tabstops.updateNodeReferences();
-          }
-
-          // Insert all element is into the parsed list
-          this.splice(index, 1, ...expansion.toArray());
-          next = this.getNode(index);
-          index--;
-        }
+      if (orderChanged) {
+        next = this.getNode(index);
+        index--;
       }
 
       walker = next;
+    }
+  }
+
+  private insertExpansions(snippet, index) {
+    const expansion = snippet.expand(this.references);
+
+    if (expansion) {
+      // Insert tabstops into TabstopList
+      if (expansion.tabstops.length > 0) {
+        this.tabstops.push(expansion.tabstops.toArray());
+        this.tabstops.updateNodeReferences();
+      }
+
+      // Insert all element is into the parsed list
+      this.splice(index, 1, ...expansion.toArray());
+
+      return true;
+    }
+    return false;
+  }
+
+  private insertNestedTabstops(snippet) {
+    if (snippet.nested.tabstops.length > 0) {
+      this.tabstops.push(snippet.nested.tabstops.toArray());
+      this.tabstops.updateNodeReferences();
     }
   }
 
