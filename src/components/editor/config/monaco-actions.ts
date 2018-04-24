@@ -1,3 +1,5 @@
+import { medication } from '../utils/text-format';
+
 function addActions(editor, actions = []) {
   actions.forEach(action => {
     editor.addAction(action);
@@ -24,8 +26,11 @@ export default function initActions(monaco, self) {
         )
       ],
       run: editor => {
-        // Format logic
-        return null;
+        let range = editor.getSelection();
+        let selected = editor.getModel().getValueInRange(range);
+        let meds = medication(selected);
+
+        editor.executeEdits('', [{ range, text: meds }]);
       }
     },
     {
