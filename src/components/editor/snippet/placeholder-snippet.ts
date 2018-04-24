@@ -20,8 +20,14 @@ export default class Placeholder extends Tabstop {
     this._placeholder = new SnippetList(placeholder);
   }
 
+  get nested() {
+    return this._placeholder;
+  }
+
   parse() {
-    this.comparator = +this.template.replace(/\$\{(\d+):[^}]*?\}/, '$1');
-    this.placeholder = this.template.replace(/\$\{\d+:([^}]*?)\}/, '$1');
+    this.comparator = +super.template.replace(/\$\{(\d+):[\s\S]*\}/, '$1');
+    this.placeholder = this.template.replace(/\$\{\d+:([\s\S]*)\}/, '$1');
+
+    if (Number.isNaN(this.comparator)) debugger;
   }
 }
