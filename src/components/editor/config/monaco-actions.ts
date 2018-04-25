@@ -1,3 +1,5 @@
+import * as mathjs from 'mathjs';
+
 import { medication } from '../utils/text-format';
 
 function addActions(editor, actions = []) {
@@ -57,8 +59,14 @@ export default function initActions(monaco, self) {
         )
       ],
       run: editor => {
-        // Format logic
-        return null;
+        let range = editor.getSelection();
+        let selected = editor.getModel().getValueInRange(range);
+
+        let outcome = mathjs.eval(selected);
+
+        if (!Number.isNaN(outcome)) {
+          editor.executeEdits('', [{ range, text: `${outcome}` }]);
+        }
       }
     }
   ];
