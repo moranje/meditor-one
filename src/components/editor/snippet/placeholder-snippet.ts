@@ -17,7 +17,8 @@ export default class Placeholder extends Tabstop {
   }
 
   set placeholder(placeholder) {
-    this._placeholder = new SnippetList(placeholder);
+    let references = this.parent ? this.parent.references : undefined;
+    this._placeholder = new SnippetList(placeholder, references);
   }
 
   get nested() {
@@ -27,7 +28,5 @@ export default class Placeholder extends Tabstop {
   parse() {
     this.comparator = +super.template.replace(/\$\{(\d+):[\s\S]*\}/, '$1');
     this.placeholder = this.template.replace(/\$\{\d+:([\s\S]*)\}/, '$1');
-
-    if (Number.isNaN(this.comparator)) debugger;
   }
 }
