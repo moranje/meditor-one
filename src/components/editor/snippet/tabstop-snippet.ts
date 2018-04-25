@@ -60,7 +60,11 @@ export default class Tabstop extends Text {
   }
 
   set comparator(comparator: number) {
-    this._comparator = comparator;
+    if (typeof comparator === 'number') {
+      this._comparator = comparator;
+    } else {
+      throw new Error(`Comparator must be a valid number, was ${comparator}`);
+    }
   }
 
   get node() {
