@@ -29,9 +29,11 @@ export default {
   },
 
   created() {
-    this.$store.commit('createDocument', {
-      value: ''
-    });
+    if (!this.document || this.document.value === undefined) {
+      this.$store.commit('createDocument', {
+        value: ''
+      });
+    }
   },
 
   mounted() {
