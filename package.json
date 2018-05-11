@@ -5,43 +5,43 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "test": "vue-cli-service test",
-    "test-watch": "vue-cli-service test --watch",
-    "e2e": "vue-cli-service e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test-watch": "vue-cli-service test --watch"
   },
   "dependencies": {
-    "@timkendrick/monaco-editor": "0.0.9",
-    "@types/lodash": "4.14.106",
-    "firebase": "4.12.0",
-    "lodash": "4.17.5",
+    "@types/lodash": "4.14.108",
+    "firebase": "^4.12.0",
+    "lodash": "4.17.10",
+    "mathjs": "4.1.2",
     "monaco-editor": "0.12.0",
-    "npm": "5.8.0",
     "register-service-worker": "^1.0.0",
     "vue": "2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-multipane": "0.9.5",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
-    "vuetify": "1.0.11",
-    "vuex": "^3.0.1",
+    "vuetify": "1.0.17",
+    "vuex": "3.0.1",
     "vuexfire": "2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^22.0.1",
-    "@vue/cli-plugin-babel": "^3.0.0-beta.6",
-    "@vue/cli-plugin-e2e-nightwatch": "^3.0.0-beta.6",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
-    "@vue/cli-plugin-pwa": "^3.0.0-beta.6",
-    "@vue/cli-plugin-typescript": "^3.0.0-beta.6",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.6",
-    "@vue/cli-service": "^3.0.0-beta.6",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.6",
-    "@vue/eslint-config-typescript": "^3.0.0-beta.6",
+    "@types/jest": "22.2.3",
+    "@vue/cli-plugin-babel": "^3.0.0-beta.10",
+    "@vue/cli-plugin-e2e-cypress": "^3.0.0-beta.10",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.10",
+    "@vue/cli-plugin-pwa": "^3.0.0-beta.10",
+    "@vue/cli-plugin-typescript": "^3.0.0-beta.10",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.10",
+    "@vue/cli-service": "^3.0.0-beta.10",
+    "@vue/eslint-config-prettier": "^3.0.0-beta.10",
+    "@vue/eslint-config-typescript": "^3.0.0-beta.10",
     "@vue/test-utils": "^1.0.0-beta.10",
     "babel-core": "^7.0.0-0",
-    "monaco-editor-webpack-plugin": "1.1.0",
-    "node-sass": "^4.7.2",
+    "monaco-editor-webpack-plugin": "^1.1.0",
+    "lint-staged": "^6.0.0",
+    "node-sass": "4.9.0",
     "sass-loader": "^6.0.6",
     "ts-jest": "^22.0.1",
     "vue-template-compiler": "^2.5.13"
@@ -50,5 +50,18 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
 }
