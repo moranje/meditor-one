@@ -1,6 +1,6 @@
 import * as mathjs from 'mathjs';
 
-import { medication } from '../utils/text-format';
+import { medication, medicationHix, history } from '../utils/text-format';
 
 function addActions(editor, actions = []) {
   actions.forEach(action => {
@@ -36,6 +36,24 @@ export default function initActions(monaco, self) {
       }
     },
     {
+      id: 'format-medication-hix',
+      label: 'Medicatie opschonen (HIX)',
+      keybindings: [
+        monaco.KeyMod.chord(
+          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_F,
+          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M,
+          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_H
+        )
+      ],
+      run: editor => {
+        let range = editor.getSelection();
+        let selected = editor.getModel().getValueInRange(range);
+        let meds = medicationHix(selected);
+
+        editor.executeEdits('', [{ range, text: meds }]);
+      }
+    },
+    {
       id: 'format-history',
       label: 'Voorgeschiedenis opschonen',
       keybindings: [
@@ -45,8 +63,11 @@ export default function initActions(monaco, self) {
         )
       ],
       run: editor => {
-        // Format logic
-        return null;
+        let range = editor.getSelection();
+        let selected = editor.getModel().getValueInRange(range);
+        let meds = history(selected);
+
+        editor.executeEdits('', [{ range, text: meds }]);
       }
     },
     {
