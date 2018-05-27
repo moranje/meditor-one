@@ -21,7 +21,7 @@ export default {
 
     version: {
       type: String,
-      default: '0.12.0'
+      default: '0.13.1'
     },
 
     theme: {
