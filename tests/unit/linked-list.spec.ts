@@ -12,12 +12,12 @@ describe('linked-list.ts', () => {
 
     list.splice(1, 0, 3);
 
-    expect(list.toArray()).toEqual([1,3]);
+    expect(list.toArray()).toEqual([1, 3]);
     expect(list).toHaveLength(2);
 
     list.splice(1, 0, 2);
 
-    expect(list.toArray()).toEqual([1,2,3]);
+    expect(list.toArray()).toEqual([1, 2, 3]);
     expect(list).toHaveLength(3);
   });
 

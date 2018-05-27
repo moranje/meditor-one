@@ -131,7 +131,7 @@ describe('snippet-list.ts', () => {
       const firstList = new SnippetList(firstListText);
       const secondList = new SnippetList(secondListText);
 
-      firstList.splice(0,0,...secondList.toArray());
+      firstList.splice(0, 0, ...secondList.toArray());
 
       expect(firstList.serialize()).toBe(`${secondListText}${firstListText}`);
     });
