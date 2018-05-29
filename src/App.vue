@@ -42,7 +42,9 @@ Vue.use(Vuetify, {
     error: colors.red.lighten1,
     warning: colors.amber.lighten1,
     info: colors.cyan.lighten1,
-    success: colors.green.lighten1
+    success: colors.green.lighten1,
+    light: colors.grey.lighten2,
+    dark: colors.grey.darken3
   }
 });
 
