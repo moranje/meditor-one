@@ -2,7 +2,6 @@
   <v-toolbar
     color="primary"
     height="64px"
-    class="z-index: 3;"
     dark
   >
     <v-toolbar-title
@@ -34,8 +33,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toolbar {
-  box-shadow: none;
+nav.toolbar.primary {
+  z-index: 1;
 }
 
 @media print {
