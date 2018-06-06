@@ -6,13 +6,6 @@
     <v-toolbar-title class="grey--text text--darken-2">FILES</v-toolbar-title>
     <v-spacer/>
     <v-btn
-      :to="{ name: 'document'}"
-      icon
-      exact
-    >
-      <v-icon color="grey darken-2">mdi-file-document-box</v-icon>
-    </v-btn>
-    <v-btn
       v-if="isEmpty"
       icon
       @click="newFolder"
@@ -56,7 +49,7 @@ export default {
 <style lang="scss">
 @import '../../assets/variables';
 
-.btn--active .btn__content:before {
-  background-color: $accent;
-}
+// .btn--active .btn__content:before {
+//   background-color: $accent;
+// }
 </style>

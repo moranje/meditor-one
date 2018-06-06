@@ -1,33 +1,33 @@
 <template>
-  <aside class="side-bar">
-    <m1-side-bar-nav/>
-    <v-divider/>
-    <div class="side-bar-tree">
-      <m1-tree/>
-    </div>
-  </aside>
+  <v-layout
+    fill-height
+    row
+    class="side-bar"
+    tag="aside">
+    <m1-navigation-drawer style="min-width: 80px;"/>
+    <m1-navigation-detail d-flex/>
+  </v-layout>
 </template>
 
 <script>
-import M1Tree from '../tree';
-import M1SideBarNav from './side-bar-nav';
+import M1NavigationDrawer from './navigation-drawer';
+import M1NavigationDetail from './navigation-detail';
 
 export default {
   components: {
-    M1SideBarNav,
-    M1Tree
+    M1NavigationDrawer,
+    M1NavigationDetail
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .side-bar {
-  width: 300px;
-  min-width: 250px;
-  max-width: 400px;
+  width: 380px;
+  min-width: 330px;
+  max-width: 580px;
   margin: 0;
   /* border-right: 1px solid rgba(0, 0, 0, 0.12); */
-  overflow-y: scroll;
 }
 
 @media print {

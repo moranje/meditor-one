@@ -6,7 +6,7 @@ const stateObject = {
   saveState: null,
   contentHeight: 0,
   contentWidth: 0,
-  sidebarWidth: 300,
+  sidebarWidth: 380,
   modalState: false
 };
 
