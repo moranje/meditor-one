@@ -1,8 +1,8 @@
 .DS_Store
 node_modules
 /dist
-firebase-config.js
-firebase-config.ts
+firebase.js
+firebase.ts
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
