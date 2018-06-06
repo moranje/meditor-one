@@ -18,35 +18,16 @@
 
 <script>
 import Vue from 'vue';
-import Vuetify from 'vuetify';
 import firebase from 'firebase';
 import colors from 'vuetify/es5/util/colors';
 import { Multipane, MultipaneResizer } from 'vue-multipane';
 import { clamp } from 'lodash';
 
-// require styles
-import 'vuetify/dist/vuetify.min.css';
-
-import { dbFoldersRef, dbFilesRef } from './firebase-config';
+import { dbFoldersRef, dbFilesRef } from './plugins/firebase';
 import M1NavBar from './components/nav-bar';
 import M1SideBar from './components/side-bar';
 import M1Footer from './components/footer';
 import M1Dialog from './components/dialog';
-
-// explicit installation required in module environments
-Vue.use(Vuetify, {
-  theme: {
-    primary: colors.blue.darken3,
-    secondary: colors.cyan.lighten1,
-    accent: colors.green.lighten1,
-    error: colors.red.lighten1,
-    warning: colors.amber.lighten1,
-    info: colors.cyan.lighten1,
-    success: colors.green.lighten1,
-    light: colors.grey.lighten2,
-    dark: colors.grey.darken3
-  }
-});
 
 export default {
   components: {
