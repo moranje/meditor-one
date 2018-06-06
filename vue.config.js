@@ -4,6 +4,10 @@ const path = require('path');
 module.exports = {
   lintOnSave: true,
 
+  pwa: {
+    name: 'Meditor One'
+  },
+
   configureWebpack: {
     resolve: {
       alias: {
