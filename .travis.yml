@@ -1,0 +1,29 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - 10
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install -g @vue/cli
+  - npm install
+
+cache:
+  directories:
+   - "node_modules"
+
+script:
+  - vue build
+
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
