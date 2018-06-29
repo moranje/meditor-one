@@ -2,6 +2,7 @@
   <m1-monaco
     :value="value"
     language="snippet"
+    theme="snippetTheme"
     @before-leave="save"
     @change="willSave"
   />

@@ -4,6 +4,7 @@ let head = [
   'Ambulance',
   'Voorgeschiedenis',
   'Medicatie',
+  'Allergieën',
   'Intoxicaties',
   'Anamnese',
   'Heteroanamnese',
@@ -14,7 +15,7 @@ let head = [
   'Secondary survey',
   'Aanvullend onderzoek',
   'Conclusie',
-  'Beleid.*?'
+  'Beleid[^\n]*?'
 ];
 
 const emphasized = /^[A-Z][a-zA-Z-/]*?[:/]/;

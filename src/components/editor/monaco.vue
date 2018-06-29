@@ -6,7 +6,13 @@
 import monacoLoader from './monaco-loader';
 import { mapGetters } from 'vuex';
 import { first, keys } from 'lodash';
-import { editor as editorSettings, statusSyntax, statusTheme } from './config';
+import {
+  editor as editorSettings,
+  statusSyntax,
+  statusTheme,
+  snippetSyntax,
+  snippetTheme
+} from './config';
 import { SnippetList } from '@/components/editor/snippet';
 import initActions from '@/components/editor/config/monaco-actions';
 
@@ -148,6 +154,12 @@ export default {
 
       window.monaco.languages.setMonarchTokensProvider('status', statusSyntax);
       window.monaco.editor.defineTheme('statusTheme', statusTheme);
+
+      window.monaco.languages.setMonarchTokensProvider(
+        'snippet',
+        snippetSyntax
+      );
+      window.monaco.editor.defineTheme('snippetTheme', snippetTheme);
 
       this.createEditor(window.monaco);
     },
