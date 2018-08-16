@@ -3,12 +3,20 @@
 </template>
 
 <script>
-import monacoLoader from './monaco-loader';
+import * as monaco from 'monaco-editor';
 import { mapGetters } from 'vuex';
 import { first, keys } from 'lodash';
-import { editor as editorSettings, statusSyntax, statusTheme } from './config';
+import {
+  editor as editorSettings,
+  statusSyntax,
+  statusTheme,
+  snippetSyntax,
+  snippetTheme
+} from './config';
 import { SnippetList } from '@/components/editor/snippet';
+import { parse, validate } from '@/utils/snippet-tree';
 import initActions from '@/components/editor/config/monaco-actions';
+import functions from '@/components/editor/config/functions';
 
 export default {
   name: 'M1Monaco',
@@ -17,11 +25,6 @@ export default {
     value: {
       type: String,
       default: ''
-    },
-
-    version: {
-      type: String,
-      default: '0.13.1'
     },
 
     theme: {
@@ -80,7 +83,16 @@ export default {
 
     mapCompletionItems() {
       return this.fileNames.map(file => {
-        const snippet = new SnippetList(file.value, this.fileNames).serialize();
+        let snippet;
+
+        try {
+          snippet = `${parse(file.value, {
+            snippets: this.fileNames,
+            functions
+          })}`;
+        } catch (err) {
+          snippet = '';
+        }
 
         return {
           label: file.name,
@@ -99,10 +111,7 @@ export default {
 
   watch: {
     language() {
-      window.monaco.editor.setModelLanguage(
-        this.editor.getModel(),
-        this.language
-      );
+      monaco.editor.setModelLanguage(this.editor.getModel(), this.language);
     },
 
     value(newValue) {
@@ -123,7 +132,7 @@ export default {
   },
 
   mounted() {
-    this.fetchEditor();
+    this.setupEditor();
   },
 
   beforeUpdate() {
@@ -138,31 +147,23 @@ export default {
   },
 
   methods: {
-    fetchEditor() {
-      monacoLoader.load(this.version, this.setupEditor);
-    },
-
     setupEditor() {
-      window.monaco.languages.register({ id: 'snippet' });
-      window.monaco.languages.register({ id: 'status' });
+      monaco.languages.register({ id: 'snippet' });
+      monaco.languages.register({ id: 'status' });
 
-      window.monaco.languages.setMonarchTokensProvider('status', statusSyntax);
-      window.monaco.editor.defineTheme('statusTheme', statusTheme);
+      monaco.languages.setMonarchTokensProvider('status', statusSyntax);
+      monaco.editor.defineTheme('statusTheme', statusTheme);
+      monaco.languages.setMonarchTokensProvider('snippet', snippetSyntax);
+      monaco.editor.defineTheme('snippetTheme', snippetTheme);
 
-      this.createEditor(window.monaco);
-    },
-
-    createEditor(monaco) {
       this.editor = monaco.editor.create(this.$el, this.editorOptions);
 
       this.editorHasLoaded(monaco);
     },
 
     editorHasLoaded(monaco) {
-      this.monaco = monaco;
-
       // Events
-      this.editor.onDidBlurEditor((...args) => this.emitBeforeLeave(args));
+      this.editor.onDidBlurEditorText((...args) => this.emitBeforeLeave(args));
       this.editor.onDidChangeModelContent((...args) => this.emitChange(args));
       this.editor.onKeyDown((...args) => this.emitChange(args));
       this.editor.onDidDispose((...args) => {}); // eslint-disable-line;
@@ -212,13 +213,28 @@ export default {
     emitBeforeLeave() {
       const value = this.editor.getValue();
 
+      if (this.language === 'snippet') {
+        this.validate(value);
+      }
       this.$emit('before-leave', value);
     },
 
     emitChange() {
       const value = this.editor.getValue();
 
+      if (this.language === 'snippet') {
+        this.validate(value);
+      }
       this.$emit('change', value);
+    },
+
+    validate(value) {
+      // Markers
+      monaco.editor.setModelMarkers(
+        this.editor.getModel(),
+        'linter',
+        validate(value, { snippets: this.fileNames })
+      );
     }
   }
 };
