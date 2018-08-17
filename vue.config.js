@@ -1,8 +1,8 @@
-// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  lintOnSave: true,
+  lintOnSave: undefined,
 
   pwa: {
     name: 'Meditor One'
@@ -13,7 +13,8 @@ module.exports = {
       alias: {
         '@': path.join(__dirname, 'src')
       }
-    }
-    // plugins: [new MonacoWebpackPlugin()]
+    },
+
+    plugins: [new MonacoWebpackPlugin()]
   }
 };

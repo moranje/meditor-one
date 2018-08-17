@@ -1,8 +1,9 @@
 import { firebaseAction } from 'vuexfire';
-import { find, findMany, findAll } from './helpers/getter';
+
+import { dbFilesRef } from '../../plugins/firebase';
+import { create, remove, update } from './helpers/action';
+import { find, findAll, findMany } from './helpers/getter';
 import { update as updateLocal } from './helpers/mutation';
-import { create, update, remove } from './helpers/action';
-import { dbFilesRef } from '../../firebase-config';
 
 const stateObject = {
   files: []

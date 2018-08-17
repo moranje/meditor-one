@@ -1,5 +1,6 @@
 export default {
   acceptSuggestionOnEnter: 'smart',
+  autoClosingBrackets: true,
   folding: true,
   fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
