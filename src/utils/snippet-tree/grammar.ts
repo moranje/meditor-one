@@ -1,7 +1,23 @@
-// Generated automatically by nearley, version 2.13.0
+// Generated automatically by nearley, version 2.15.1
 // http://github.com/Hardmath123/nearley
 // Bypasses TS6133. Allow declared but unused functions.
 // @ts-ignore
+import {
+  choice,
+  comment,
+  escaped,
+  expansion,
+  expansionSlot,
+  placeholder,
+  snippet,
+  snippetFunction,
+  tabstop,
+  textPartial,
+  transform,
+  variable,
+} from './grammar-helper';
+import lexer from './lexer';
+
 function id(d: any[]): any {
   return d[0];
 }
@@ -28,24 +44,8 @@ declare var pound: any;
 declare var text: any;
 declare var lineComment: any;
 declare var inlineComment: any;
+declare var newline: any;
 declare var escape: any;
-
-import lexer from './lexer';
-
-import {
-  snippet,
-  tabstop,
-  placeholder,
-  choice,
-  variable,
-  transform,
-  expansion,
-  expansionSlot,
-  snippetFunction,
-  comment,
-  textPartial,
-  escaped
-} from './grammar-helper';
 
 export interface Token {
   value: any;
@@ -86,6 +86,24 @@ export var ParserRules: NearleyRule[] = [
     symbols: ['Text', 'Snippet$ebnf$1'],
     postprocess: snippet
   },
+  { name: 'SingleLineSnippet$ebnf$1', symbols: [] },
+  {
+    name: 'SingleLineSnippet$ebnf$1$subexpression$1',
+    symbols: ['Element', 'SingleLineText']
+  },
+  {
+    name: 'SingleLineSnippet$ebnf$1',
+    symbols: [
+      'SingleLineSnippet$ebnf$1',
+      'SingleLineSnippet$ebnf$1$subexpression$1'
+    ],
+    postprocess: d => d[0].concat([d[1]])
+  },
+  {
+    name: 'SingleLineSnippet',
+    symbols: ['SingleLineText', 'SingleLineSnippet$ebnf$1'],
+    postprocess: snippet
+  },
   { name: 'Element', symbols: ['Tabstop'], postprocess: id },
   { name: 'Element', symbols: ['Placeholder'], postprocess: id },
   { name: 'Element', symbols: ['Choice'], postprocess: id },
@@ -94,7 +112,11 @@ export var ParserRules: NearleyRule[] = [
   { name: 'Element', symbols: ['Variable'], postprocess: id },
   { name: 'Element', symbols: ['Function'], postprocess: id },
   { name: 'Element', symbols: ['Comment'], postprocess: id },
-  { name: 'TextOrExpansion', symbols: ['Expansion'], postprocess: id },
+  {
+    name: 'TextOrExpansion',
+    symbols: ['SingleLineExpansion'],
+    postprocess: id
+  },
   { name: 'TextOrExpansion', symbols: ['Text'], postprocess: id },
   { name: 'FormatOrReplacement', symbols: ['Format'], postprocess: id },
   {
@@ -470,6 +492,33 @@ export var ParserRules: NearleyRule[] = [
     ],
     postprocess: expansion
   },
+  { name: 'SingleLineExpansion$ebnf$1', symbols: [] },
+  {
+    name: 'SingleLineExpansion$ebnf$1$subexpression$1',
+    symbols: [
+      lexer.has('colon') ? { type: 'colon' } : colon,
+      'SingleLineSnippet'
+    ]
+  },
+  {
+    name: 'SingleLineExpansion$ebnf$1',
+    symbols: [
+      'SingleLineExpansion$ebnf$1',
+      'SingleLineExpansion$ebnf$1$subexpression$1'
+    ],
+    postprocess: d => d[0].concat([d[1]])
+  },
+  {
+    name: 'SingleLineExpansion',
+    symbols: [
+      lexer.has('open') ? { type: 'open' } : open,
+      lexer.has('exclamation') ? { type: 'exclamation' } : exclamation,
+      lexer.has('name') ? { type: 'name' } : name,
+      'SingleLineExpansion$ebnf$1',
+      lexer.has('close') ? { type: 'close' } : close
+    ],
+    postprocess: expansion
+  },
   {
     name: 'ExpansionSlot',
     symbols: [
@@ -523,6 +572,17 @@ export var ParserRules: NearleyRule[] = [
     postprocess: d => d[0].concat([d[1]])
   },
   { name: 'Text', symbols: ['Text$ebnf$1'], postprocess: textPartial },
+  { name: 'SingleLineText$ebnf$1', symbols: [] },
+  {
+    name: 'SingleLineText$ebnf$1',
+    symbols: ['SingleLineText$ebnf$1', 'SingleLineTextPartial'],
+    postprocess: d => d[0].concat([d[1]])
+  },
+  {
+    name: 'SingleLineText',
+    symbols: ['SingleLineText$ebnf$1'],
+    postprocess: textPartial
+  },
   {
     name: 'TextPartial',
     symbols: [lexer.has('text') ? { type: 'text' } : text],
@@ -530,6 +590,21 @@ export var ParserRules: NearleyRule[] = [
   },
   {
     name: 'TextPartial',
+    symbols: [lexer.has('newline') ? { type: 'newline' } : newline],
+    postprocess: id
+  },
+  {
+    name: 'TextPartial',
+    symbols: [lexer.has('escape') ? { type: 'escape' } : escape],
+    postprocess: escaped
+  },
+  {
+    name: 'SingleLineTextPartial',
+    symbols: [lexer.has('text') ? { type: 'text' } : text],
+    postprocess: id
+  },
+  {
+    name: 'SingleLineTextPartial',
     symbols: [lexer.has('escape') ? { type: 'escape' } : escape],
     postprocess: escaped
   }

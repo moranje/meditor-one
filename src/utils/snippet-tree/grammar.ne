@@ -27,6 +27,9 @@ import {
 Snippet ->
   Text (Element Text):* {% snippet %}
 
+SingleLineSnippet ->
+  SingleLineText (Element SingleLineText):* {% snippet %}
+
 Element ->
   Tabstop {% id %}
   | Placeholder {% id %}
@@ -38,7 +41,7 @@ Element ->
   | Comment {% id %}
 
 TextOrExpansion ->
-  Expansion {% id %}
+  SingleLineExpansion {% id %}
   | Text {% id %}
 
 FormatOrReplacement ->
@@ -67,7 +70,6 @@ Tabstop ->
   # Rules
   | %dollar %plus %int {% tabstop.rules.noIncrementorInteger %}
 
-# Placeholder ::= "${" ( Modifier:? Integer:? ":" Snippet ) "}"
 Placeholder ->
   %open %int %colon Snippet %close {% placeholder.simple %}
   | %open %equals %int %colon Snippet %close {% placeholder.anchor %}
@@ -91,21 +93,30 @@ Variable ->
 Expansion ->
   %open %exclamation %name (%colon Snippet):* %close {% expansion %}
 
+SingleLineExpansion ->
+  %open %exclamation %name (%colon SingleLineSnippet):* %close {% expansion %}
+
 ExpansionSlot ->
   %open %exclamation %int %close {% expansionSlot %}
 
 Function ->
    %open %pound %name (%colon %text):* %close {% snippetFunction %}
 
-# Comment ::= "#" .:*
 Comment ->
   %lineComment {% comment %}
   | %inlineComment {% comment %}
 
-# Text ::= .:+
 Text ->
   TextPartial:* {% textPartial %}
 
+SingleLineText ->
+  SingleLineTextPartial:* {% textPartial %}
+
 TextPartial ->
+  %text {% id %}
+  | %newline {% id %}
+  | %escape {% escaped %}
+
+SingleLineTextPartial ->
   %text {% id %}
   | %escape {% escaped %}

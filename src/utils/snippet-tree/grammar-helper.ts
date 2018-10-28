@@ -1,24 +1,28 @@
+import { flatMap } from 'lodash';
 import uniqid from 'uniqid';
 
-// function location(start, end) {
-//   return {
-//     start: start.offset,
-//     end: end.offset + end.value.length,
-//     loc: {
-//       start: {
-//         line: start.line,
-//         column: start.col
-//       },
-//       end: {
-//         line: end.line,
-//         column: end.col + end.value.length
-//       }
-//     }
-//   };
-// }
+function strip(node) {
+  return {
+    type: node.type,
+    value: node.value,
+    toString() {
+      return `${node}`;
+    }
+  };
+}
+
+function emptyChoice() {
+  return {
+    type: 'Text',
+    id: uniqid(),
+    value: `\u200B`,
+    toString() {
+      return `${this.value}`;
+    }
+  };
+}
 
 function replacement([tokens]) {
-  // console.log('replacement', tokens);
   if (tokens[0] && tokens[1] && tokens[0].type === 'dollar') {
     return {
       type: 'Group',
@@ -140,7 +144,7 @@ export function snippet([first, rest]) {
     // Filter: logic to remove empty text nodes
     body: [first, ...[].concat(...rest)].filter(element => element),
     toString() {
-      return `${this.body.join('')}`;
+      return this.body.join('');
     }
   };
 }
@@ -150,6 +154,9 @@ export function comment([comment]) {
     type: 'Comment',
     id: uniqid(),
     value: comment.value,
+    toComment() {
+      return `#${this.value}`;
+    },
     toString() {
       // Don't return comments
       return '';
@@ -176,7 +183,7 @@ export function textPartial([text]) {
 }
 
 export function escaped([escaped]) {
-  // Unescape token
+  // Unescape token, offsets the offset and col by 1
   return Object.assign(escaped, {
     value: escaped.value.charAt(1)
   });
@@ -299,6 +306,14 @@ export function tabstopBlockIncrementor([open, plus, close]) {
 }
 
 export function tabstopTransform([open, int, transform, close]) {
+  let slash = {
+    type: 'slash',
+    value: '/',
+    toString() {
+      return '/';
+    }
+  };
+
   return {
     type: 'Transform',
     id: uniqid(),
@@ -310,7 +325,7 @@ export function tabstopTransform([open, int, transform, close]) {
     toString() {
       return `\${${this.reference}/${this.pattern}/${this.replacement.join(
         ''
-      )}/${this.flags}}`;
+      )}/${this.flags || ''}}`;
     }
   };
 }
@@ -318,15 +333,6 @@ export function tabstopTransform([open, int, transform, close]) {
 // RULES
 
 export function tabstopNoIncrementorInteger([dollar, plus, int]) {
-  // state.warning.push(
-  //   linterNode(
-  //     'Warning',
-  //     'No incementor integer',
-  //     "Incrementor values are dynamic, specifying a value isn't necessary and may be wrong.",
-  //     location(int, int)
-  //   )
-  // );
-
   return {
     type: 'Tabstop',
     id: uniqid(),
@@ -351,9 +357,15 @@ export function placeholderSimple([open, int, colon, snippet, close]) {
     int: int.value,
     // Plcaholders don't have their own scope so the body element inherits
     // just it's children
-    body: snippet.body,
+    body: [
+      strip(open),
+      strip(int),
+      strip(colon),
+      ...snippet.body,
+      strip(close)
+    ],
     toString() {
-      return `\${${this.int}}:${this.body.join('')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -365,10 +377,17 @@ export function placeholderAnchor([open, equals, int, colon, snippet, close]) {
     modifier: equals.value,
     int: int.value,
     // Plcaholders don't have their own scope so the body element inherits
-    // just it's children
-    body: snippet.body,
+    // just the snippets children
+    body: [
+      strip(open),
+      strip(equals),
+      strip(int),
+      strip(colon),
+      ...snippet.body,
+      strip(close)
+    ],
     toString() {
-      return `\${=${this.int}:${this.body.join('')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -380,10 +399,16 @@ export function placeholderIncrementor([open, plus, colon, snippet, close]) {
     modifier: plus.value,
     int: null,
     // Plcaholders don't have their own scope so the body element inherits
-    // just it's children
-    body: snippet.body,
+    // just the snippets children
+    body: [
+      strip(open),
+      strip(plus),
+      strip(colon),
+      ...snippet.body,
+      strip(close)
+    ],
     toString() {
-      return `\${+:${this.body.join('')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -398,25 +423,22 @@ export function placeholderNoIncrementorInteger([
   snippet,
   close
 ]) {
-  // state.warning.push(
-  //   linterNode(
-  //     'Warning',
-  //     'No incementor integer',
-  //     "Incrementor values are dynamic, specifying a value isn't necessary and may be wrong.",
-  //     location(int, int)
-  //   )
-  // );
-
   return {
     type: 'Placeholder',
     id: uniqid(),
     modifier: plus.value,
     int: null,
     // Plcaholders don't have their own scope so the body element inherits
-    // just it's children
-    body: snippet.body,
+    // just the snippets children
+    body: [
+      strip(open),
+      strip(plus),
+      strip(colon),
+      ...snippet.body,
+      strip(close)
+    ],
     toString() {
-      return `\${+:${this.body.join('')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -434,42 +456,25 @@ export function choiceSimple([
   pipeClose,
   close
 ]) {
-  let first;
-  if (textOrExpansion) {
-    first = textOrExpansion;
-  } else {
-    first = {
-      type: 'Text',
-      id: uniqid(),
-      value: `\u200B`,
-      toString() {
-        return `${this.value}`;
-      }
-    };
-  }
-
   return {
     type: 'Choice',
     id: uniqid(),
     int: int.value,
     modifier: null,
     body: [
-      first,
-      ...options.map(([comma, textOrExpansion]) => {
-        if (textOrExpansion) return textOrExpansion;
-
-        return {
-          type: 'Text',
-          id: uniqid(),
-          value: `\u200B`,
-          toString() {
-            return `${this.value}`;
-          }
-        };
-      })
+      strip(open),
+      strip(int),
+      strip(pipeOpen),
+      textOrExpansion ? textOrExpansion : emptyChoice(),
+      ...flatMap(options, ([colon, textOrExpansion]) => [
+        strip(colon),
+        textOrExpansion ? textOrExpansion : emptyChoice()
+      ]),
+      strip(pipeClose),
+      strip(close)
     ],
     toString() {
-      return `\${${this.int}}|${this.body.join(',')}|}`;
+      return this.body.join('');
     }
   };
 }
@@ -484,42 +489,26 @@ export function choiceAnchor([
   pipeClose,
   close
 ]) {
-  let first;
-  if (textOrExpansion) {
-    first = textOrExpansion;
-  } else {
-    first = {
-      type: 'Text',
-      id: uniqid(),
-      value: `\u200B`,
-      toString() {
-        return `${this.value}`;
-      }
-    };
-  }
-
   return {
     type: 'Choice',
     id: uniqid(),
     int: int.value,
     modifier: equals.value,
     body: [
-      first,
-      ...options.map(([comma, textOrExpansion]) => {
-        if (textOrExpansion) return textOrExpansion;
-
-        return {
-          type: 'Text',
-          id: uniqid(),
-          value: `\u200B`,
-          toString() {
-            return `${this.value}`;
-          }
-        };
-      })
+      strip(open),
+      strip(equals),
+      strip(int),
+      strip(pipeOpen),
+      textOrExpansion ? textOrExpansion : emptyChoice(),
+      ...flatMap(options, ([colon, textOrExpansion]) => [
+        strip(colon),
+        textOrExpansion ? textOrExpansion : emptyChoice()
+      ]),
+      strip(pipeClose),
+      strip(close)
     ],
     toString() {
-      return `\${=${this.int}|${this.body.join(',')}|}`;
+      return this.body.join('');
     }
   };
 }
@@ -533,42 +522,25 @@ export function choiceIncrementor([
   pipeClose,
   close
 ]) {
-  let first;
-  if (textOrExpansion) {
-    first = textOrExpansion;
-  } else {
-    first = {
-      type: 'Text',
-      id: uniqid(),
-      value: `\u200B`,
-      toString() {
-        return `${this.value}`;
-      }
-    };
-  }
-
   return {
     type: 'Choice',
     id: uniqid(),
     int: null,
     modifier: plus.value,
     body: [
-      first,
-      ...options.map(([comma, textOrExpansion]) => {
-        if (textOrExpansion) return textOrExpansion;
-
-        return {
-          type: 'Text',
-          id: uniqid(),
-          value: `\u200B`,
-          toString() {
-            return `${this.value}`;
-          }
-        };
-      })
+      strip(open),
+      strip(plus),
+      strip(pipeOpen),
+      textOrExpansion ? textOrExpansion : emptyChoice(),
+      ...flatMap(options, ([colon, textOrExpansion]) => [
+        strip(colon),
+        textOrExpansion ? textOrExpansion : emptyChoice()
+      ]),
+      strip(pipeClose),
+      strip(close)
     ],
     toString() {
-      return `\${+|${this.body.join(',')}|}`;
+      return this.body.join('');
     }
   };
 }
@@ -585,37 +557,25 @@ export function choiceNoIncrementorInteger([
   pipeClose,
   close
 ]) {
-  // state.warning.push(
-  //   linterNode(
-  //     'Warning',
-  //     'No incementor integer',
-  //     "Incrementor values are dynamic, specifying a value isn't necessary and may be wrong.",
-  //     location(int, int)
-  //   )
-  // );
-
   return {
     type: 'Choice',
     id: uniqid(),
     int: null,
     modifier: plus.value,
     body: [
-      textOrExpansion,
-      ...options.map(([comma, textOrExpansion]) => {
-        if (textOrExpansion) return textOrExpansion;
-
-        return {
-          type: 'Text',
-          id: uniqid(),
-          value: `\u200B`,
-          toString() {
-            return `${this.value}`;
-          }
-        };
-      })
+      strip(open),
+      strip(plus),
+      strip(pipeOpen),
+      textOrExpansion ? textOrExpansion : emptyChoice(),
+      ...flatMap(options, ([colon, textOrExpansion]) => [
+        strip(colon),
+        textOrExpansion ? textOrExpansion : emptyChoice()
+      ]),
+      strip(pipeClose),
+      strip(close)
     ],
     toString() {
-      return `\${+|${this.body.join(',')}|}`;
+      return this.body.join('');
     }
   };
 }
@@ -631,6 +591,7 @@ export function variableSimple([dollar, name]) {
     name: name.value,
     body: [],
     block: false,
+    tokens: [strip(dollar), strip(name)],
     toString() {
       return `$${this.name}`;
     }
@@ -644,6 +605,7 @@ export function variableBlock([open, name, close]) {
     name: name.value,
     body: [],
     block: true,
+    tokens: [strip(open), strip(name), strip(close)],
     toString() {
       return `\${${this.name}}`;
     }
@@ -655,10 +617,16 @@ export function variablePlaceholder([open, name, colon, snippet, close]) {
     type: 'Variable',
     id: uniqid(),
     name: name.value,
-    body: snippet.body,
+    body: [
+      strip(open),
+      strip(name),
+      strip(colon),
+      ...snippet.body,
+      strip(close)
+    ],
     block: true,
     toString() {
-      return `\${${this.name}:${this.body.join('')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -675,7 +643,7 @@ export function variableTransform([open, variable, transform, close]) {
     toString() {
       return `\${${this.reference}/${this.pattern}/${this.replacement.join(
         ''
-      )}/${this.flags}}`;
+      )}/${this.flags || ''}}`;
     }
   };
 }
@@ -697,17 +665,21 @@ export function transform([
 
 export function expansion([open, exclamation, text, separatedArgs, close]) {
   let args = separatedArgs.map(([colon, snippet]) => `${snippet}`);
-  let separator = args.length > 0 ? ':' : '';
 
   return {
     type: 'Expansion',
     id: uniqid(),
     reference: text.value,
     args,
-    // Will hold a snippet referenced to
-    body: [],
+    body: [
+      strip(open),
+      strip(exclamation),
+      text,
+      ...flatMap(separatedArgs, (colon, snippet) => [strip(colon), snippet]),
+      strip(close)
+    ],
     toString() {
-      return `\${!${this.reference}${separator}${this.args.join(':')}}`;
+      return this.body.join('');
     }
   };
 }
@@ -717,10 +689,9 @@ export function expansionSlot([open, exclamation, int, close]) {
     type: 'ExpansionSlot',
     id: uniqid(),
     int: int.value,
-    // Will hold a snippet the slot references to
-    body: [],
+    body: [strip(open), strip(exclamation), strip(int), strip(close)],
     toString() {
-      return `\${!${this.int}}`;
+      return this.body.join('');
     }
   };
 }

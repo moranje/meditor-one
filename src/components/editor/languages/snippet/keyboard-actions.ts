@@ -1,22 +1,16 @@
 import * as mathjs from 'mathjs';
 
-import { history, medication, medicationHix } from '../utils/text-format';
+import { history, medication } from '../../utils/text-format';
 
-function addActions(editor, actions = []) {
-  actions.forEach(action => {
-    editor.addAction(action);
-  });
-}
-
-export default function initActions(monaco, self) {
-  const ACTIONS = [
+export function initActions(monaco, editor) {
+  return [
     {
       id: 'save-document',
       label: 'Opslaan',
       keybindings: [
         monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S // eslint-disable-line
       ],
-      run: (...args) => self.emitBeforeLeave(args)
+      run: (...args) => editor.emitBeforeLeave(args)
     },
 
     {
@@ -25,14 +19,15 @@ export default function initActions(monaco, self) {
       keybindings: [
         monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_C // eslint-disable-line
       ],
-      run: editor => {
+      run: () => {
+        // editor?
         let range = editor.getSelection();
         let selected = editor.getModel().getValueInRange(range);
         // Strip zero-line characters from text when copying
         let stripped = selected.replace(`\u200B`, '');
 
         editor.executeEdits('', [{ range, text: stripped }]);
-        self.editor.trigger('Copy', 'editor.action.clipboardCopyAction');
+        editor.trigger('Copy', 'editor.action.clipboardCopyAction');
       }
     },
 
@@ -45,7 +40,8 @@ export default function initActions(monaco, self) {
           monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M
         )
       ],
-      run: editor => {
+      run: () => {
+        // editor?
         let range = editor.getSelection();
         let selected = editor.getModel().getValueInRange(range);
         let meds = medication(selected);
@@ -53,24 +49,7 @@ export default function initActions(monaco, self) {
         editor.executeEdits('', [{ range, text: meds }]);
       }
     },
-    {
-      id: 'format-medication-hix',
-      label: 'Medicatie opschonen (HIX)',
-      keybindings: [
-        monaco.KeyMod.chord(
-          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_F,
-          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_M,
-          monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_H
-        )
-      ],
-      run: editor => {
-        let range = editor.getSelection();
-        let selected = editor.getModel().getValueInRange(range);
-        let meds = medicationHix(selected);
 
-        editor.executeEdits('', [{ range, text: meds }]);
-      }
-    },
     {
       id: 'format-history',
       label: 'Voorgeschiedenis opschonen',
@@ -80,7 +59,8 @@ export default function initActions(monaco, self) {
           monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_H
         )
       ],
-      run: editor => {
+      run: () => {
+        // editor?
         let range = editor.getSelection();
         let selected = editor.getModel().getValueInRange(range);
         let meds = history(selected);
@@ -88,6 +68,7 @@ export default function initActions(monaco, self) {
         editor.executeEdits('', [{ range, text: meds }]);
       }
     },
+
     {
       id: 'calculate',
       label: 'Bereken',
@@ -97,7 +78,8 @@ export default function initActions(monaco, self) {
           monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_B
         )
       ],
-      run: editor => {
+      run: () => {
+        // editor?
         let range = editor.getSelection();
         let selected = editor.getModel().getValueInRange(range);
 
@@ -109,6 +91,14 @@ export default function initActions(monaco, self) {
       }
     }
   ];
+}
 
-  addActions(self.editor, ACTIONS);
+export function initCommands(monaco, editor) {
+  return [
+    {
+      keys: monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KEY_P, // eslint-disable-line
+      action: (...args) =>
+        this.editor.trigger('Command palette', 'editor.action.quickCommand')
+    }
+  ];
 }

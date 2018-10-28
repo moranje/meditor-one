@@ -31,7 +31,7 @@ describe('Unit: Lexer', () => {
       'lineComment',
       'text',
       'inlineComment',
-      'text',
+      'newline',
       'lineComment'
     ]);
   });

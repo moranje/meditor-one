@@ -60,7 +60,7 @@ describe('Unit: Parser', () => {
   it('should parse multiple mixed and matching tabstops (`$200 $100 $100 $100 $+ $=1 $+`)', () => {
     let ast = parse('$200 $100 $100 $100 $+ $=1 $+');
 
-    expect(`${ast}`).toBe('$3 $2 $2 $2 $4 $1 $5');
+    expect(`${ast}`).toBe('$3 $2 $2 $2 ${4} $1 ${5}');
   });
 
   it('should parse tabstop anchor (`$=100`)', () => {
@@ -70,7 +70,7 @@ describe('Unit: Parser', () => {
 
   it('should parse tabstop incrementor (`$+`)', () => {
     let ast = parse('$+');
-    expect(`${ast}`).toBe('$1');
+    expect(`${ast}`).toBe('${1}');
   });
 
   it('should parse tabstop blocks (`${100}`)', () => {
@@ -213,6 +213,12 @@ describe('Unit: Parser', () => {
     );
   });
 
+  it('should strip everything but the first line in a multiline expansion reference (`${100|One,Two,${!reference}|}`)', () => {
+    context.snippets[0].value = 'Three\nFour';
+    let ast = parse('${100|One,Two,${!reference}|}', context);
+    expect(`${ast}`).toBe('${1|One,Two,Three|}');
+  });
+
   // *****************************
   // VARIABLE
   // *****************************
@@ -281,7 +287,7 @@ describe('Unit: Parser', () => {
     expect(`${ast}`).toBe('This is an expansion');
   });
 
-  it('should parse expansion with arguments (`${!reference:this:$100:${=2:placeholder}:${+|1,2,3|}:${!expansion}}`)', () => {
+  it('should parse expansion with arguments (`${!reference:this:$100:${=2:expansion}:${+|1,2,3|}:${!expansion}}`)', () => {
     context.snippets[0].value = '${!5}. And ${!1} ${!2} an ${!3} as well.';
     context.snippets[1].value = 'This is an expansion';
     let ast = parse(

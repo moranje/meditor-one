@@ -2,27 +2,27 @@ import moo from 'moo';
 
 const lexer = moo.states({
   main: {
+    text: moo.fallback,
+
     open: { match: /\${/, push: 'nested' },
     dollar: { match: /\$/, push: 'unnested' },
 
     lineComment: /^#[^\n]*\n?/,
     inlineComment: /#[^\n]*/,
     escape: /\\./,
-
-    // Matches any character except "$", "\\." and "#"
-    text: { match: /(?:(?!\$|\\.|#)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   nestedSnippet: {
+    text: moo.fallback,
+
     // Tabstop and variable blocks might end here
     close: { match: /\}/, pop: true },
 
     open: { match: /\${/, push: 'nested' },
     dollar: { match: /\$/, push: 'unnested' },
     escape: /\\./,
-
-    // Matches any character except "$", "\\." and "#"
-    text: { match: /(?:(?!\$|\}|\\.)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   unnested: {
@@ -76,6 +76,8 @@ const lexer = moo.states({
   },
 
   choice: {
+    text: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     exclamation: { match: /!/, push: 'expansion' },
@@ -84,8 +86,7 @@ const lexer = moo.states({
     escape: /\\./,
     comma: /,/,
     pipe: /\|/,
-
-    text: { match: /(?:(?!\$|\}|!|\\.|,|\|)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   variable: {
@@ -96,14 +97,15 @@ const lexer = moo.states({
   },
 
   expansion: {
+    text: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     colon: { match: /:/, next: 'snippetArgs' },
     int: { match: /\d+(?=\})/, next: 'expansionSlot' },
 
     name: /[a-zA-Z_ -]+/,
-
-    text: { match: /(?:(?!\$|\\.|:|\})[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   expansionSlot: {
@@ -119,20 +121,18 @@ const lexer = moo.states({
   },
 
   pattern: {
-    slash: { match: /\//, next: 'replacement' },
+    pattern: moo.fallback,
 
-    // Matches any character except "/"
-    pattern: { match: /(?:(?!\/)[^])+/, lineBreaks: true }
+    slash: { match: /\//, next: 'replacement' }
   },
 
   replacement: {
+    replacement: moo.fallback,
+
     open: { match: /\${/, push: 'nestedGroup' },
     dollar: { match: /\$/, push: 'unnestedGroup' },
 
-    slash: { match: /\//, next: 'flags' },
-
-    // Matches any character except "/" and "$"
-    replacement: { match: /(?:(?!\$|\/)[^])+/, lineBreaks: true }
+    slash: { match: /\//, next: 'flags' }
   },
 
   unnestedGroup: {
@@ -140,6 +140,8 @@ const lexer = moo.states({
   },
 
   nestedGroup: {
+    condition: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     int: /\d+/,
@@ -147,10 +149,7 @@ const lexer = moo.states({
     plus: /\+/,
     minus: /-/,
     questionmark: /\?/,
-    caseModifier: /\/upcase|\/downcase|\/capitalize/,
-
-    // Matches any character except ":", "\n"
-    condition: { match: /(?:(?!:|\n|\})[^])+/ }
+    caseModifier: /\/upcase|\/downcase|\/capitalize/
   },
 
   flags: {
@@ -160,27 +159,29 @@ const lexer = moo.states({
   },
 
   textArgs: {
+    text: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     colon: /:/,
     escape: /\\./,
-
-    // Matches any character except "$", "\\." and "#"
-    text: { match: /(?:(?!\}|\\.|:)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   snippetArgs: {
+    text: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     colon: { match: /:/, next: 'nestedSnippetArg' },
 
     escape: /\\./,
-
-    // Matches any character except "$", "\\." and "#"
-    text: { match: /(?:(?!\}|\\.|:)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   },
 
   nestedSnippetArg: {
+    text: moo.fallback,
+
     close: { match: /\}/, pop: true },
 
     open: { match: /\${/, push: 'nested' },
@@ -189,9 +190,7 @@ const lexer = moo.states({
     colon: { match: /:/, next: 'nestedSnippetArg' },
 
     escape: /\\./,
-
-    // Matches any character except "$", "\\." and "#"
-    text: { match: /(?:(?!\$|\}|\\.)[^])+/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true }
   }
 });
 
