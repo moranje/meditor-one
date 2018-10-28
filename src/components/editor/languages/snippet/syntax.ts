@@ -12,12 +12,6 @@ const headingsPattern = new RegExp('^(' + headings.join('|') + ')$');
 export default {
   defaultToken: 'text',
 
-  // brackets: [['${', '}', 'tag']],
-
-  // autoClosingPairs: [{ open: '{', close: '}' }],
-
-  // surroundingPairs: [{ open: '{', close: '}' }],
-
   tokenizer: {
     root: [
       [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],

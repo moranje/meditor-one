@@ -13,7 +13,7 @@ export default {
   minimap: {
     enabled: false
   },
-  quickSuggestions: false,
+  quickSuggestions: true,
   readOnly: false,
   renderWhitespace: 'boundary',
   scrollbar: {

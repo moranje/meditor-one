@@ -1,5 +1,6 @@
-// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   lintOnSave: true,
@@ -13,7 +14,12 @@ module.exports = {
       alias: {
         '@': path.join(__dirname, 'src')
       }
-    }
-    // plugins: [new MonacoWebpackPlugin()]
+    },
+    plugins: [
+      new MonacoWebpackPlugin(),
+      new webpack.DefinePlugin({
+        'process.platform': 0 // bypass process check
+      })
+    ]
   }
 };

@@ -17,6 +17,7 @@ import { SnippetList } from '@/components/editor/snippet';
 import { parse, validate } from '@/utils/snippet-tree';
 import initActions from '@/components/editor/config/monaco-actions';
 import functions from '@/components/editor/config/functions';
+import { createEditor } from './utils/helpers';
 
 export default {
   name: 'M1Monaco',
@@ -150,8 +151,12 @@ export default {
   },
 
   mounted() {
-    this.setupEditor();
-    //createEditor(monaco, this.language, this.$el, this.options).then(editor => this.editor).catch(err => throw err);
+    // this.setupEditor();
+    createEditor(monaco, this.language, this.$el, this.options)
+      .then(editor => this.editor)
+      .catch(err => {
+        throw err;
+      });
   },
 
   beforeUpdate() {

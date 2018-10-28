@@ -9,7 +9,19 @@ import {
   Tabstop,
   TabstopElement
 } from '@/utils/snippet-tree/snippet-types';
-import { cloneDeep, find, flatten, last, lowerFirst } from 'lodash';
+import { cloneDeep, find, flatten, last, lowerFirst, remove } from 'lodash';
+
+function firstLine(node, context) {
+  console.log('firstLine', `${node}`);
+  if (`${node}`.match(/\n/)) {
+    console.log('Multiline', `${node}`);
+    let transform = new AST([`${node}`.split('\n').pop()], context);
+
+    node.body = transform.ast.body;
+  }
+
+  return node;
+}
 
 function addTabstopElement(node: TabstopElement, state: State) {
   if (node.modifier === null) {
@@ -27,7 +39,6 @@ function addTabstopElement(node: TabstopElement, state: State) {
 
 function addTabstop(node: TabstopElement, state: State) {
   let scopeIndex = last(state.scopeStack);
-  // console.log('addTabstop', scopeIndex, state);
 
   // Checks for hole in sparse array as well as index beyond current array
   // length.
@@ -94,13 +105,26 @@ function indexOfScope(state: State, id: number) {
   return scopeIndex;
 }
 
+function emptyExpansion(node, errMessage) {
+  // console.log('Empty expansion', errMessage);
+
+  return Object.assign(node, {
+    traversed: true,
+    toString() {
+      return '';
+    }
+  });
+}
+
 const actions = {
   tabstop(node: Tabstop, state: State) {
     addTabstopElement(node, state);
 
     return Object.assign(node, {
       toString() {
-        if (node.block) return `\${${indexOfTabstop(state, this.id) + 1}}`;
+        // Incremtor guard for '$+3mg' becoming '$13mg'
+        if (node.block || node.modifier === '+')
+          return `\${${indexOfTabstop(state, this.id) + 1}}`;
 
         return `$${indexOfTabstop(state, this.id) + 1}`;
       }
@@ -110,44 +134,85 @@ const actions = {
   placeholder(node: Placeholder, state: State) {
     addTabstopElement(node, state);
 
+    let index = 1;
+    let amount = 1;
+    if (node.modifier === '=') {
+      amount = 2;
+    }
+
+    node.body.splice(
+      index,
+      amount,
+      Object.assign(node.body[index], {
+        toString() {
+          return indexOfTabstop(state, node.id) + 1;
+        }
+      })
+    );
+
     return Object.assign(node, {
-      toString() {
-        return `\${${indexOfTabstop(state, this.id) + 1}:${this.body.join(
-          ''
-        )}}`;
-      }
+      modifier: null,
+      body: node.body
     });
   },
 
-  choice(node: Choice, state: State) {
+  choice(node: Choice, state: State, context) {
     addTabstopElement(node, state);
 
+    let index = 1;
+    let amount = 1;
+    if (node.modifier === '=') {
+      amount = 2;
+    }
+
+    node.body.splice(
+      index,
+      amount,
+      Object.assign(node.body[index], {
+        toString() {
+          return indexOfTabstop(state, node.id) + 1;
+        }
+      })
+    );
+
     return Object.assign(node, {
-      toString() {
-        return `\${${indexOfTabstop(state, this.id) + 1}|${this.body
-          .map(option => option)
-          .join(',')}|}`;
-      }
+      modifier: null,
+      body: node.body
     });
   },
 
-  expansion(node: Expansion, state, context) {
+  expansion(node: Expansion, state: State, context) {
     if (!context.snippets) {
-      throw new Error(
-        'The AST class instance is missing a context parameter or context obcject is missing a context.snippets child node'
+      return emptyExpansion(
+        node,
+        'The AST class instance is missing a context parameter or context object is missing a context.snippets child node'
       );
     }
     if (!context.slots) {
-      throw new Error(
-        'The AST class instance is missing a context parameter or context obcject is missing a context.slots child node'
+      return emptyExpansion(
+        node,
+        'The AST class instance is missing a context parameter or context object is missing a context.slots child node'
       );
     }
 
     let reference = find(context.snippets, ['name', node.reference]);
+    if (!reference) {
+      return emptyExpansion(
+        node,
+        `No snippet with reference ${node.reference}`
+      );
+    }
+
     let expansionContext = cloneDeep(context);
+    // Remove current reference from context to prevent infinite recursion
+    remove(
+      expansionContext.snippets,
+      (snippet: { name: 'string' }) => snippet.name === node.reference
+    );
+
     let index = expansionContext.slots.slotScope.length;
     expansionContext.slots.slotScope.push([...node.args]);
-    // Nested slot scopes have to be walked pre-order, so scopes are place on a // queue instead of a stack
+    // Nested slot scopes have to be walked pre-order, so scopes are placed on a // queue instead of a stack
     expansionContext.slots.scopeQueue.unshift(index);
 
     let expansionTree = new AST(
@@ -163,7 +228,7 @@ const actions = {
       body: [expansionTree],
       traversed: true,
       toString() {
-        return `${this.body.join('')}`;
+        return this.body.join('');
       }
     });
   },
@@ -182,7 +247,7 @@ const actions = {
     return Object.assign(node, {
       body: snippet.body || [],
       toString() {
-        return `${this.body.join('')}`;
+        return this.body.join('');
       }
     });
   },

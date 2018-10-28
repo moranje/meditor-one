@@ -12,9 +12,9 @@ export default {
 
     let regex = new RegExp(pattern);
 
-    return `\${${variable}/(${
+    return `\${${variable}/(?:(.*${
       regex.source
-    })|(^.*?$)/\${1:?\u200B:${replacement}}/}`;
+    }.*))|(^.*?$)/\${1:?\u200B:${replacement}}/}`;
   },
 
   if(...args) {
@@ -23,46 +23,41 @@ export default {
     if (args.length === 3) [variable, pattern, replacement] = args;
 
     if (!pattern) {
-      return `\${${variable}/(^.+$)/\${1:+${replacement}}/}`;
+      return `\${${variable}/(^.+$)/\${1:+${replacement}}/i}`;
     }
 
     let regex = new RegExp(pattern);
 
-    return `\${${variable}/(${regex.source})|(^.*?$)/\${1:+${replacement}}/}`;
+    return `\${${variable}/(?:(.*${
+      regex.source
+    }.*))|(^.*?$)/\${1:+${replacement}}/i}`;
   },
 
   date() {
-    let date = new Date();
-    let day = `${date.getDate()}`.padStart(2, '0');
-    let month = `${date.getMonth() + 1}`.padStart(2, '0');
-    let year = date.getFullYear();
-
-    return `${day}-${month}-${year}`;
+    return `$CURRENT_DATE-$CURRENT_MONTH-$CURRENT_YEAR`;
   },
 
   dateReversed() {
-    let date = new Date();
-    let day = `${date.getDate()}`.padStart(2, '0');
-    let month = `${date.getMonth() + 1}`.padStart(2, '0');
-    let year = date.getFullYear();
-
-    return `${year}-${month}-${day}`;
+    return `$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE`;
   },
 
   time() {
-    let date = new Date();
-    let hours = `${date.getHours()}`.padStart(2, '0');
-    let minutes = `${date.getMinutes()}`.padStart(2, '0');
-
-    return `${hours}:${minutes}`;
+    return `$CURRENT_HOUR:$CURRENT_MINUTE`;
   },
 
   timeLong() {
-    let date = new Date();
-    let hours = `${date.getHours()}`.padStart(2, '0');
-    let minutes = `${date.getMinutes()}`.padStart(2, '0');
-    let seconds = `${date.getSeconds()}`.padStart(2, '0');
+    return `$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND`;
+  },
 
-    return `${hours}:${minutes}:${seconds}`;
+  lowerCase(tabstopIndex) {
+    return `\${${tabstopIndex}/(.*)/\${1:/downcase}/}`;
+  },
+
+  upperCase(tabstopIndex) {
+    return `\${${tabstopIndex}/(.*)/\${1:/upcase}/}`;
+  },
+
+  capitalCase(tabstopIndex) {
+    return `\${${tabstopIndex}/(.*)/\${1:/capitalize}/}`;
   }
 };

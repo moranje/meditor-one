@@ -15,6 +15,11 @@ export function parse(text: string, context?) {
     );
   }
 
+  if (text.match(/.*gastro-intestinale.*/)) {
+    // debugger;
+    let parsed = parser(text);
+  }
+
   return new AST(parser(text), context).expand().ast;
 }
 
@@ -37,7 +42,8 @@ export function validate(text: string, context?) {
 
   try {
     let parsed = parser(text);
-    errors = new AST(parsed, context).expand().errors;
+    let ast = new AST(parsed, context).expand();
+    errors = ast.errors;
   } catch (err) {
     if (err.message.match(/invalid syntax/)) {
       let line = +err.message.replace(/[\s\S]*line (\d+)[\s\S]*/, '$1');
