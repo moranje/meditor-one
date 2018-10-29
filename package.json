@@ -10,8 +10,7 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test-watch": "vue-cli-service test:unit --watch",
     "build:grammar": "nearleyc src/utils/snippet-tree/grammar.ne -o src/utils/snippet-tree/grammar.ts",
-    "commit": "npx git-cz",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "commit": "npx git-cz"
   },
   "dependencies": {
     "@types/lodash": "^4.14.116",
@@ -66,8 +65,14 @@
   "main": "src/main.ts",
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "lint-staged": {
     "*.js": [
