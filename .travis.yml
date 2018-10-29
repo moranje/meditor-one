@@ -21,8 +21,9 @@ script:
   - npm run build && npm run test:unit
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" = "development" ]; then firebase deploy --token $FIREBASE_DEV_TOKEN; fi
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then firebase deploy --token $FIREBASE_TOKEN; fi
+  - if [ "$TRAVIS_BRANCH" = "development" ]; then firebase deploy --token $FIREBASE_DEV_TOKEN -P
+meditor-one-dev; fi
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then firebase deploy --token $FIREBASE_TOKEN -P meditor-one; fi
 
 notifications:
   email: false

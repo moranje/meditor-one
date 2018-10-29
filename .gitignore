@@ -2,8 +2,6 @@
 node_modules
 /dist
 .firebase
-firebase.js
-firebase.ts
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
