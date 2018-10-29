@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
   authDomain: 'meditor-one.firebaseapp.com',
   databaseURL: 'https://meditor-one.firebaseio.com',
   projectId: 'meditor-one',
