@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  lintOnSave: true,
+  lintOnSave: undefined,
 
   pwa: {
     name: 'Meditor One'
