@@ -10,7 +10,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test-watch": "vue-cli-service test:unit --watch",
     "build:grammar": "nearleyc src/utils/snippet-tree/grammar.ne -o src/utils/snippet-tree/grammar.ts",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "dependencies": {
     "@types/lodash": "^4.14.116",
@@ -43,6 +44,8 @@
     "@vue/eslint-config-prettier": "^3.0.1",
     "@vue/eslint-config-typescript": "^3.0.1",
     "@vue/test-utils": "^1.0.0-beta.24",
+    "@commitlint/cli": "7.2.1",
+    "@commitlint/config-conventional": "7.1.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-dynamic-import-node": "^2.1.0",
     "commitizen": "3.0.4",

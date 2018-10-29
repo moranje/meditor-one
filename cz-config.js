@@ -35,6 +35,6 @@ module.exports = {
     },
     { value: 'revert', name: 'revert:   Revert to a commit' }
   ],
-  scopes: ['parser', 'ui', 'tests', 'project', 'storage'],
+  scopes: ['project', 'parser', 'actions', 'ui', 'storage', 'tests'],
   allowCustomScopes: false
 };
