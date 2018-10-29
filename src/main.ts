@@ -1,6 +1,5 @@
 import './plugins/vuetify';
 import './registerServiceWorker';
-import '@babel/polyfill';
 
 import Vue from 'vue';
 
