@@ -213,11 +213,11 @@ describe('Unit: Parser', () => {
     );
   });
 
-  it('should strip everything but the first line in a multiline expansion reference (`${100|One,Two,${!reference}|}`)', () => {
-    context.snippets[0].value = 'Three\nFour';
-    let ast = parse('${100|One,Two,${!reference}|}', context);
-    expect(`${ast}`).toBe('${1|One,Two,Three|}');
-  });
+  // it('should strip everything but the first line in a multiline expansion reference (`${100|One,Two,${!reference}|}`)', () => {
+  //   context.snippets[0].value = 'Three\nFour';
+  //   let ast = parse('${100|One,Two,${!reference}|}', context);
+  //   expect(`${ast}`).toBe('${1|One,Two,Three|}');
+  // });
 
   // *****************************
   // VARIABLE
