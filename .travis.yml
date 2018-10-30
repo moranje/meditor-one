@@ -14,11 +14,11 @@ cache:
     - ~/.npm
 
 before_script:
-  - npm install -g firebase-tools
-  - npm install
+  - npm install -g firebase-tools]
+  - npm install -g @vue/cli
 
 script:
-  - npm run build && npm run test:unit
+  - npm run test:unit && npm run build
 
 after_success:
   - if [ "$TRAVIS_BRANCH" = "development" ]; then firebase deploy --token $FIREBASE_DEV_TOKEN -P meditor-one-dev; fi
