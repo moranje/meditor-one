@@ -17,7 +17,7 @@ module.exports = {
       }
     },
     plugins: [
-      new MonacoWebpackPlugin(),
+      new MonacoWebpackPlugin({ languages: [] }),
       new webpack.DefinePlugin({
         'process.platform': 0 // bypass process check
       })
