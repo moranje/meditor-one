@@ -21,12 +21,12 @@ module.exports = {
     {
       value: 'build',
       name:
-        'build:    Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)'
+        'build:    Changes that affect the build system or external dependencies\n            (example scopes: gulp, broccoli, npm)'
     },
     {
       value: 'ci',
       name:
-        'ci:       Changes to our CI configuration files and scripts (example scopes:Travis, Circle, BrowserStack, SauceLabs)'
+        'ci:       Changes to our CI configuration files and scripts\n            (example scopes:Travis, Circle, BrowserStack, SauceLabs)'
     },
     {
       value: 'chore',
