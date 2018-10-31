@@ -14,8 +14,8 @@ cache:
     - ~/.npm
 
 before_script:
-  - npm install -g firebase-tools
-  - npm install -g @vue/cli
+  - npm install -g firebase-tools@6.0.0
+  - npm install -g @vue/cli@3.0.5
 
 script:
   - npm run test:unit && npm run build
