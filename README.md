@@ -1,27 +1,43 @@
-# test-project
+# Meditor One
 
-> A Vue.js project
+## Project setup
 
-## Build Setup
-
-```bash
-# install dependencies
+```sh
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### Compiles and hot-reloads for development
+
+```sh
+npm run serve
+```
+
+### Compiles and minifies for production
+
+```sh
+npm run build
+```
+
+### Run your tests
+
+```sh
+npm run test
+```
+
+### Lints and fixes files
+
+```sh
+npm run lint
+```
+
+### Run your end-to-end tests
+
+```sh
+npm run test:e2e
+```
+
+### Run your unit tests
+
+```sh
+npm run test:unit
+```
