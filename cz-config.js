@@ -5,8 +5,7 @@ module.exports = {
     { value: 'docs', name: 'docs:     Documentation only changes' },
     {
       value: 'style',
-      name:
-        'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)'
+      name: 'style:    Changes that do not affect the meaning of the code'
     },
     {
       value: 'refactor',
@@ -17,16 +16,15 @@ module.exports = {
       value: 'perf',
       name: 'perf:     A code change that improves performance'
     },
-    { value: 'test', name: 'test:     Adding missing tests' },
+    { value: 'test', name: 'test:     Adding tests' },
     {
       value: 'build',
       name:
-        'build:    Changes that affect the build system or external dependencies\n            (example scopes: gulp, broccoli, npm)'
+        'build:    Changes that affect the build system or external dependencies'
     },
     {
       value: 'ci',
-      name:
-        'ci:       Changes to our CI configuration files and scripts\n            (example scopes:Travis, Circle, BrowserStack, SauceLabs)'
+      name: 'ci:       Changes to our CI configuration files and scripts'
     },
     {
       value: 'chore',
