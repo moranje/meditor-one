@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   lintOnSave: true,
-  parallel: false,
+  // parallel: false,
 
   pwa: {
     name: 'Meditor One'
