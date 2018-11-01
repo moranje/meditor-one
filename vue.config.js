@@ -17,7 +17,19 @@ module.exports = {
       }
     },
     plugins: [
-      new MonacoWebpackPlugin({ languages: [] }),
+      new MonacoWebpackPlugin({
+        // Exclude ALL built-in languages
+        languages: [],
+        features: [
+          // Exclude unused features
+          '!accessibilityHelp',
+          '!codelens', // May use this at some point
+          '!colorDetector',
+          '!iPadShowKeyboard',
+          '!toggleHighContrast',
+          '!toggleTabFocusMode'
+        ]
+      }),
       new webpack.DefinePlugin({
         'process.platform': 0 // bypass process check
       })
