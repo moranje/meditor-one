@@ -338,7 +338,8 @@ class Medication {
   toString() {
     let medication = `${this.name} ${this.frequency}`;
 
-    if (this.dose) medication += ` ${this.dose}`.trimRight();
+    if (this.dose) medication += ` ${this.dose}`;
+    // if (this.dose) medication += ` ${this.dose}`.trimRight();
 
     if (
       this.administrationRoute &&

@@ -1,31 +1,10 @@
+import 'vuetify/dist/vuetify.min.css';
+
 import Vue from 'vue';
-import {
-  Vuetify,
-  VApp,
-  VNavigationDrawer,
-  VFooter,
-  VList,
-  VBtn,
-  VIcon,
-  VGrid,
-  VToolbar,
-  transitions
-} from 'vuetify';
+import Vuetify from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
-import '../node_modules/vuetify/src/stylus/app.styl';
 
 Vue.use(Vuetify, {
-  components: {
-    VApp,
-    VNavigationDrawer,
-    VFooter,
-    VList,
-    VBtn,
-    VIcon,
-    VGrid,
-    VToolbar,
-    transitions
-  },
   theme: {
     primary: colors.blue.darken3,
     secondary: colors.cyan.lighten1,

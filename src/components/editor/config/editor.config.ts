@@ -1,5 +1,6 @@
 export default {
   acceptSuggestionOnEnter: 'smart',
+  autoClosingBrackets: true,
   folding: true,
   fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
@@ -22,6 +23,7 @@ export default {
   suggestSelection: 'recentlyUsedByPrefix',
   scrollBeyondLastLine: false,
   showFoldingControls: 'always',
+  tabsize: 2,
   theme: 'vs',
   useTabStops: true,
   value: '',

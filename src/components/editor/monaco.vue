@@ -3,12 +3,20 @@
 </template>
 
 <script>
-import monacoLoader from './monaco-loader';
+import * as monaco from 'monaco-editor';
 import { mapGetters } from 'vuex';
 import { first, keys } from 'lodash';
-import { editor as editorSettings, statusSyntax, statusTheme } from './config';
+import {
+  editor as editorSettings,
+  statusSyntax,
+  statusTheme,
+  snippetSyntax,
+  snippetTheme
+} from './config';
 import { SnippetList } from '@/components/editor/snippet';
+import { parse, validate } from '@/utils/snippet-tree';
 import initActions from '@/components/editor/config/monaco-actions';
+import functions from '@/components/editor/config/functions';
 
 export default {
   name: 'M1Monaco',
@@ -19,27 +27,36 @@ export default {
       default: ''
     },
 
-    version: {
-      type: String,
-      default: '0.13.1'
-    },
-
+    // TODO: delete once createEditor method is working
     theme: {
       type: String,
       default: 'vs'
     },
 
+    // TODO: delete once createEditor method is working
     language: {
       type: String,
       default: 'snippet'
     },
 
+    // TODO: delete once createEditor method is working
     options: {
       type: Object,
+      default: () => ({})
+    },
+
+    completionItemProvider: {
+      type: Function,
+      default: () => ({})
+    },
+
+    hoverProvider: {
+      type: Function,
       default: () => ({})
     }
   },
 
+  // TODO: delete once createEditor method is working
   data() {
     return {
       editor: null,
@@ -80,7 +97,20 @@ export default {
 
     mapCompletionItems() {
       return this.fileNames.map(file => {
-        const snippet = new SnippetList(file.value, this.fileNames).serialize();
+        let snippet;
+
+        try {
+          snippet = `${parse(file.value, {
+            // NOTE: very expensive filter
+            snippets: this.fileNames.filter(
+              snippetReference => snippetReference.name !== file.name
+            ),
+            functions
+          })}`;
+        } catch (err) {
+          console.error(err, file);
+          snippet = '';
+        }
 
         return {
           label: file.name,
@@ -99,10 +129,7 @@ export default {
 
   watch: {
     language() {
-      window.monaco.editor.setModelLanguage(
-        this.editor.getModel(),
-        this.language
-      );
+      monaco.editor.setModelLanguage(this.editor.getModel(), this.language);
     },
 
     value(newValue) {
@@ -123,7 +150,8 @@ export default {
   },
 
   mounted() {
-    this.fetchEditor();
+    this.setupEditor();
+    //createEditor(monaco, this.language, this.$el, this.options).then(editor => this.editor).catch(err => throw err);
   },
 
   beforeUpdate() {
@@ -138,31 +166,26 @@ export default {
   },
 
   methods: {
-    fetchEditor() {
-      monacoLoader.load(this.version, this.setupEditor);
-    },
-
     setupEditor() {
-      window.monaco.languages.register({ id: 'snippet' });
-      window.monaco.languages.register({ id: 'status' });
+      monaco.languages.register({ id: 'snippet' });
+      monaco.languages.register({ id: 'status' });
 
-      window.monaco.languages.setMonarchTokensProvider('status', statusSyntax);
-      window.monaco.editor.defineTheme('statusTheme', statusTheme);
+      monaco.languages.setMonarchTokensProvider('status', statusSyntax);
+      monaco.editor.defineTheme('statusTheme', statusTheme);
+      monaco.languages.setMonarchTokensProvider('snippet', snippetSyntax);
+      monaco.editor.defineTheme('snippetTheme', snippetTheme);
+      monaco.languages.setLanguageConfiguration('snippet', {
+        brackets: [['${', '}']]
+      });
 
-      this.createEditor(window.monaco);
-    },
-
-    createEditor(monaco) {
       this.editor = monaco.editor.create(this.$el, this.editorOptions);
 
       this.editorHasLoaded(monaco);
     },
 
     editorHasLoaded(monaco) {
-      this.monaco = monaco;
-
       // Events
-      this.editor.onDidBlurEditor((...args) => this.emitBeforeLeave(args));
+      this.editor.onDidBlurEditorText((...args) => this.emitBeforeLeave(args));
       this.editor.onDidChangeModelContent((...args) => this.emitChange(args));
       this.editor.onKeyDown((...args) => this.emitChange(args));
       this.editor.onDidDispose((...args) => {}); // eslint-disable-line;
@@ -212,13 +235,28 @@ export default {
     emitBeforeLeave() {
       const value = this.editor.getValue();
 
+      if (this.language === 'snippet') {
+        this.validate(value);
+      }
       this.$emit('before-leave', value);
     },
 
     emitChange() {
       const value = this.editor.getValue();
 
+      if (this.language === 'snippet') {
+        this.validate(value);
+      }
       this.$emit('change', value);
+    },
+
+    validate(value) {
+      // Markers
+      monaco.editor.setModelMarkers(
+        this.editor.getModel(),
+        'linter',
+        validate(value, { snippets: this.fileNames })
+      );
     }
   }
 };
