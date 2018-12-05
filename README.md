@@ -1,5 +1,7 @@
 # test-project
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/moranje/meditor-one.svg)](https://greenkeeper.io/)
+
 > A Vue.js project
 
 ## Build Setup
