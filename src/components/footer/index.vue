@@ -1,84 +1,40 @@
-<template>
-  <v-footer color="primary">
-    <v-layout
-      row
-      wrap
-      justify-space-between
+<template lang="html">
+  <VFooter
+    app
+    fixed
+    inset
+    height="56"
+  >
+    <VLayout
+      justify-center
+      align-center
     >
-      <v-flex
-        xs11
-        text-xs-center
-        white--text
-      >
-        &copy; {{ new Date().getFullYear() }} —
-        <strong v-if="user">{{ user.displayName }}</strong>
-        <strong v-else>M. Oranje</strong>
-      </v-flex>
-      <v-flex
-        xs1
-        text-xs-center
-        white--text
-      >
-        <v-tooltip top>
-          <v-icon
-            slot="activator"
-            :color="saveStateStyle"
-            size="10px"
-            class="tooltip-top"
-          >mdi-circle</v-icon>
-          <span>{{ saveState }}</span>
-        </v-tooltip>
-      </v-flex>
-    </v-layout>
-  </v-footer>
+      <span>&copy; {{ year }}</span>
+    </VLayout>
+  </VFooter>
 </template>
 
-<script>
-import M1FooterBlock from './footer-item';
-
+<script lang="js">
 export default {
-  components: {
-    M1FooterBlock
-  },
-
-  computed: {
-    user() {
-      return this.$store.getters.getUser;
-    },
-
-    saveState() {
-      return this.$store.getters.getSaveState();
-    },
-
-    saveStateStyle() {
-      if (this.saveState === 'saved') {
-        return 'success';
-      }
-
-      if (this.saveState === 'local') {
-        return 'warning';
-      }
-
-      return 'error';
+  name: 'Footer',
+  props: [],
+  data() {
+    return {
+      year: new Date().getFullYear(),
     }
-  }
-};
+  },
+  computed: {
+
+  },
+  mounted() {},
+  methods: {
+
+  },
+}
 </script>
 
-<style lang="scss" scoped>
-.footer {
-  width: 100%;
-  height: 32px;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.tooltip-top {
-  line-height: 25px;
-}
-
-@media print {
+<style scoped lang="scss">
   .footer {
-    display: none;
+
   }
-}
 </style>

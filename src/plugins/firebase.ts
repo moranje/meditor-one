@@ -1,4 +1,8 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+
+// Add additional services that you want to use
+import 'firebase/auth';
+import 'firebase/firestore';
 
 const config = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -10,9 +14,6 @@ const config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
-const db = firebaseApp.database();
 
-export const dbFoldersRef = db.ref('owner/folders');
-export const dbFilesRef = db.ref('owner/files');
-export const dbCompletionsRef = db.ref('completions');
-export const dbUsersRef = db.ref('users');
+export { firebase };
+export const db = firebaseApp.firestore();

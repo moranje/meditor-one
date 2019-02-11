@@ -1,16 +1,9 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  lintOnSave: true,
-  // parallel: false,
-
-  pwa: {
-    name: 'Meditor One'
-  },
-
   configureWebpack: {
+    devtool: 'source-map',
     resolve: {
       alias: {
         '@': path.join(__dirname, 'src')
@@ -29,10 +22,10 @@ module.exports = {
           '!toggleHighContrast',
           '!toggleTabFocusMode'
         ]
-      }),
-      new webpack.DefinePlugin({
-        'process.platform': 0 // bypass process check
       })
+      // new webpack.DefinePlugin({
+      //   'process.platform': 0 // bypass process check
+      // })
     ]
   }
 };

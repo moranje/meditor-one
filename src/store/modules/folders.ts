@@ -1,75 +1,36 @@
-import { firebaseAction } from 'vuexfire';
+import { db } from '@/plugins/firebase';
+import User from '@/store/models/User';
+import Folder from '@/store/models/Folder';
 
-import { dbFoldersRef } from '../../plugins/firebase';
-import { create, remove, update } from './helpers/action';
-import { find, findAll, findMany } from './helpers/getter';
-import { update as updateLocal } from './helpers/mutation';
+const COLLECTION = 'owner/folders';
 
-const stateObject = {
-  folders: []
-};
+const state = {};
 
-const getters = {
-  allFolders: state => state.folders,
+const getters = {};
 
-  findFolder: state => (key, value) => {
-    if (!state.folders) return null;
-
-    return find(state.folders, key, value);
-  },
-
-  findManyFolders: state => ids => {
-    if (!state.folders) return [];
-
-    return findMany(state.folders, ids);
-  },
-
-  findAllFolders: state => () => {
-    if (!state.files) return [];
-
-    return findAll(state.folders);
-  }
-};
-
-const mutations = {
-  updateFolderLocal(state, { id, key, value }) {
-    updateLocal(state.folders, id, key, value);
-  }
-};
+const mutations = {};
 
 const actions = {
-  syncFolders: firebaseAction(({ bindFirebaseRef }, ref) => {
-    bindFirebaseRef('folders', ref, {
-      errorCallback: (...args) => console.error(args)
-    });
-  }),
+  fetchAll() {
+    let user = User.query().first();
 
-  createFolder: ({ state, rootGetters }, { parent, folder }) => {
-    let uid = rootGetters.getUser.uid;
-
-    create(dbFoldersRef.child(uid), folder, child => ({
-      [`owner/folders/${uid}/${parent}/folders/${child}`]: true,
-      [`owner/folders/${uid}/${child}/folder/${parent}`]: true
-    }));
-  },
-
-  updateFolder: ({ state, rootGetters }, payload) => {
-    update(dbFoldersRef.child(rootGetters.getUser.uid), payload);
-  },
-
-  removeFolder: ({ state, rootGetters }, { id, parent }) => {
-    let uid = rootGetters.getUser.uid;
-
-    remove(
-      dbFoldersRef.child(uid),
-      id,
-      `/owner/folders/${uid}/${parent}/folders/${id}`
-    );
+    if (user) {
+      return db
+        .collection(`${COLLECTION}/${user.uid}`)
+        .get()
+        .then((querySnapshot: any) => {
+          querySnapshot.forEach((doc: any) => {
+            Folder.insert({ data: doc.data() });
+          });
+        });
+    } else {
+      Promise.reject('No user found');
+    }
   }
 };
 
 export default {
-  state: stateObject,
+  state,
   getters,
   mutations,
   actions

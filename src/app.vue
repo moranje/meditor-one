@@ -1,122 +1,67 @@
 <template>
-  <v-app id="app">
-    <m1-nav-bar/>
-    <multipane
-      class="sandwich"
-      @paneResize="resize"
-    >
-      <m1-side-bar/>
-      <multipane-resizer/>
-      <main class="content">
-        <router-view :key="$route.fullPath" />
-      </main>
-    </multipane>
-    <m1-footer/>
-    <m1-dialog/>
-  </v-app>
+  <VApp>
+    <SideNav/>
+    <NavBar/>
+
+    <VContent>
+      <RouterView :key="$route.fullPath"/>
+    </VContent>
+    <Footer/>
+  </VApp>
 </template>
 
 <script>
-import Vue from 'vue';
-import firebase from 'firebase';
-import colors from 'vuetify/es5/util/colors';
-import { Multipane, MultipaneResizer } from 'vue-multipane';
-import { clamp } from 'lodash';
+import { firebase } from '@/plugins/firebase';
+import * as monaco from 'monaco-editor';
 
-import { dbFoldersRef, dbFilesRef } from './plugins/firebase';
-import M1NavBar from './components/nav-bar';
-import M1SideBar from './components/side-bar';
-import M1Footer from './components/footer';
-import M1Dialog from './components/dialog';
+import User from '@/store/models/User';
+
+import SideNav from "@/components/SideNav";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default {
-  components: {
-    M1NavBar,
-    M1SideBar,
-    M1Footer,
-    Multipane,
-    MultipaneResizer,
-    M1Dialog
+  name: 'App',
+
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: 'Meditor One',
+    // all titles will be injected into this template
+    titleTemplate: '%s',
   },
 
-  computed: {
-    user() {
-      return this.$store.getters.getUser;
-    }
+  components: {
+    SideNav,
+    NavBar,
+    Footer,
   },
 
   created() {
-    firebase.auth().onAuthStateChanged(user => {
+    this.$wait.start('user records');
+
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
-        const { displayName, email, uid } = user;
-        this.$store.commit('signIn', { displayName, email, uid });
-        this.$store.dispatch('syncFolders', dbFoldersRef.child(uid));
-        this.$store.dispatch('syncFiles', dbFilesRef.child(uid));
+        // First add user since it is needed for fetch calls
+        await User.create({ data: user });
+
+        // Preloads all
+        await this.$store.dispatch('entities/folders/fetchAll');
+        await this.$store.dispatch('entities/files/fetchAll');
+
+        this.$wait.end('user records');
       } else {
         // throw new Error('Immediate sign out error');
-        this.$store.commit('signOut');
+        User.deleteAll();
       }
     });
   },
 
+  mounted() {
+    // window.addEventListener('resize', this.resize);
+  },
+
   methods: {
-    resize(pane, container, sidebarSize) {
-      const handleWidth = 10;
-      const viewportWidth = Math.max(
-        document.documentElement.clientWidth,
-        window.innerWidth || 0
-      );
-      const sidebarWidth = clamp(+sidebarSize.replace('px', ''), 250, 400);
 
-      this.$store.commit('setContentAreaSize', {
-        width: viewportWidth - (sidebarWidth + handleWidth)
-      });
-      this.$store.commit('setSidebarWidth', sidebarWidth);
-    }
   }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  .sandwich {
-    flex: 1 0 auto;
-    display: flex;
-    height: calc(100vh - 64px - 36px);
-
-    .content {
-      flex: 1 0 auto;
-    }
-  }
-}
-
-.multipane.sandwich.layout-v .multipane-resizer {
-  margin: 0;
-  top: 0; /* reset default styling */
-  left: 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.12);
-}
-
-.application {
-  background-color: white;
-
-  .container {
-    padding: 0;
-  }
-}
-
-@media print {
-  @page {
-    margin: 0.5cm;
-  }
-
-  .multipane-resizer {
-    display: none;
-  }
-}
-</style>

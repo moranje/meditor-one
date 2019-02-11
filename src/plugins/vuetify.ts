@@ -1,7 +1,9 @@
-import 'vuetify/dist/vuetify.min.css';
-
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+// @ts-ignore
+import Vuetify from 'vuetify/lib';
+import 'vuetify/src/stylus/app.styl';
+import nl from 'vuetify/src/locale/nl';
+// @ts-ignore
 import colors from 'vuetify/es5/util/colors';
 
 Vue.use(Vuetify, {
@@ -15,5 +17,11 @@ Vue.use(Vuetify, {
     success: colors.green.lighten1,
     light: colors.grey.lighten2,
     dark: colors.grey.darken3
+  },
+  customProperties: true,
+  iconfont: 'mdi',
+  lang: {
+    locales: { nl },
+    current: 'nl'
   }
 });

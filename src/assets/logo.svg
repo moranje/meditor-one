@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="82" height="80" viewBox="0 0 82 80">
+<style>
+  .m1-logo-element {
+    fill: rgba(0,0,0,0.54);
+    font-weight:400;
+  }
+</style>
+  <title>
+    Meditor One
+  </title>
+  <desc>
+    Logo
+  </desc>
+  <g style="fill:none;stroke-width:1;stroke:none">
+    <g transform="translate(-4 -15)">
+      <text id="m1-logo-m" font-family="Futura-Medium, Futura" font-size="72" class="m1-logo-element m1-m">
+        <tspan y="75">
+          M
+        </tspan>
+      </text>
+      <text id="m1-logo-1"  font-family="Futura-Medium, Futura" font-size="72" class="m1-logo-element m1-1">
+        <tspan x="48.6" y="94">
+          1
+        </tspan>
+      </text>
+      <path  d="M84.5 16.5L84.5 93.5" style="stroke-width:2;stroke: rgba(0,0,0,0.54)" class="m1-logo-element m1-cursor" />
+    </g>
+  </g>
+</svg>
