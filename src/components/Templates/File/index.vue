@@ -9,10 +9,10 @@
 </template>
 
 <script lang="js">
-import Editor from "@/components/shared/Editor";
-import File from '@/store/models/File';
+import Editor from '@/components/Shared/Editor'
+import File from '@/store/models/File'
 
-export default  {
+export default {
   name: 'File',
 
   components: {
@@ -20,23 +20,23 @@ export default  {
   },
 
   computed: {
-    value() {
-      let file = File.find(this.$route.params.file_id);
+    value () {
+      let file = File.find(this.$route.params.fileId)
 
-      if (file && file.value) return file.value;
+      if (file && file.value) return file.value
 
-      return '';
+      return ''
     },
 
-    visible() {
-      return !this.$wait.waiting('user records');
-    },
+    visible () {
+      return !this.$wait.waiting('user records')
+    }
   },
 
   methods: {
-    update(value) {
+    update (value) {
       File.update({
-        id: this.$route.params.file_id,
+        id: this.$route.params.fileId,
         value
       })
     }

@@ -6,7 +6,6 @@ export default {
   fontLigatures: true,
   fontSize: '14',
   fontWeight: 'initial',
-  language: 'plaintext',
   lineHeight: '20',
   lineNumbers: 'on',
   matchBrackets: true,
@@ -29,4 +28,4 @@ export default {
   value: '',
   wordWrap: 'on',
   wrappingIndent: 'indent'
-};
+}

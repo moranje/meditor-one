@@ -1,3 +1,43 @@
-// Import store instance?
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { emitter } from '@/components/Shared/emitter'
+import File from '@/store/models/File'
+import { LANGUAGE_ID } from './language'
+import slug from 'speakingurl'
 
-export default function() {}
+interface Suggestion {
+  label: string
+  insertText: string | { value: string }
+  insertTextRules: number
+  documentation?: string
+  kind: number
+}
+
+let disposable = null
+
+emitter.on(`${LANGUAGE_ID}.loaded`, ({ editor, args }) => {
+  if (disposable) disposable.dispose()
+
+  disposable = monaco.languages.registerCompletionItemProvider(LANGUAGE_ID, {
+    triggerCharacters: ['!'],
+    provideCompletionItems
+  })
+})
+
+function provideCompletionItems() {
+  let files = File.query()
+    .with('parent')
+    .orderBy('name')
+    .all()
+
+  return {
+    suggestions: files.map(file => {
+      return {
+        label: `${slug(file.parent.name)}-${slug(file.name)}`,
+        insertTextRules:
+          monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+        insertText: `${slug(file.parent.name)}-${slug(file.name)}`,
+        kind: monaco.languages.CompletionItemKind.Snippet
+      }
+    })
+  }
+}

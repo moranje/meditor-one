@@ -1,4 +1,4 @@
-import { Model } from '@vuex-orm/core';
+import { Model } from '@vuex-orm/core'
 
 export default class User extends Model {
   displayName: string;
@@ -17,7 +17,7 @@ export default class User extends Model {
 
   static primaryKey = 'uid';
 
-  static fields() {
+  static fields () {
     return {
       displayName: this.string(''),
       email: this.string(''),
@@ -30,6 +30,6 @@ export default class User extends Model {
       providerId: this.string(''),
       uid: this.string(''),
       exampleTemplateVisible: this.boolean(true)
-    };
+    }
   }
 }

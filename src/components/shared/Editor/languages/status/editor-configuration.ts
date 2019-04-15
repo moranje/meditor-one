@@ -29,4 +29,4 @@ export default {
   value: '',
   wordWrap: 'on',
   wrappingIndent: 'indent'
-};
+}

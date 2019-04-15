@@ -32,26 +32,10 @@
     <VList>
       <VListTile to="/status">
         <VListTileAction>
-          <VIcon>mdi-file-document-outline</VIcon>
-        </VListTileAction>
-        <VListTileContent>
-          <VListTileTitle>STATUS</VListTileTitle>
-        </VListTileContent>
-      </VListTile>
-      <VListTile to="/voorgeschiedenis">
-        <VListTileAction>
           <VIcon>mdi-clipboard-text-outline</VIcon>
         </VListTileAction>
         <VListTileContent>
-          <VListTileTitle>VOORGESCHIEDENIS</VListTileTitle>
-        </VListTileContent>
-      </VListTile>
-      <VListTile to="/medicatie">
-        <VListTileAction>
-          <VIcon>mdi-pill</VIcon>
-        </VListTileAction>
-        <VListTileContent>
-          <VListTileTitle>MEDICATIE</VListTileTitle>
+          <VListTileTitle>STATUS</VListTileTitle>
         </VListTileContent>
       </VListTile>
       <VDivider />
@@ -90,31 +74,31 @@
 
 <script lang="js">
 // import FolderList from '@/components/SideNav/FolderList'
-import User from '@/store/models/User';
-import Folder from '@/store/models/Folder';
-import Editor from '@/store/models/Editor';
+import User from '@/store/models/User'
+import Folder from '@/store/models/Folder'
+import Editor from '@/store/models/Editor'
 
-import { db } from '@/plugins/firebase';
-import BaseIcon from '@/components/BaseIcon';
+import { db } from '@/plugins/firebase'
+import BaseIcon from '@/components/Shared/BaseIcon'
 
 // Lazily loaded component
-const FolderList = () => import('@/components/SideNav/FolderList');
+const FolderList = () => import('@/components/SideNav/FolderList')
 
 export default {
   name: 'SideNav',
 
   components: {
     FolderList,
-    BaseIcon,
+    BaseIcon
   },
 
   data: () => ({
-    isMini: true,
-    drawer: {},
+    isMini: false,
+    drawer: {}
   }),
 
   computed: {
-    folders() {
+    folders () {
       return Folder
         .query()
         .where('parentId', null)
@@ -123,48 +107,48 @@ export default {
         .all()
     },
 
-    collapsed() {
+    collapsed () {
       return Folder.all()
         .filter(folder => folder.collapsed === false)
         .map(folder => folder.id)
-    },
+    }
   },
 
-  mounted() {
+  mounted () {
     Editor.insertOrUpdate({
       data: [
-        Object.assign({ id: 'snippet'}, this.getSize()),
-        Object.assign({ id: 'status'}, this.getSize()),
+        Object.assign({ id: 'snippet' }, this.getSize()),
+        Object.assign({ id: 'status' }, this.getSize())
       ]
-    });
+    })
   },
 
   methods: {
-    navigate() {
+    navigate () {
       // Expand navigation drawer
-      this.isMini = false;
+      this.isMini = false
 
       // this.$router.push('/templates')
     },
 
-    addFolder() {
-      const ref = db.collection(`owner/folders/${this.$user.uid}`).doc();
+    addFolder () {
+      const ref = db.collection(`owner/folders/${this.$user.uid}`).doc()
 
       Folder.insert({
-        data: { id: ref.id, name: '', ownerId: this.$user.uid },
-      });
+        data: { id: ref.id, name: '', ownerId: this.$user.uid }
+      })
     },
 
-    handleResize() {
+    handleResize () {
       Editor.insertOrUpdate({
         data: [
-          Object.assign({ id: 'snippet'}, this.getSize()),
-          Object.assign({ id: 'status'}, this.getSize()),
+          Object.assign({ id: 'snippet' }, this.getSize()),
+          Object.assign({ id: 'status' }, this.getSize())
         ]
-      });
+      })
     },
 
-    getSize() {
+    getSize () {
       return {
         sidenav: {
           width: this.$el.clientWidth,

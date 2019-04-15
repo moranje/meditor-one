@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Meta from 'vue-meta';
-import User from '@/store/models/User';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Meta from 'vue-meta'
+import User from '@/store/models/User'
 
-Vue.use(Router);
-Vue.use(Meta);
+Vue.use(Router)
+Vue.use(Meta)
 
 export default new Router({
   mode: 'history',
@@ -14,7 +14,7 @@ export default new Router({
       path: '/',
       name: 'home',
       beforeEnter: (to, from, next) => {
-        next('/status');
+        next('/status')
       }
     },
     {
@@ -24,19 +24,7 @@ export default new Router({
         import(/* webpackChunkName: "status" */ './components/Status/index.vue')
     },
     {
-      path: '/voorgeschiedenis',
-      name: 'voorgeschiedenis',
-      component: () =>
-        import(/* webpackChunkName: "history" */ './components/History/index.vue')
-    },
-    {
-      path: '/medicatie',
-      name: 'medicatie',
-      component: () =>
-        import(/* webpackChunkName: "medication" */ './components/Medication/index.vue')
-    },
-    {
-      path: '/templates/:folder_id',
+      path: '/templates/:folderId',
       name: 'templates',
       component: () =>
         import(/* webpackChunkName: "templates" */ './components/Templates/index.vue'),
@@ -44,7 +32,7 @@ export default new Router({
         {
           // UserProfile will be rendered inside User's <router-view>
           // when /user/:id/profile is matched
-          path: ':file_id',
+          path: ':fileId',
           component: () =>
             import(/* webpackChunkName: "template" */ './components/Templates/File/index.vue')
         }
@@ -67,6 +55,13 @@ export default new Router({
       name: 'login',
       component: () =>
         import(/* webpackChunkName: "templates" */ './components/Login/index.vue')
+    },
+    {
+      // will match everything
+      path: '*',
+      beforeEnter: (to, from, next) => {
+        next('/status')
+      }
     }
   ]
-});
+})

@@ -61,21 +61,21 @@ export default {
   props: {
     iconName: {
       type: String,
-      default: 'logo',
+      default: 'logo'
     },
     width: {
       type: [Number, String],
-      default: 36,
+      default: 36
     },
     height: {
       type: [Number, String],
-      default: 36,
+      default: 36
     },
     iconColor: {
       type: String,
-      default: 'currentColor',
-    },
-  },
+      default: 'currentColor'
+    }
+  }
 }
 </script>
 

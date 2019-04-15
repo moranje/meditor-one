@@ -1,0 +1,7 @@
+/build/
+/config/
+/coverage/
+/dist/
+/test/unit/coverage/
+
+/snippet-tree/

@@ -1,74 +1,35 @@
-import * as monaco from 'monaco-editor';
-// @ts-ignore: babel plugin
-import status from './languages/status';
-// @ts-ignore: babel plugin
-import snippet from './languages/snippet';
-
-interface Languages {
-  [index: string]: Language;
-  status: Language;
-  snippet: Language;
-}
-
-interface Language {
-  syntax?: any;
-  theme?: any;
-  keyboardActions?: any;
-  completionItemProvider?: any;
-  hoverProvider?: any;
-  editorConfiguration?: any;
-  languageConfiguration?: any;
-}
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import status from './languages/status'
+import snippet from './languages/snippet'
+import { emitter } from '@/components/Shared/emitter'
 
 interface EditorOptions {
-  language: string;
+  language: string
 }
 
-const languages: Languages = { snippet, status };
-
-Object.keys(languages).forEach(language => {
-  let {
-    syntax,
-    theme,
-    keyboardActions,
-    completionItemProvider,
-    hoverProvider,
-    languageConfiguration
-  } = languages[language];
-
-  monaco.languages.register({ id: language });
-
-  if (syntax) monaco.languages.setMonarchTokensProvider(language, syntax);
-  if (theme) monaco.editor.defineTheme(language, theme);
-
-  if (languageConfiguration) {
-    monaco.languages.setLanguageConfiguration(language, languageConfiguration);
-  }
-
-  if (completionItemProvider) {
-    monaco.languages.registerCompletionItemProvider(language, {
-      provideCompletionItems: () => completionItemProvider
-    });
-  }
-});
+const config = { snippet, status }
 
 export function setup($el: any, options: EditorOptions) {
-  let opts = options;
+  let opts = options
 
-  if (
-    options.language &&
-    languages[options.language] &&
-    languages[options.language].editorConfiguration
-  ) {
-    opts = Object.assign(
-      languages[options.language].editorConfiguration,
-      options
-    );
+  if (options.language && config[options.language]) {
+    opts = Object.assign(config[options.language], options)
   }
 
-  return monaco.editor.create($el, opts);
-}
+  let editor = monaco.editor.create($el, opts)
 
-export function instance(editor: any) {
-  // Enrich editor with language features
+  emitter.emit(`${options.language}.loaded`, { editor })
+
+  editor.onDidChangeModelContent((...args) => {
+    emitter.emit(`${options.language}.change`, { editor, args })
+  })
+  editor.onKeyDown((...args) => {
+    emitter.emit(`${options.language}.keyDown`, { editor, args })
+  })
+
+  // editor.onDidBlurEditorText((...args) => {});
+  // editor.onDidDispose((...args) => {});
+  // editor.onCompositionEnd((...args) => {}) // Editor loaded?
+
+  return editor
 }

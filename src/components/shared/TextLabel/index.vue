@@ -31,19 +31,19 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
 
   methods: {
-    focus(event, item) {
-      this.$emit('text-focus', event, item);
+    focus (event, item) {
+      this.$emit('text-focus', event, item)
     },
 
-    blur(event, item) {
-      this.$emit('text-blur', event, item);
-    },
-  },
+    blur (event, item) {
+      this.$emit('text-blur', event, item)
+    }
+  }
 }
 </script>
 

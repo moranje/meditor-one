@@ -1,174 +1,187 @@
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { LANGUAGE_ID } from './language'
+
 // prettier-ignore
 let headings = [
   'Reden van komst', 'Reden van consult', 'Ambulance', 'Eerste opvang',
   'Voorgeschiedenis', 'Medicatie', 'Allergieën', 'Intoxicaties', 'Anamnese',
   'Heteroanamnese', 'Neurologisch onderzoek', 'Lichamelijk onderzoek',
   'Primary survey volgens ATLS', 'Primary survey', 'Secondary survey',
-  'Aanvullend onderzoek', 'Conclusie', 'Beleid[^\\n$]*', 'Decursus'
-];
+  'Aanvullend onderzoek', 'Conclusie', 'Beleid[^\\n$]*', 'Decursus', 'Subjectief', 'Objectief', 'Evaluatie', 'Plan'
+]
 
-const headingsPattern = new RegExp('^(' + headings.join('|') + ')$');
+const headingsPattern = new RegExp('^(' + headings.join('|') + ')$')
 
-export default {
+monaco.languages.setMonarchTokensProvider(LANGUAGE_ID, {
   defaultToken: 'text',
 
   tokenizer: {
     root: [
-      [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],
-      [/\$/, 'tag', '@unnested'],
-
-      [/^#[^\n]*\n/, 'comment'],
-      [/#[^\n]*/, 'comment'],
+      [/\$/, 'tag', '@marker'],
+      [/^#[^\n]*\n?/, 'comment'],
       [/\\./, 'text'],
 
-      [headingsPattern, 'headings']
+      // Operators, once positive lookbehinds are a thing, make this more
+      // accurate (?<=\})
+      [/[|&=](?=\$)/, 'operator'],
+
+      [headingsPattern, 'heading']
     ],
 
-    nestedSnippet: [
-      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+    // nestedSnippet: [
+    //   [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],
-      [/\$/, 'tag', '@unnested'],
-      [/\\./, 'text']
-    ],
+    //   [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],
+    //   [/\\./, 'text']
+    // ],
 
-    unnested: [
+    marker: [
+      [/\{/, { token: 'tag', bracket: '@open', switchTo: '@nested' }],
+      [/</, { token: 'tag', bracket: '@open' }],
+      [/!/, { token: 'annotation', switchTo: '@slot' }],
+      [/>/, { token: 'tag', bracket: '@close', next: '@pop' }],
+
+      [/\d+(?=<)/, 'variable'],
+      [/[a-zA-Z][a-zA-Z0-9_]+(?=>)/, 'variable'],
+
       [/\d+/, 'variable', '@pop'],
-      [/\+/, 'modifier', '@pop'],
-      [/[a-zA-Z][a-zA-Z0-9_]+/, 'variable', '@pop'],
-
-      [/=(?=\d)/, { token: 'modifier', switchTo: '@tabstopAnchor' }]
+      [/[a-zA-Z][a-zA-Z0-9_]+/, 'variable', '@pop']
     ],
-
-    tabstopAnchor: [[/\d+/, 'variable', '@pop']],
 
     nested: [
       [/\d+/, { token: 'variable', switchTo: '@placeholder' }],
-      [/\+/, { token: 'modifier', switchTo: '@placeholderIncrementor' }],
-      [/=(?=[0-9])/, { token: 'modifier', switchTo: '@placeholderAnchor' }],
       [/[a-zA-Z][a-zA-Z0-9_]+/, { token: 'variable', switchTo: '@variable' }],
-      [/!/, { token: 'modifier', switchTo: '@expansion' }],
-      [/#/, { token: 'modifier', switchTo: '@function' }]
+      [/!/, { token: 'annotation', switchTo: '@expansion' }],
+      [/#/, { token: 'annotation', switchTo: '@action' }]
     ],
 
     placeholder: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+      [/</, { token: 'tag', bracket: '@open' }],
+      [/>/, { token: 'tag', bracket: '@close' }],
 
-      [/:/, { token: 'separator', switchTo: '@nestedSnippet' }],
-      [/\|/, { token: 'separator', switchTo: '@choice' }],
-      [/\//, { token: 'separator', switchTo: '@pattern' }]
-    ],
+      [/[a-zA-Z][a-zA-Z0-9_]+(?=>)/, 'variable'],
 
-    placeholderAnchor: [
-      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
-
-      [/:/, { token: 'separator', switchTo: '@nestedSnippet' }],
-      [/\|/, { token: 'separator', switchTo: '@choice' }],
-      [/\//, { token: 'separator', switchTo: '@pattern' }],
-
-      [/\d+/, 'variable']
-    ],
-
-    placeholderIncrementor: [
-      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
-
-      [/:/, { token: 'separator', switchTo: '@nestedSnippet' }],
-      [/\|/, { token: 'separator', switchTo: '@choice' }],
-      [/\//, { token: 'separator', switchTo: '@pattern' }]
+      [/:/, { token: 'delimiter', switchTo: '@args' }],
+      [/\|/, { token: 'delimiter', switchTo: '@choice' }],
+      [/\//, { token: 'delimiter', switchTo: '@pattern' }]
     ],
 
     choice: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/!/, { token: 'modifier', next: '@expansion' }],
+      [/!/, { token: 'annotation', next: '@expansion' }],
 
       [/\$\{/, { token: 'tag', bracket: '@open' }],
       [/\\./, 'text'],
-      [/,/, 'separator'],
-      [/\|/, 'separator']
+      [/,/, 'delimiter'],
+      [/\|/, 'delimiter']
     ],
 
     variable: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/\//, { token: 'separator', switchTo: '@pattern' }],
-      [/:/, { token: 'separator', switchTo: '@nestedSnippet' }]
+      [/\//, { token: 'delimiter', switchTo: '@pattern' }],
+      [/:/, { token: 'delimiter', switchTo: '@args' }]
     ],
 
     expansion: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/:/, { token: 'separator', switchTo: '@snippetArgs' }],
-      [/\d+(?=\})/, { token: 'variable', switchTo: '@expansionSlot' }],
+      [/\//, { token: 'delimiter', switchTo: '@slotKeyValuePair' }],
 
-      [/[a-zA-Z_ -]+/, 'reference']
+      [/[a-zA-Z][a-zA-Z0-9_]+/, 'string']
     ],
 
-    expansionSlot: [[/\}/, { token: 'tag', bracket: '@close', next: '@pop' }]],
+    slot: [
+      [/\d+/, 'variable', '@pop'],
+      [/[a-zA-Z][a-zA-Z0-9_]+/, 'variable', '@pop']
+    ],
 
-    function: [
+    action: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/:/, { token: 'separator', switchTo: '@textArgs' }],
+      [/:/, { token: 'delimiter', switchTo: '@textArgs' }],
 
-      [/[a-zA-Z_]+/, 'function']
+      [/[a-zA-Z_]+/, 'keyword']
     ],
 
-    pattern: [[/\//, { token: 'separator', switchTo: '@replacement' }]],
+    expression: [[/:/, { token: 'delimiter', switchTo: '@args' }]],
+
+    pattern: [[/\//, { token: 'delimiter', switchTo: '@replacement' }]],
 
     replacement: [
       [
         /\$\{/,
-        { token: 'regexGroupTag', bracket: '@open', next: '@nestedGroup' }
+        { token: 'regex.group.tag', bracket: '@open', next: '@nestedGroup' }
       ],
-      [/\$/, { token: 'regexGroupTag', next: '@unnestedGroup' }],
+      [/\$/, { token: 'regex.group.tag', next: '@unnestedGroup' }],
 
-      [/\//, { token: 'separator', switchTo: '@flags' }]
+      [/\//, { token: 'delimiter', switchTo: '@flags' }]
     ],
 
-    unnestedGroup: [[/\d+/, 'regexGroupVariable', '@pop']],
+    unnestedGroup: [[/\d+/, 'regex.group.variable', '@pop']],
 
     nestedGroup: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/\d+/, 'regexGroupVariable'],
-      [/:/, 'regexGroupModifier'],
-      [/\+/, 'regexGroupModifier'],
-      [/-/, 'regexGroupModifier'],
-      [/\?/, 'regexGroupModifier'],
-      [/\/upcase|\/downcase|\/capitalize/, 'regexGroupStringModifier']
+      [/\d+/, 'regex.group.variable'],
+      [/:/, 'regex.group.modifier'],
+      [/\+/, 'regex.group.modifier'],
+      [/-/, 'regex.group.modifier'],
+      [/\?/, 'regex.group.modifier'],
+      [/\/upcase|\/downcase|\/capitalize/, 'regex.group.string.modifier']
     ],
 
     flags: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/[gmi]{1,3}/, 'regexGroupVariable']
+      [/[gmi]{1,3}/, 'regex.group.variable']
+    ],
+
+    args: [
+      [/!?=/, { token: 'operator', switchTo: '@expression' }],
+      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+
+      [/:/, 'delimiter'],
+      [/\\./, 'text']
     ],
 
     textArgs: [
       [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
 
-      [/:/, 'separator'],
+      [/:/, 'delimiter'],
       [/\\./, 'text']
     ],
 
-    snippetArgs: [
-      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+    slotKeyValuePair: [
+      [/:/, { token: 'delimiter', switchTo: '@slotValue' }],
 
-      [/:/, { token: 'separator', switchTo: '@nestedSnippetArg' }],
-
-      [/\\./, 'text']
+      [/\d+/, 'variable'],
+      [/[a-zA-Z][a-zA-Z0-9_]+/, 'variable']
     ],
 
-    nestedSnippetArg: [
-      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
-
-      [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],
-      [/\$/, 'tag', '@unnested'],
-
-      [/:/, { token: 'separator', switchTo: '@nestedSnippetArg' }],
-
-      [/\\./, 'text']
+    slotValue: [
+      [/\//, { token: 'delimiter', switchTo: '@slotKeyValuePair' }],
+      [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }]
     ]
+
+    // snippetArgs: [
+    //   [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+
+    //   [/:/, { token: 'delimiter', switchTo: '@nestedSnippetArg' }],
+
+    //   [/\\./, 'text']
+    // ],
+
+    // nestedSnippetArg: [
+    //   [/\}/, { token: 'tag', bracket: '@close', next: '@pop' }],
+
+    //   [/\$\{/, { token: 'tag', bracket: '@open', next: '@nested' }],
+
+    //   [/:/, { token: 'delimiter', switchTo: '@nestedSnippetArg' }],
+
+    //   [/\\./, 'text']
+    // ]
   }
-};
+})

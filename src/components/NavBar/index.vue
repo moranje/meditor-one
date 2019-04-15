@@ -17,7 +17,7 @@
     <VSpacer />
 
     <VBtn
-      v-show="$route.params.folder_id"
+      v-show="$route.params.folderId"
       icon
       @click="add"
     >
@@ -39,44 +39,44 @@
 </template>
 
 <script lang="js">
-import BaseIcon from '@/components/BaseIcon';
-import File from '@/store/models/File';
-import Folder from '@/store/models/Folder';
-import Editor from '@/store/models/Editor';
-import { db } from '@/plugins/firebase';
+import BaseIcon from '@/components/Shared/BaseIcon'
+import File from '@/store/models/File'
+import Folder from '@/store/models/Folder'
+import Editor from '@/store/models/Editor'
+import { db } from '@/plugins/firebase'
 
 export default {
   name: 'NavBar',
 
   components: {
-    BaseIcon,
+    BaseIcon
   },
 
   computed: {
-    loginColor() {
+    loginColor () {
       if (this.$user) return 'success'
 
       return 'error'
-    },
+    }
   },
 
-  mounted() {
+  mounted () {
     Editor.insertOrUpdate({
       data: [
-        Object.assign({ id: 'snippet'}, this.getSize()),
-        Object.assign({ id: 'status'}, this.getSize()),
+        Object.assign({ id: 'snippet' }, this.getSize()),
+        Object.assign({ id: 'status' }, this.getSize())
       ]
-    });
+    })
   },
 
   methods: {
-    navigate() {
+    navigate () {
       this.$router.push('status')
     },
 
-    add() {
-      let ref = db.collection(`owner/files/${this.$user.uid}`).doc();
-      let parent = Folder.find(this.$route.params.folder_id);
+    add () {
+      let ref = db.collection(`owner/files/${this.$user.uid}`).doc()
+      let parent = Folder.find(this.$route.params.folderId)
 
       File.insert({
         data: {
@@ -84,29 +84,29 @@ export default {
           name: '',
           value: '',
           ownerId: this.$user.uid,
-          parentId: parent.id,
-        },
+          parentId: parent.id
+        }
       })
 
       // Add relationship data to parent. Also uncollapse parent to edit child.
       Folder.update({
         where: parent.id,
         data: {
-          fileIds: [ref.id, ...parent.fileIds],
-        },
+          fileIds: [ref.id, ...parent.fileIds]
+        }
       })
     },
 
-    handleResize() {
+    handleResize () {
       Editor.insertOrUpdate({
         data: [
-          Object.assign({ id: 'snippet'}, this.getSize()),
-          Object.assign({ id: 'status'}, this.getSize()),
+          Object.assign({ id: 'snippet' }, this.getSize()),
+          Object.assign({ id: 'status' }, this.getSize())
         ]
-      });
+      })
     },
 
-    getSize() {
+    getSize () {
       return {
         navbar: {
           width: this.$el.clientWidth,
@@ -124,7 +124,7 @@ export default {
         }
       }
     }
-  },
+  }
 }
 </script>
 

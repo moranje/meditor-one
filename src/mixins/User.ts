@@ -1,9 +1,9 @@
-import User from '@/store/models/User';
+import User from '@/store/models/User'
 
 export default {
   computed: {
-    $user() {
-      return User.query().first();
+    $user () {
+      return User.query().first()
     }
   }
-};
+}

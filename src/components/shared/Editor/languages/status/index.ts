@@ -1,13 +1,8 @@
-import theme from './theme';
-import syntax from './syntax';
-import editorConfiguration from './editor-configuration';
-import completionItemProvider from './completion-item-provider';
-import languageConfiguration from './language-configuration';
+import './code-actions'
+import './code-lenses'
+import './completion-item-provider'
+import './language-configuration'
+import './syntax'
+import './theme'
 
-export default {
-  theme,
-  syntax,
-  editorConfiguration,
-  completionItemProvider,
-  languageConfiguration
-};
+export { default } from './editor-configuration'

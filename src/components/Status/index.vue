@@ -5,8 +5,8 @@
     <VFlex xs12>
       <Editor
         :value="value"
-        language="status"
         :visible="true"
+        language="status"
         @blur="update"
         @change="update"
       />
@@ -15,28 +15,33 @@
 </template>
 
 <script>
-import Editor from "@/components/shared/Editor";
+import EditorComponent from '@/components/Shared/Editor'
+import Editor from '@/store/models/Editor'
 
 export default {
   name: 'Status',
 
   metaInfo: {
-    title: 'Status',
+    title: 'Status'
   },
 
   components: {
-    Editor
+    Editor: EditorComponent
   },
 
   computed: {
-    value() {
-      return 'Test';
+    value () {
+      let status = Editor.find('status')
+
+      if (status.instance) return status.instance.getValue()
+
+      return ''
     }
   },
 
   methods: {
-    update(value) {
-      console.log(value);
+    update (value) {
+      // console.log('UPDATE STATUS', value);
     }
   }
 }

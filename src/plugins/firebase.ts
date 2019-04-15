@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/app'
 
 // Add additional services that you want to use
-import 'firebase/auth';
-import 'firebase/firestore';
+import 'firebase/auth'
+import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -11,9 +11,9 @@ const config = {
   projectId: 'meditor-one',
   storageBucket: 'meditor-one.appspot.com',
   messagingSenderId: '821857467011'
-};
+}
 
-const firebaseApp = firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(config)
 
-export { firebase };
-export const db = firebaseApp.firestore();
+export { firebase }
+export const db = firebaseApp.firestore()

@@ -8,7 +8,7 @@
 export default {
   name: 'FatalError',
   props: [],
-  data() {
+  data () {
     return {
 
     }
@@ -16,10 +16,10 @@ export default {
   computed: {
 
   },
-  mounted() {},
+  mounted () {},
   methods: {
 
-  },
+  }
 }
 </script>
 

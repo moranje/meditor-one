@@ -1,18 +1,18 @@
-import { db } from '@/plugins/firebase';
-import User from '@/store/models/User';
-import File from '@/store/models/File';
+import { db } from '@/plugins/firebase'
+import User from '@/store/models/User'
+import File from '@/store/models/File'
 
-const COLLECTION = 'owner/files';
+const COLLECTION = 'owner/files'
 
-const state = {};
+const state = {}
 
-const getters = {};
+const getters = {}
 
-const mutations = {};
+const mutations = {}
 
 const actions = {
-  fetchAll() {
-    let user = User.query().first();
+  fetchAll () {
+    let user = User.query().first()
 
     if (user) {
       return db
@@ -20,18 +20,18 @@ const actions = {
         .get()
         .then((querySnapshot: any) => {
           querySnapshot.forEach((doc: any) => {
-            File.insert({ data: doc.data() });
-          });
-        });
+            File.insert({ data: doc.data() })
+          })
+        })
     } else {
-      Promise.reject('No user found');
+      Promise.reject(new Error('No user found'))
     }
   }
-};
+}
 
 export default {
   state,
   getters,
   mutations,
   actions
-};
+}

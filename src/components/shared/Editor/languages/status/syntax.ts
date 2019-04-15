@@ -1,6 +1,9 @@
-const emphasized = /^[A-Z][a-zA-Z-/]*?[:/]/;
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { LANGUAGE_ID } from './language'
 
-export default {
+const emphasized = /^[A-Z][a-zA-Z-/]*?[:/]/
+
+monaco.languages.setMonarchTokensProvider(LANGUAGE_ID, {
   defaultToken: 'text',
 
   tokenizer: {
@@ -19,11 +22,11 @@ export default {
       ],
       [
         /^(?:Voorgeschiedenis|VG)[/:]?$/i,
-        { token: 'heading', switchTo: '@history' }
+        { token: 'heading.history', switchTo: '@history' }
       ],
       [
         /^(?:Medicatie|Med|Meds)[/:]?$/i,
-        { token: 'heading', switchTo: '@medication' }
+        { token: 'heading.medication', switchTo: '@medication' }
       ],
       [
         /^(?:Allergie(?:ë|e)n)[/:]?$/i,
@@ -56,13 +59,17 @@ export default {
       ],
       [
         /^(?:(?:Conclusie)|C)[/:]?$/i,
-        { token: 'heading', switchTo: '@conclusion' }
+        { token: 'heading.conclusion', switchTo: '@conclusion' }
       ],
       [
         /^(?:(?:(?:Beleid|Behandeling)[^\\n]*)|B)[/:]?$/i,
         { token: 'heading', switchTo: '@treatment' }
       ],
-      [/^(?:Decursus|Dec)[/:]?$/i, { token: 'heading', switchTo: '@course' }]
+      [/^(?:Decursus|Dec)[/:]?$/i, { token: 'heading', switchTo: '@course' }],
+      [/^(Subjectief|S)[/:]?$/i, { token: 'heading', switchTo: '@subjective' }],
+      [/^(Objectief|O)[/:]?$/i, { token: 'heading', switchTo: '@objective' }],
+      [/^(Evaluatie|E)[/:]?$/i, { token: 'heading', switchTo: '@evaluation' }],
+      [/^(Plan|P)[/:]?$/i, { token: 'heading', switchTo: '@plan' }]
     ],
 
     reasonVisit: [{ include: '@root' }],
@@ -86,6 +93,10 @@ export default {
     diagnostics: [{ include: '@root' }, [emphasized, 'emphasized']],
     conclusion: [{ include: '@root' }],
     treatment: [{ include: '@root' }],
-    course: [{ include: '@root' }]
+    course: [{ include: '@root' }],
+    subjective: [{ include: '@root' }],
+    objective: [{ include: '@root' }],
+    evaluation: [{ include: '@root' }],
+    plan: [{ include: '@root' }]
   }
-};
+})

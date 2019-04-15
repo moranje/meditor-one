@@ -95,21 +95,21 @@
 </template>
 
 <script lang="js">
-import { firebase } from '@/plugins/firebase';
-import User from '@/store/models/User';
-import File from '@/store/models/File';
-import Folder from '@/store/models/Folder';
+import { firebase } from '@/plugins/firebase'
+import User from '@/store/models/User'
+import File from '@/store/models/File'
+import Folder from '@/store/models/Folder'
 
 export default {
   name: 'Login',
 
   metaInfo: {
-    title: 'Log in',
+    title: 'Log in'
   },
 
   props: [],
 
-  data() {
+  data () {
     return {
 
     }
@@ -119,11 +119,11 @@ export default {
 
   },
 
-  mounted() {},
+  mounted () {},
 
   methods: {
-    loginWithPopup() {
-      const provider = new firebase.auth.GoogleAuthProvider();
+    loginWithPopup () {
+      const provider = new firebase.auth.GoogleAuthProvider()
 
       firebase
         .auth()
@@ -131,14 +131,14 @@ export default {
         .then(({ user }) => {
           // For some reason the user property has additional properties
           // that cause an infinite loop
-          User.create({ data: user });
+          User.create({ data: user })
         })
         .catch((error) => {
-          throw error;
-        });
+          throw error
+        })
     },
 
-    loginWithEmailAndPassword() {
+    loginWithEmailAndPassword () {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -146,31 +146,31 @@ export default {
           // For some reason the user property has additional properties
           // that cause an infinite loop
           // const { displayName, email, uid } = result.user;
-          User.create({ data: user });
+          User.create({ data: user })
           // this.$store.commit('signIn', { displayName, email, uid });
         })
         .catch((error) => {
-          throw error;
+          throw error
         // ...
-        });
+        })
     },
 
-    logout() {
+    logout () {
       firebase
         .auth()
         .signOut()
         .then(() => {
-          User.deleteAll();
+          User.deleteAll()
           // This is able to delete all records appearently
           // File.deleteAll();
           // Folder.deleteAll();
         })
         .catch((error) => {
           // An error happened.
-          throw error;
-        });
-    },
-  },
+          throw error
+        })
+    }
+  }
 }
 </script>
 

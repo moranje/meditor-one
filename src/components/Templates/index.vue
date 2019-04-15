@@ -7,47 +7,50 @@
       class="templates"
       xs3
     >
-      <FileList :files="files"/>
+      <FileList :files="files" />
     </VFlex>
 
-    <VDivider vertical></VDivider>
+    <VDivider vertical />
 
-    <VFlex class="templates" xs9>
-      <RouterView/>
+    <VFlex
+      class="templates"
+      xs9
+    >
+      <RouterView />
     </VFlex>
   </VLayout>
 </template>
 
 <script lang="js">
-import FileList from "@/components/Templates/FileList"
+import FileList from '@/components/Templates/FileList'
 import File from '@/store/models/File'
 
 export default {
   name: 'Templates',
 
   metaInfo: {
-    title: 'Templates',
+    title: 'Templates'
   },
 
   components: {
-    FileList,
+    FileList
   },
 
   computed: {
-    files() {
+    files () {
       return File
         .query()
-        .where('parentId', this.$route.params.folder_id)
+        .where('parentId', this.$route.params.folderId)
         .orderBy('name')
         .all()
-    },
+    }
   },
 
-  mounted() {},
+  mounted () {},
 
   methods: {
 
-  },
+  }
 }
 </script>
 

@@ -1,10 +1,10 @@
-import Vue from 'vue';
+import Vue from 'vue'
 // @ts-ignore
-import Vuetify from 'vuetify/lib';
-import 'vuetify/src/stylus/app.styl';
-import nl from 'vuetify/src/locale/nl';
+import Vuetify from 'vuetify/lib'
+import 'vuetify/src/stylus/app.styl'
+import nl from 'vuetify/src/locale/nl'
 // @ts-ignore
-import colors from 'vuetify/es5/util/colors';
+import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify, {
   theme: {
@@ -24,4 +24,4 @@ Vue.use(Vuetify, {
     locales: { nl },
     current: 'nl'
   }
-});
+})

@@ -1,20 +1,20 @@
-import { Model } from '@vuex-orm/core';
-import { db } from '@/plugins/firebase';
-import Folder from '@/store/models/Folder';
+import { Model } from '@vuex-orm/core'
+import { db } from '@/plugins/firebase'
+import Folder from '@/store/models/Folder'
 
 export default class File extends Model {
-  id: string;
-  name: string;
-  value: string;
-  type: string;
-  editable: boolean;
-  parent: string[] | null;
-  parentId: string;
-  ownerId: string;
+  id: string
+  name: string
+  value: string
+  type: string
+  editable: boolean
+  parent: Folder
+  parentId: string
+  ownerId: string
 
-  static entity = 'files';
+  static entity = 'files'
 
-  static primaryKey = 'id';
+  static primaryKey = 'id'
 
   static fields(): any {
     return {
@@ -24,27 +24,27 @@ export default class File extends Model {
       type: this.string('files'),
       editable: this.boolean(true),
       ownerId: this.string(null),
-      parentId: this.string(null).nullable(),
+      parentId: this.string(null),
 
       parent: this.belongsTo(Folder, 'parentId')
-    };
+    }
   }
 
   static afterCreate(model: any) {
     db.collection(`owner/${File.entity}/${model.ownerId}`)
       .doc(model.id)
-      .set(model.$toJson());
+      .set(model.$toJson())
   }
 
   static afterUpdate(model: any) {
     db.collection(`owner/${File.entity}/${model.ownerId}`)
       .doc(model.id)
-      .set(model.$toJson());
+      .set(model.$toJson())
   }
 
   static afterDelete(model: any) {
     db.collection(`owner/${File.entity}/${model.ownerId}`)
       .doc(model.id)
-      .delete();
+      .delete()
   }
 }

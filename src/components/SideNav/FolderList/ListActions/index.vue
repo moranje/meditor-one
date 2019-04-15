@@ -34,10 +34,10 @@ export default {
   props: {
     editMode: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
-  data() {
+  data () {
     return {
 
     }
@@ -45,20 +45,20 @@ export default {
   computed: {
 
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    edit() {
-      this.$emit('edit');
+    edit () {
+      this.$emit('edit')
     },
 
-    add() {
-      this.$emit('add');
+    add () {
+      this.$emit('add')
     },
 
-    remove() {
-      this.$emit('remove');
-    },
-  },
+    remove () {
+      this.$emit('remove')
+    }
+  }
 }
 </script>
 

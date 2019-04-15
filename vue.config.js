@@ -1,5 +1,5 @@
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const path = require('path');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   configureWebpack: {
@@ -16,7 +16,6 @@ module.exports = {
         features: [
           // Exclude unused features
           '!accessibilityHelp',
-          '!codelens', // May use this at some point
           '!colorDetector',
           '!iPadShowKeyboard',
           '!toggleHighContrast',
@@ -28,4 +27,4 @@ module.exports = {
       // })
     ]
   }
-};
+}

@@ -18,18 +18,18 @@
 export default {
   name: 'Footer',
   props: [],
-  data() {
+  data () {
     return {
-      year: new Date().getFullYear(),
+      year: new Date().getFullYear()
     }
   },
   computed: {
 
   },
-  mounted() {},
+  mounted () {},
   methods: {
 
-  },
+  }
 }
 </script>
 

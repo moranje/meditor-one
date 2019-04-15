@@ -1,3 +1,6 @@
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import { LANGUAGE_ID } from './language'
+
 let theme = {
   primary: '1565c0',
   greenDark: '1b5e20',
@@ -9,29 +12,60 @@ let theme = {
   purpleDark: '311b92',
   purpleLight: 'bc477b',
   warning: 'e65100'
-};
+}
 
-export default {
+monaco.editor.defineTheme(LANGUAGE_ID, {
   base: 'vs',
   inherit: true,
 
   rules: [
-    { token: 'headings', fontStyle: 'bold' },
+    // { token: '', foreground: '000000', background: 'fffffe' },
+    // { token: 'invalid', foreground: 'cd3131' },
+    // { token: 'emphasis', fontStyle: 'italic' },
+    // { token: 'strong', fontStyle: 'bold' },
 
+    // { token: 'variable', foreground: '001188' },
+    // { token: 'variable.predefined', foreground: '4864AA' },
+    // { token: 'constant', foreground: 'dd0000' },
+    // { token: 'comment', foreground: '008000' },
+    // { token: 'number', foreground: '09885A' },
+    // { token: 'number.hex', foreground: '3030c0' },
+    // { token: 'regexp', foreground: '800000' },
+    // { token: 'annotation', foreground: '808080' },
+    // { token: 'type', foreground: '008080' },
+
+    // { token: 'delimiter', foreground: '000000' },
+    // { token: 'tag', foreground: '800000' },
+    // { token: 'metatag', foreground: 'e00000' }
+    // { token: 'key', foreground: '863B00' },
+
+    // { token: 'attribute.name', foreground: 'FF0000' },
+    // { token: 'attribute.value', foreground: '0451A5' },
+    // { token: 'attribute.value.number', foreground: '09885A' },
+    // { token: 'attribute.value.unit', foreground: '09885A' },
+
+    // { token: 'string', foreground: 'A31515' }
+    // { token: 'keyword', foreground: '0000FF' },
+
+    { token: 'heading', fontStyle: 'bold' },
+
+    { token: 'keyword', foreground: theme.secondary },
     { token: 'tag', foreground: theme.greenDark },
     { token: 'comment', foreground: theme.grey, fontStyle: 'italic' },
     { token: 'text' },
     { token: 'variable', foreground: theme.primary },
-    { token: 'modifier', foreground: theme.greenLight },
-    { token: 'separator', foreground: theme.greenDark },
-    { token: 'function', foreground: theme.warning },
-    { token: 'regexGroupTag', foreground: theme.purpleDark },
-    { token: 'regexGroupVariable', foreground: theme.secondary },
-    { token: 'regexGroupModifier', foreground: theme.purpleLight },
-    { token: 'regexGroupStringModifier', foreground: theme.purpleLight },
+    { token: 'annotation', foreground: theme.greenLight },
+    { token: 'delimiter', foreground: theme.greenDark },
+    { token: 'constant', foreground: theme.warning },
+    { token: 'regex.group.tag', foreground: theme.purpleDark },
+    { token: 'regex.group.variable', foreground: theme.secondary },
+    { token: 'regex.group.modifier', foreground: theme.purpleLight },
+    { token: 'regex.group.string.modifier', foreground: theme.purpleLight },
     { token: 'space', background: theme.grey },
+    { token: 'operator', fontStyle: 'bold', foreground: theme.greyDark },
+    { token: 'invalid', foreground: 'cd3131' }, // theme.error
 
-    { token: 'reference', fontStyle: 'underline' }
+    { token: 'string', fontStyle: 'underline' }
   ],
 
   colors: {
@@ -128,4 +162,4 @@ export default {
     // 'scrollbarSlider.background': '#ff0000',
     // 'scrollbarSlider.hoverBackground': '#ff0000',
   }
-};
+})
