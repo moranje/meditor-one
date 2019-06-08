@@ -1,0 +1,83 @@
+# Text
+
+A snippet may consist of any text including escaped (\\$1) text and
+newlines.
+
+# Comments
+
+A comment will be filtered from the inserted snippet. Only line comments are supportes at this moment.
+
+# Tabstop (or simple placeholder)
+
+Insert cursor here $1 and then here $2 and also here $2
+
+Also a tabstop may have an index and a name, like this:
+
+Insert a cursor here $3<first> and here $4, note: $first
+
+# Placeholder
+
+Insert selection and placeholder text ${5:here} and then ${6:here} and also $6
+Insert selection and placeholder text ${5:here} and then ${6<placeholder>:here} and also $placeholder
+
+# Choice
+
+You can choose between several options:
+
+${7|good,bad,evil|}
+
+If you don't want a preselected choice you can leave the first option empty:
+
+${8|,bad,evil|}
+
+# Choice Expansions
+
+You can choose between ${7|good,${!bad_snippet},evil|}
+
+# Variable
+
+${name:default} ${name} $name
+
+# Expansion
+
+${!algemeen informatie}
+
+# Expansion with slots
+
+${!algemeen informatie/
+1:Expectatief/
+name:Twee weken/
+3:Bij koorts/}
+
+# Slot by reference
+
+$!1 $!name
+
+# Expression
+
+${1:=:output}
+${name:!=:output}
+
+# Operators
+
+${1:=:output}|${1:!=:out}=$1
+${1:=:output}&${1:=:output}=${!expansion}
+
+# Transforms
+${5:this iS bADlY caSED}
+${name/.*(bad).*/this works/i}
+${5/.*(bad).*/this works/g}
+
+# Actions
+${#date}
+${#dateReversed}
+${#time}
+${#timeLong}
+${#if:1:anything:there}
+${#unless:1:not there}
+${#if:4:there}
+${#unless:1:anything:not there}
+${7:this iS bADlY caSED}
+${#capitalCase:7}
+${#upperCase:7}
+${#lowerCase:7}
