@@ -10,6 +10,7 @@ import { Range } from 'vs/editor/common/core/range'
 import { repeat } from 'vs/base/common/strings'
 import MonacoSnippetSession from './monaco-session'
 
+// @ts-ignore
 export default class MonacoSnippetController extends SnippetController {
   private _snippetListener: IDisposable[] = []
   protected _session: MonacoSnippetSession

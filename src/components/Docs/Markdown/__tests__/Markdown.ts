@@ -18,7 +18,7 @@ describe('Component: Markdown', () => {
   })
 
   it('is setup properly, sanity test', () => {
-    const wrapper = shallowMount(Markdown).setValue()
+    // const wrapper = shallowMount(Markdown).setValue()
     expect(shallowMount(Markdown)).toBeTruthy()
   })
 

@@ -6,7 +6,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import Editor from '@/components/Shared/Editor'
 
