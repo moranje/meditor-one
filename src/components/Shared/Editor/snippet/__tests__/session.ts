@@ -1,4 +1,4 @@
-import SnippetSession from '@/components/_Shared/Editor/snippet/session'
+import SnippetSession from '@/components/Shared/Editor/snippet/session'
 import { SnippetParser } from '../parser'
 import { stringify } from 'flatted/cjs'
 

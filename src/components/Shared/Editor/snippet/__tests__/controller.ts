@@ -1,4 +1,4 @@
-import SnippetController from '@/components/_Shared/Editor/snippet/controller'
+import SnippetController from '@/components/Shared/Editor/snippet/controller'
 import Expansion from '../classes/expansion'
 import context from './context.stub'
 

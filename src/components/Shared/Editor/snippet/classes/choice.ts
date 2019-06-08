@@ -1,4 +1,4 @@
-import { Marker, Placeholder } from '@/components/_Shared/Editor/snippet/classes'
+import { Marker, Placeholder } from '@/components/Shared/Editor/snippet/classes'
 
 export default class Choice extends Placeholder {
   childIndex: number

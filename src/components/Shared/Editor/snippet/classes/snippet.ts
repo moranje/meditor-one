@@ -5,7 +5,7 @@ import {
   Expansion,
   Choice,
   Variable,
-} from '@/components/_Shared/Editor/snippet/classes'
+} from '@/components/Shared/Editor/snippet/classes'
 import { SnippetParser } from '../parser'
 
 function sortByIndex(list) {

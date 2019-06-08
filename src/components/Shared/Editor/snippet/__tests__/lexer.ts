@@ -1,4 +1,4 @@
-import lexer from '@/components/_Shared/Editor/snippet/lexer'
+import lexer from '@/components/Shared/Editor/snippet/lexer'
 
 function mapTokens(text: string, tokenMap: string[]) {
   return () => {

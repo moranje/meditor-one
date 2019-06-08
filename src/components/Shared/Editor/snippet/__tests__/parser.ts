@@ -1,4 +1,4 @@
-import { SnippetParser } from '@/components/_Shared/Editor/snippet/parser'
+import { SnippetParser } from '@/components/Shared/Editor/snippet/parser'
 import { format } from 'date-fns'
 import context from './context.stub'
 import Expansion from '../classes/expansion'

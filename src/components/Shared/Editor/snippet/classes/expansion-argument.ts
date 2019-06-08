@@ -1,4 +1,4 @@
-import { Snippet } from '@/components/_Shared/Editor/snippet/classes'
+import { Snippet } from '@/components/Shared/Editor/snippet/classes'
 
 export default class ExpansionArgument {
   name: number
