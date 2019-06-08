@@ -3,7 +3,7 @@
     <VFlex v-show="!visible" xs6 sm4 md2>
       <VProgressCircular :size="70" :width="7" color="primary" indeterminate />
     </VFlex>
-    <article v-show="visible" ref="editor" class="editor" />
+    <article ref="editor" v-show="visible" class="editor" />
     <ResizeObserver @notify="handleResize" />
   </VLayout>
 </template>

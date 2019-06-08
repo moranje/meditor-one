@@ -9,8 +9,8 @@
     <template v-for="file in files">
       <VListTile
         :key="file.id"
-        avatar
         :to="{ path: `/templates/${$route.params.folderId}/${file.id}` }"
+        avatar
       >
         <!-- <VListTileAvatar class="three-line-avatar hidden-md-and-down">
           <VIcon class="grey lighten-1 white--text">
@@ -21,8 +21,8 @@
         <VListTileContent>
           <VListTileTitle class="action-container">
             <TextLabel
-              class="action-text"
               :item="file"
+              class="action-text"
               @text-focus="focus($event, file)"
               @text-blur="blur($event, file)"
             />
@@ -35,8 +35,8 @@
               @click="file.editable ? blur($event, file) : focus($event, file)"
             >
               <VIcon
-                size="20"
                 :color="!file.editable ? 'grey lighten-1' : 'primary'"
+                size="20"
               >
                 mdi-pencil
               </VIcon>

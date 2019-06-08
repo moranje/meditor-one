@@ -1,11 +1,11 @@
 <template lang="html">
   <Editor
-    uid="snippet"
     :value="value"
-    language="snippet"
     :visible="visible"
     @blur="update"
     @change="update"
+    uid="snippet"
+    language="snippet"
   />
 </template>
 

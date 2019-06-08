@@ -1,14 +1,14 @@
 <template lang="html">
   <VNavigationDrawer
-    v-if="$vuetify.breakpoint.mdAndUp"
     ref="sidenav"
+    v-if="$vuetify.breakpoint.mdAndUp"
     v-model="drawer"
     :mini-variant="isMini"
+    @update:mini-variant="handleResize"
     fixed
     stateless
     app
     class="side-nav"
-    @update:mini-variant="handleResize"
   >
     <VToolbar flat class="transparent">
       <VAvatar tile>
@@ -16,7 +16,7 @@
       </VAvatar>
 
       <VSpacer />
-      <VBtn v-show="!isMini" icon @click.stop="isMini = true">
+      <VBtn v-show="!isMini" @click.stop="isMini = true" icon>
         <VIcon>mdi-chevron-left</VIcon>
       </VBtn>
     </VToolbar>
@@ -46,7 +46,7 @@
           <VListTileTitle>TEMPLATES</VListTileTitle>
         </VListTileContent>
         <VListTileAction>
-          <VBtn icon ripple @click="addFolder">
+          <VBtn @click="addFolder" icon ripple>
             <VIcon color="grey lighten-1">
               mdi-plus
             </VIcon>

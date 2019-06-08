@@ -6,7 +6,7 @@
 
     <VSpacer />
 
-    <VBtn v-show="$route.params.folderId" icon @click="add">
+    <VBtn v-show="$route.params.folderId" @click="add" icon>
       <VIcon>
         mdi-file-plus
       </VIcon>
@@ -16,7 +16,7 @@
 
     <VMenu offset-y nudge-bottom="14">
       <template v-slot:activator="{ on }">
-        <VBtn dark icon v-on="on">
+        <VBtn v-on="on" dark icon>
           <VIcon :color="loginColor">
             mdi-account-circle-outline
           </VIcon>
@@ -57,7 +57,7 @@
             <VListTileTitle>Login</VListTileTitle>
           </VListTileContent>
         </VListTile>
-        <VListTile v-if="$user" avatar @click="logout">
+        <VListTile v-if="$user" @click="logout" avatar>
           <VListTileAction>
             <VIcon>
               mdi-logout

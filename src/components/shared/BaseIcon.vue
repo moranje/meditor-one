@@ -1,8 +1,8 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
     :width="width"
     :height="height"
+    xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 82 80"
     style="vertical-align: middle;"
   >
@@ -31,14 +31,14 @@
         </text>
         <path
           id="m1-logo-cursor"
+          :style="`stroke-width: 4; stroke: ${iconColor}`"
           d="M84.5 16.5L84.5 93.5"
           class="m1-logo-element"
-          :style="`stroke-width: 4; stroke: ${iconColor}`"
         >
           <animate
+            :values="`${iconColor};rgba(0,0,0,0);rgba(0,0,0,0);${iconColor};`"
             attributeType="XML"
             attributeName="stroke"
-            :values="`${iconColor};rgba(0,0,0,0);rgba(0,0,0,0);${iconColor};`"
             dur="1.5s"
             repeatCount="5"
           />

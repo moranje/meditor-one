@@ -1,5 +1,5 @@
 <template lang="html">
-  <VLayout class="content" :style="`height: ${height}px`">
+  <VLayout :style="`height: ${height}px`" class="content">
     <VFlex class="templates" xs3>
       <FileList :files="files" />
     </VFlex>

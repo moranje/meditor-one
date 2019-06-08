@@ -5,15 +5,15 @@
       :open="collapsed"
       :active="activeFolder"
       :items="items"
-      item-key="id"
       :multiple-active="false"
+      @update:open="openFolder"
+      @update:active="activated"
+      item-key="id"
       item-children="folders"
       hoverable
       activatable
       transition
       class="folder-list"
-      @update:open="openFolder"
-      @update:active="activated"
     >
       <template slot="prepend" slot-scope="{ item, open }">
         <VIcon> {{ open ? 'mdi-folder-open' : 'mdi-folder' }} </VIcon>
@@ -25,18 +25,18 @@
           :ref="item.id"
           :value="item.name"
           :autofocus="item.editable"
+          @blur="focusLose($event, item)"
+          @keydown.enter="focusLose($event, item)"
           single-line
           full-width
           hide-details
           class="label-display"
-          @blur="focusLose($event, item)"
-          @keydown.enter="focusLose($event, item)"
         />
 
         <div
           v-if="!item.editable"
-          class="label-display text-truncate"
           @dblclick="focusGain($event, item)"
+          class="label-display text-truncate"
         >
           {{ item.name }}
         </div>

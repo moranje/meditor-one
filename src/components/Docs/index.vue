@@ -1,5 +1,5 @@
 <template>
-  <VLayout class="docs" :style="`height: ${height}px`">
+  <VLayout :style="`height: ${height}px`" class="docs">
     <VFlex class="doc-list" xs3>
       <VList ref="docList" class="docs" transition="slide-x-transition">
         <template v-for="doc in docs">

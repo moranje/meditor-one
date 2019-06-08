@@ -2,19 +2,19 @@
   <Transition name="slide">
     <div class="list-actions">
       <VIcon
-        class="action action-edit"
         :color="editMode ? 'primary' : 'grey lighten-1'"
         @click="edit"
+        class="action action-edit"
       >
         mdi-pencil
       </VIcon>
-      <VIcon class="action action-add" color="grey lighten-1" @click="add">
+      <VIcon @click="add" class="action action-add" color="grey lighten-1">
         mdi-folder-plus
       </VIcon>
       <VIcon
+        @click="remove"
         class="action action-remove"
         color="grey lighten-1"
-        @click="remove"
       >
         mdi-delete
       </VIcon>

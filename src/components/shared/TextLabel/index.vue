@@ -6,18 +6,18 @@
       :ref="item.id"
       :value="item.name"
       :autofocus="item.editable"
-      single-line
-      full-width
-      hide-details
       :class="`text-label-field text-label-${item.id}`"
       @blur="blur($event, item)"
       @keydown.enter="blur($event, item)"
+      single-line
+      full-width
+      hide-details
     />
 
     <div
       v-show="!item.editable"
-      class="text-label-text text-truncate"
       @dblclick="focus($event, item)"
+      class="text-label-text text-truncate"
     >
       {{ item.name }}
     </div>

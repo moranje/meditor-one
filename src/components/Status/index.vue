@@ -2,9 +2,9 @@
   <VLayout class="status">
     <VFlex xs12>
       <Editor
-        uid="status"
         :value="value"
         :visible="true"
+        uid="status"
         language="status"
         @blur="update"
         @change="update"

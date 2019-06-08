@@ -85,7 +85,9 @@ export default class Snippet extends Marker {
           // referencing the last named placeholder. If a user more than one
           // named placeholder the same variable reference the last is used.
           // Since the  index may change by expansions, id references are used.
-          if (!variables[child.name].placeholderId) { variables[child.name].placeholderId = child.id }
+          if (!variables[child.name].placeholderId) {
+            variables[child.name].placeholderId = child.id
+          }
         }
 
         if (child instanceof Variable) {
@@ -95,7 +97,9 @@ export default class Snippet extends Marker {
           variables[child.name] = Object.assign(variables[child.name], child)
 
           // Only assign a null value to new or empty variables
-          if (!variables[child.name].placeholderId) { variables[child.name].placeholderId = null }
+          if (!variables[child.name].placeholderId) {
+            variables[child.name].placeholderId = null
+          }
         }
 
         // Keep walking

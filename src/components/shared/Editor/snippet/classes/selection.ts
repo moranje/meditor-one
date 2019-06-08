@@ -12,17 +12,13 @@ export default class Selection {
   ) {
     if (start.column < 1) {
       throw new Error(
-        `Column starting postion must be a positive integer, was ${
-          start.column
-        }`
+        `Column starting postion must be a positive integer, was ${start.column}`
       )
     }
 
     if (start.lineNumber < 1) {
       throw new Error(
-        `Line number starting postion must be a positive integer, was ${
-          start.lineNumber
-        }`
+        `Line number starting postion must be a positive integer, was ${start.lineNumber}`
       )
     }
 
@@ -34,9 +30,7 @@ export default class Selection {
 
     if (end.lineNumber < 1) {
       throw new Error(
-        `Line number ending postion must be a positive integer, was ${
-          end.lineNumber
-        }`
+        `Line number ending postion must be a positive integer, was ${end.lineNumber}`
       )
     }
 

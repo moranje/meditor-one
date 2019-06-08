@@ -9,10 +9,10 @@
           <VLayout align-center>
             <VFlex xs12 text-xs-center>
               <VBtn
+                @click="loginWithPopup"
                 outline
                 color="primary"
                 class="text-xs-center"
-                @click="loginWithPopup"
               >
                 <VIcon>mdi-google</VIcon>
                 &nbsp;Log in
@@ -49,7 +49,7 @@
 
         <VCardActions v-show="!$user">
           <VSpacer />
-          <VBtn color="primary" @click="loginWithEmailAndPassword">
+          <VBtn @click="loginWithEmailAndPassword" color="primary">
             Log in
           </VBtn>
         </VCardActions>
@@ -57,7 +57,7 @@
         <VCardActions v-show="$user">
           <VLayout align-center>
             <VFlex xs12 text-xs-center>
-              <VBtn color="primary" @click="logout">
+              <VBtn @click="logout" color="primary">
                 Log uit
               </VBtn>
             </VFlex>
