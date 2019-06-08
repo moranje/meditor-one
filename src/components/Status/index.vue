@@ -4,10 +4,10 @@
       <Editor
         :value="value"
         :visible="true"
-        uid="status"
-        language="status"
         @blur="update"
         @change="update"
+        uid="status"
+        language="status"
       />
     </VFlex>
   </VLayout>

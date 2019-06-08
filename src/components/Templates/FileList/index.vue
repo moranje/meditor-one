@@ -22,17 +22,17 @@
           <VListTileTitle class="action-container">
             <TextLabel
               :item="file"
-              class="action-text"
               @text-focus="focus($event, file)"
               @text-blur="blur($event, file)"
+              class="action-text"
             />
 
             <VBtn
               v-aria="aria.edit"
+              @click="file.editable ? blur($event, file) : focus($event, file)"
               icon
               ripple
               class="edit action-icon"
-              @click="file.editable ? blur($event, file) : focus($event, file)"
             >
               <VIcon
                 :color="!file.editable ? 'grey lighten-1' : 'primary'"
@@ -43,10 +43,10 @@
             </VBtn>
             <VBtn
               v-aria="aria.del"
+              @click="remove(file)"
               icon
               ripple
               class="delete action-icon"
-              @click="remove(file)"
             >
               <VIcon size="20" color="grey lighten-1">
                 mdi-delete

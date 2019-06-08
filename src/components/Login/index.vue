@@ -26,6 +26,7 @@
 
           <VForm>
             <VTextField
+              v-model="email"
               prepend-icon="mdi-account-outline"
               name="login"
               label="Login"
@@ -34,6 +35,7 @@
             />
             <VTextField
               id="password"
+              v-model="password"
               prepend-icon="mdi-lock-outline"
               name="password"
               label="Password"
@@ -83,11 +85,10 @@ export default {
 
   props: [],
 
-  data () {
-    return {
-
-    }
-  },
+  data: () => ({
+    email: '',
+    password: '',
+  }),
 
   computed: {
 
@@ -124,8 +125,11 @@ export default {
           // this.$store.commit('signIn', { displayName, email, uid });
         })
         .catch((error) => {
-          throw error
-          // ...
+          if (error.code === 'auth/email-already-in-use') {
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch((error) => { throw error })
+          } else {
+            throw error
+          }
         })
     },
 
