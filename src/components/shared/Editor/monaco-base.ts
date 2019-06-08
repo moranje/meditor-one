@@ -1,13 +1,14 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import status from './languages/status'
 import snippet from './languages/snippet'
+import docSnippet from './languages/doc-snippet'
 import { emitter } from '@/components/Shared/emitter'
 
 interface EditorOptions {
   language: string
 }
 
-const config = { snippet, status }
+const config = { snippet, status, 'doc-snippet': docSnippet }
 
 export function setup($el: any, options: EditorOptions) {
   let opts = options

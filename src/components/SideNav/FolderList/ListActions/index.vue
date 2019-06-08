@@ -1,7 +1,5 @@
 <template lang="html">
-  <Transition
-    name="slide"
-  >
+  <Transition name="slide">
     <div class="list-actions">
       <VIcon
         class="action action-edit"
@@ -10,11 +8,7 @@
       >
         mdi-pencil
       </VIcon>
-      <VIcon
-        class="action action-add"
-        color="grey lighten-1"
-        @click="add"
-      >
+      <VIcon class="action action-add" color="grey lighten-1" @click="add">
         mdi-folder-plus
       </VIcon>
       <VIcon
@@ -31,21 +25,14 @@
 <script lang="js">
 export default {
   name: 'ListActions',
+
   props: {
     editMode: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
-    return {
 
-    }
-  },
-  computed: {
-
-  },
-  mounted () {},
   methods: {
     edit () {
       this.$emit('edit')
@@ -57,25 +44,27 @@ export default {
 
     remove () {
       this.$emit('remove')
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .list-actions {
-    // padding-right: 4px;
-  }
+.list-actions {
+  // padding-right: 4px;
+}
 
-  .action:hover {
-    color: rgba(0,0,0,0.54) !important;
-  }
+.action:hover {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
 
-  .slide-enter-active, .slide-leave-active {
-    transition: all 0.5s ease-in-out;
-  }
-  .slide-enter, .slide-leave-to {
-    transform: translateX(48px);
-    opacity: 0;
-  }
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(48px);
+  opacity: 0;
+}
 </style>

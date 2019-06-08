@@ -31,8 +31,8 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
 
   methods: {
@@ -42,8 +42,8 @@ export default {
 
     blur (event, item) {
       this.$emit('text-blur', event, item)
-    }
-  }
+    },
+  },
 }
 </script>
 

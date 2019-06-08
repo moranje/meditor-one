@@ -6,12 +6,7 @@
     viewBox="0 0 82 80"
     style="vertical-align: middle;"
   >
-    <title
-      :id="iconName"
-      lang="nl"
-    >
-      {{ iconName }} icon
-    </title>
+    <title :id="iconName" lang="nl">{{ iconName }} icon</title>
     <g :fill="iconColor">
       <g transform="translate(-4 -15)">
         <text
@@ -30,10 +25,7 @@
           font-size="72"
           class="m1-logo-element"
         >
-          <tspan
-            x="48.6"
-            y="94"
-          >
+          <tspan x="48.6" y="94">
             1
           </tspan>
         </text>
@@ -61,21 +53,21 @@ export default {
   props: {
     iconName: {
       type: String,
-      default: 'logo'
+      default: 'logo',
     },
     width: {
       type: [Number, String],
-      default: 36
+      default: 36,
     },
     height: {
       type: [Number, String],
-      default: 36
+      default: 36,
     },
     iconColor: {
       type: String,
-      default: 'currentColor'
-    }
-  }
+      default: 'currentColor',
+    },
+  },
 }
 </script>
 

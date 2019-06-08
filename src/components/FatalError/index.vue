@@ -19,12 +19,11 @@ export default {
   mounted () {},
   methods: {
 
-  }
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .fatal-error {
-
-  }
+.fatal-error {
+}
 </style>

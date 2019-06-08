@@ -11,5 +11,5 @@ import { LANGUAGE_ID } from './language'
 // wordPattern;
 
 monaco.languages.setLanguageConfiguration(LANGUAGE_ID, {
-  brackets: [['${', '}'], ['(', ')']]
+  brackets: [['${', '}'], ['(', ')']],
 })

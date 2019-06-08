@@ -1,7 +1,9 @@
-import Marker from '@/components/Shared/Editor/snippet/classes/marker'
-import Transform from '@/components/Shared/Editor/snippet/classes/transform'
+import {
+  EditableMarker,
+  Transform,
+} from '@/components/Shared/Editor/snippet/classes'
 
-export default abstract class TransformableMarker extends Marker {
+export default abstract class TransformableMarker extends EditableMarker {
   public transform: Transform
   // protected _model: string
   // Should return the text inside marker boundaries. May change as the user

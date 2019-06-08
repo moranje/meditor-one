@@ -19,7 +19,8 @@ emitter.on(`${LANGUAGE_ID}.loaded`, ({ editor, args }) => {
 
   disposable = monaco.languages.registerCompletionItemProvider(LANGUAGE_ID, {
     triggerCharacters: ['!'],
-    provideCompletionItems
+    // @ts-ignore
+    provideCompletionItems,
   })
 })
 
@@ -33,11 +34,9 @@ function provideCompletionItems() {
     suggestions: files.map(file => {
       return {
         label: `${slug(file.parent.name)}-${slug(file.name)}`,
-        insertTextRules:
-          monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
         insertText: `${slug(file.parent.name)}-${slug(file.name)}`,
-        kind: monaco.languages.CompletionItemKind.Snippet
+        kind: monaco.languages.CompletionItemKind.Snippet,
       }
-    })
+    }),
   }
 }

@@ -1,23 +1,22 @@
 import { Model } from '@vuex-orm/core'
 
 export default class User extends Model {
-  displayName: string;
-  email: string;
-  emailVerified: boolean;
-  isAnonymous: boolean;
-  metadata: string;
-  phoneNumber: string;
-  photoURL: string;
-  providerData: string;
-  providerId: string;
-  uid: string;
-  exampleTemplateVisible: boolean;
+  static entity = 'user'
+  static primaryKey = 'uid'
 
-  static entity = 'user';
+  displayName: string
+  email: string
+  emailVerified: boolean
+  isAnonymous: boolean
+  metadata: string
+  phoneNumber: string
+  photoURL: string
+  providerData: string
+  providerId: string
+  uid: string
+  exampleTemplateVisible: boolean
 
-  static primaryKey = 'uid';
-
-  static fields () {
+  static fields() {
     return {
       displayName: this.string(''),
       email: this.string(''),
@@ -29,7 +28,7 @@ export default class User extends Model {
       providerData: this.string(''),
       providerId: this.string(''),
       uid: this.string(''),
-      exampleTemplateVisible: this.boolean(true)
+      exampleTemplateVisible: this.boolean(true),
     }
   }
 }

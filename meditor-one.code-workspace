@@ -1,0 +1,50 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "node_modules/monaco-editor-core/esm/vs"
+    }
+  ],
+  "settings": {
+    "jest.autoEnable": false,
+
+    // ===
+    // Spacing
+    // ===
+
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.trimAutoWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    // ===
+    // Files
+    // ===
+
+  //   "files.exclude": {
+  //     "**/*.log": true,
+  //     "**/*.log*": true,
+  //     "**/dist": true,
+  //     "**/coverage": true
+  //   },
+
+    // ===
+    // Linters
+    // ===
+
+    "editor.formatOnSave": false,
+    "eslint.autoFixOnSave": true,
+    "eslint.validate": [
+      { "language": "vue", "autoFix": true },
+    ],
+    "vetur.dev.logLevel": "DEBUG",
+    "vetur.trace.server": "verbose",
+    "vetur.experimental.templateInterpolationService": true,
+    "git.ignoreLimitWarning": true
+  }
+}

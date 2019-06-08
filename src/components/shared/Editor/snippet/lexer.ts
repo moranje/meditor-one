@@ -13,27 +13,31 @@ export default moo.states({
     // Operators, once positive lookbehinds are a thing, make this more
     // accurate (?<=\})
     operator: /[|&](?=\$)/,
-    equals: /[=](?=\$)/
+    equals: /[=](?=\$)/,
   },
 
   marker: {
     open: { match: /\{/, next: 'nested' },
-    openTag: /</,
+    openTag: { match: /</, next: 'namedMarker' },
     exclamation: { match: /!/, next: 'slot' },
-    closeTag: { token: />/, pop: true },
 
     namedInt: /\d+(?=<)/, // named marker
-    intName: /[a-zA-Z][a-zA-Z0-9_]+(?=>)/, // named marker name
 
     int: { match: /\d+/, pop: true }, // marker
-    name: { match: /[a-zA-Z][a-zA-Z0-9_]+/, pop: true } // variable
+    name: { match: /[a-zA-Z][a-zA-Z0-9_-]+/, pop: true }, // variable
+  },
+
+  namedMarker: {
+    closeTag: { match: />/, pop: true },
+
+    name: /[a-zA-Z][a-zA-Z0-9_-]+/,
   },
 
   nested: {
     int: { match: /\d+/, next: 'placeholder' },
-    name: { match: /[a-zA-Z][a-zA-Z0-9_]+/, next: 'variable' },
+    name: { match: /[a-zA-Z][a-zA-Z0-9_-]+/, next: 'variable' },
     exclamation: { match: /!/, next: 'expansion' },
-    pound: { match: /#/, next: 'action' }
+    pound: { match: /#/, next: 'action' },
   },
 
   placeholder: {
@@ -41,11 +45,13 @@ export default moo.states({
     openTag: /</,
     closeTag: />/,
 
-    intName: /[a-zA-Z][a-zA-Z0-9_]+(?=>)/, // named placeholder name
+    operatorColon: { match: /:(?=!?=)/ },
+    intName: /[a-zA-Z][a-zA-Z0-9_-]+(?=>)/, // named placeholder name
 
-    colon: { match: /:/, next: 'args' },
+    operator: { match: /!?=/, next: 'expression' },
+    colon: { match: /:/, next: 'level' },
     pipe: { match: /\|/, next: 'choice' },
-    slash: { match: /\//, next: 'pattern' }
+    slash: { match: /\//, next: 'pattern' },
   },
 
   choice: {
@@ -54,35 +60,42 @@ export default moo.states({
     close: { match: /\}/, pop: true },
 
     exclamation: { match: /!/, push: 'expansion' },
+    dollar: { match: /\$/, push: 'marker' },
 
-    open: /\${/,
     escape: /\\./,
     comma: /,/,
     pipe: /\|/,
-    newline: { match: /\n/, lineBreaks: true }
   },
 
   variable: {
     close: { match: /\}/, pop: true },
 
+    operatorColon: { match: /:(?=!?=)/ },
+
+    operator: { match: /!?=/, next: 'expression' },
     slash: { match: /\//, next: 'pattern' },
-    colon: { match: /:/, next: 'nestedSnippet' }
+    colon: { match: /:/, next: 'level' },
   },
 
   expansion: {
     text: moo.fallback,
 
+    // End of expansion element
     close: { match: /\}/, pop: true },
+    // End of choice expansion element
+    comma: { match: /,/, pop: true },
 
     slash: { match: /\//, next: 'slotKeyValuePair' },
 
-    name: /[a-zA-Z][a-zA-Z0-9_]+/,
-    newline: { match: /\n/, lineBreaks: true }
+    int: /\d+/,
+    colon: /:/,
+    name: /[a-zA-Z][a-zA-Z0-9_-]+/,
+    newline: { match: /\n/, lineBreaks: true },
   },
 
   slot: {
     int: { match: /\d+/, pop: true },
-    name: { match: /[a-zA-Z][a-zA-Z0-9_]+/, pop: true }
+    name: { match: /[a-zA-Z][a-zA-Z0-9_-]+/, pop: true },
   },
 
   action: {
@@ -90,32 +103,34 @@ export default moo.states({
 
     colon: { match: /:/, next: 'textArgs' },
 
-    name: /[a-zA-Z_]+/
+    name: /[a-zA-Z_]+/,
   },
 
   expression: {
     text: moo.fallback,
 
-    colon: { match: /:/, next: 'args' }
+    close: { match: /\}/, pop: true },
+
+    colon: { match: /:/ },
   },
 
   pattern: {
-    pattern: moo.fallback,
+    text: moo.fallback,
 
-    slash: { match: /\//, next: 'replacement' }
+    slash: { match: /\//, next: 'replacement' },
   },
 
   replacement: {
-    replacement: moo.fallback,
+    text: moo.fallback,
 
-    open: { match: /\${/, push: 'nestedGroup' },
     dollar: { match: /\$/, push: 'unnestedGroup' },
 
-    slash: { match: /\//, next: 'flags' }
+    slash: { match: /\//, next: 'flags' },
   },
 
   unnestedGroup: {
-    int: { match: /\d+/, pop: true }
+    open: { match: /{/, next: 'nestedGroup' },
+    int: { match: /\d+/, pop: true },
   },
 
   nestedGroup: {
@@ -128,25 +143,24 @@ export default moo.states({
     plus: /\+/,
     minus: /-/,
     questionmark: /\?/,
-    caseModifier: /\/upcase|\/downcase|\/capitalize/
+    caseModifier: /\/upcase|\/downcase|\/capitalize/,
   },
 
   flags: {
     close: { match: /\}/, pop: true },
 
-    flags: /[gmi]{1,3}/
+    text: /[gmi]{1,3}/,
   },
 
-  args: {
+  level: {
     text: moo.fallback,
 
-    operator: { match: /!?=/, next: 'expression' },
+    dollar: { match: /\$/, push: 'marker' },
     close: { match: /\}/, pop: true },
 
-    colon: /:/,
-
+    comment: /^#[^\n]*\n?/,
     escape: /\\./,
-    newline: { match: /\n/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true },
   },
 
   textArgs: {
@@ -156,23 +170,24 @@ export default moo.states({
 
     colon: /:/,
     escape: /\\./,
-    newline: { match: /\n/, lineBreaks: true }
+    newline: { match: /\n/, lineBreaks: true },
   },
 
   slotKeyValuePair: {
     colon: { match: /:/, next: 'slotValue' },
 
     int: /\d+/,
-    name: /[a-zA-Z][a-zA-Z0-9_]+/
+    name: /[a-zA-Z][a-zA-Z0-9_-]+/,
   },
 
   slotValue: {
     text: moo.fallback,
 
+    dollar: { match: /\$/, push: 'marker' },
     slash: { match: /\//, next: 'slotKeyValuePair' },
     close: { match: /\}/, pop: true },
 
     escape: /\\./,
-    newline: { match: /\n/, lineBreaks: true }
-  }
+    newline: { match: /\n/, lineBreaks: true },
+  },
 })

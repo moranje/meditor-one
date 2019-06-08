@@ -1,0 +1,6858 @@
+[{
+		"icpc": "A01",
+		"name": "Pijn gegeneraliseerd",
+		"score": "5,0",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A02",
+		"name": "Koude rillingen",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A03",
+		"name": "Koorts",
+		"score": "12,1",
+		"incidence": true,
+		"protocol": ["M29"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A04",
+		"name": "Moeheid / zwakte",
+		"score": "37,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A05",
+		"name": "Algemene achteruitgang",
+		"score": "2,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A06",
+		"name": "Flauwvallen/syncope",
+		"score": "8,7",
+		"incidence": true,
+		"protocol": ["M75"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A07",
+		"name": "Coma",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A08",
+		"name": "Zwelling [ex.oedeem k07]",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A09",
+		"name": "Transpiratie problemen",
+		"score": "5,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A10",
+		"name": "Bloeding (lokalisatie nao)",
+		"score": "2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A12",
+		"name": "Allergie / allergische reactie nao",
+		"score": "8,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Immunotherapie"
+	},
+	{
+		"icpc": "A13",
+		"name": "Bezorgdheid (bij)werking geneesmiddelen",
+		"score": "5,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A14",
+		"name": "Koliek bij zuigeling",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": ["M100"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A15",
+		"name": "Overmatig huilende zuigeling",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A16",
+		"name": "Prikkelbare / drukke zuigeling",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A17",
+		"name": "Andere algemene sympt. zuigeling",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " Bijz: Zuigelingenbureau"
+	},
+	{
+		"icpc": "A20",
+		"name": "Euthanasie verzoek / gesprek over",
+		"score": "1,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " Bijz: SCEN"
+	},
+	{
+		"icpc": "A25",
+		"name": "Angst voor de dood",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A26",
+		"name": "Angst voor kanker nao",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A27",
+		"name": "Angst voor andere ziekte nao neg.",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A28",
+		"name": "Functiebeperking / handicap nao",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A29",
+		"name": "Andere algemene sympt. / klachten",
+		"score": "24,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A70",
+		"name": "Tuberculose gegen. [ex.r70]",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A71",
+		"name": "Mazelen",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A72",
+		"name": "Waterpokken",
+		"score": "2,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A73",
+		"name": "Malaria",
+		"score": "0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A74",
+		"name": "Rode hond",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A75",
+		"name": "Mononucleosis infectiosa",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": ["M22"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A76",
+		"name": "Andere virusziekten met exantheem",
+		"score": "3,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A77",
+		"name": "Andere virusziekten nao",
+		"score": "4,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A78",
+		"name": "Andere infectieziekten nao",
+		"score": "2,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " MRSA-diagnostiek"
+	},
+	{
+		"icpc": "A79",
+		"name": "Maligne neopl. (onbekende prim.lok.)",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A80",
+		"name": "Ongeval / letsel nao",
+		"score": "12,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "A81",
+		"name": "Multitrauma / inwendige letsels",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A82",
+		"name": "Late gevolgen van letsel",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A84",
+		"name": "Geneesmiddel intoxicatie",
+		"score": "0,7",
+		"incidence": true,
+		"protocol": " B/ ",
+		"diagnostics": "A",
+		"treatment": "V",
+		"notes": " Module Polyfarmacie volgens STRIP-methode = A"
+	},
+	{
+		"icpc": "A85",
+		"name": "Geneesmiddel bijwerking juiste dosering",
+		"score": "9,3",
+		"incidence": true,
+		"protocol": " B/ ",
+		"diagnostics": "A",
+		"treatment": "B",
+		"notes": " Module Polyfarmacie volgens STRIP-methode = A"
+	},
+	{
+		"icpc": "A86",
+		"name": "Intoxicaties andere chem. stof",
+		"score": "0,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A87",
+		"name": "Complicaties medische behandeling",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A88",
+		"name": "Schadel. gevolgen fys. fact.",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "A89",
+		"name": "Gevolgen prothese neg. / pacemaker",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A90",
+		"name": "Multiple aangeboren afwijkingen",
+		"score": "1,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V/Bijz",
+		"notes": " Screening = Bijz"
+	},
+	{
+		"icpc": "A91",
+		"name": "Afwijkende uitslagen onderzoek neg.",
+		"score": "5,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A92",
+		"name": "Toxoplasmose",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A93",
+		"name": "Premature / immature pasgeborene",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "A94",
+		"name": "Alle andere perinatale morbiditeit",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V Begeleiding zwangerschap is vervallen (was Bijz)."
+	},
+	{
+		"icpc": "A95",
+		"name": "Perinatale mortaliteit",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": "/ Bijz Audit"
+	},
+	{
+		"icpc": "A96",
+		"name": "Dood / overlijden [ex.perinataal]",
+		"score": "3,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A97",
+		"name": "Geen ziekte",
+		"score": "79,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "A99",
+		"name": "Andere gegen./ niet gespec. ziekten",
+		"score": "81,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B02",
+		"name": "Vergrote lymfeklier(en)",
+		"score": "4,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B03",
+		"name": "Andere sympt. / klachten lymfeklieren",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B04",
+		"name": "Sympt. / klacht. bloed/ lymfestelsel",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B25",
+		"name": "Angst voor aids",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B26",
+		"name": "Angst v. kanker bloed / lymfestelsel",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B27",
+		"name": "Angst and. ziekte bloed / lymfestelsel",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B28",
+		"name": "Handicap / beperk.bloed / lymfestelsel",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B29",
+		"name": "And.sympt. / kl.bloed / lymfestelsel / milt",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B70",
+		"name": "Acute lymphadenitis",
+		"score": "0,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B71",
+		"name": "Chron. / niet specifieke lymphadenitis",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B72",
+		"name": "Ziekte van hodgkin",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B73",
+		"name": "Leukemie",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B74",
+		"name": "Andere mal. neopl. bloed / lymfestelsel",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B75",
+		"name": "Benigne / niet gespec. neopl. bloed / lymfe",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B76",
+		"name": "Milt ruptuur",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B77",
+		"name": "Andere letsels bloed / lymfestelsel ",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B78",
+		"name": "Erfelijke hemolytische anemie",
+		"score": "2",
+		"incidence": false,
+		"protocol": ["M76"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B79",
+		"name": "And. aangeb. afw. bloed / lymfestelsel",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B80",
+		"name": "IJzergebreksanemie",
+		"score": "4,3",
+		"incidence": true,
+		"protocol": ["M76"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B81",
+		"name": "Pernicieuze / foliumdefic. anemie",
+		"score": "6,8",
+		"incidence": false,
+		"protocol": ["M76"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "B82",
+		"name": "Andere /niet gespecificeerde anemie",
+		"score": "6,6",
+		"incidence": false,
+		"protocol": ["M76"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B83",
+		"name": "Purpura / stollingsst./ afw. trombose",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B84",
+		"name": "Afwijking leukocyten",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B85",
+		"name": "Onverklaarbare afwijking bloedonderzoek",
+		"score": "15",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B86",
+		"name": "Andere hematologische afwijkingen",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B87",
+		"name": "Splenomegalie",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "B90",
+		"name": "Hiv-infectie (aids / arc)",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": " B/",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": "/A Vanwege complexiteit bij diagnose meestal verwijzen. A = begeleiding chronische hiv-patiënten"
+	},
+	{
+		"icpc": "B99",
+		"name": "Andere ziekten bloed / lymfestelsel/milt",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D01",
+		"name": "Gegen. buikpijn / buikkrampen",
+		"score": "19,5",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D02",
+		"name": "Maagpijn",
+		"score": "26,9",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D03",
+		"name": "Zuurbranden",
+		"score": "9,1",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D04",
+		"name": "Pijn anus / rectum",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": ["M89"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D05",
+		"name": "Perianale jeuk",
+		"score": "3,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D06",
+		"name": "Andere gelokaliseerde buikpijn",
+		"score": "29,6",
+		"incidence": true,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D08",
+		"name": "Flatulentie / meteorisme / boeren",
+		"score": "1,2",
+		"incidence": true,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D09",
+		"name": "Misselijkheid",
+		"score": "6,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D10",
+		"name": "Braken",
+		"score": "4,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D11",
+		"name": "Diarree",
+		"score": "15,8",
+		"incidence": true,
+		"protocol": ["M34"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D12",
+		"name": "Obstipatie",
+		"score": "18,2",
+		"incidence": true,
+		"protocol": ["M94"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D13",
+		"name": "Geelzucht",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": ["M22"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V Echo door huisarts speelt hier beperkte rol."
+	},
+	{
+		"icpc": "D14",
+		"name": "Haematemesis / bloed braken",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D15",
+		"name": "Melaena / zwarte teer ontlasting",
+		"score": "0,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D16",
+		"name": "Rectaal bloedverlies",
+		"score": "4,8",
+		"incidence": true,
+		"protocol": ["M89"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Proctoscopie"
+	},
+	{
+		"icpc": "D17",
+		"name": "Incontinentie voor ontlasting",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D18",
+		"name": "Verandering ontlast./ defec. patr.",
+		"score": "3,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D19",
+		"name": "Sympt./ klacht. tanden / tandvlees",
+		"score": "4,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D20",
+		"name": "Sympt./ klacht. mond / tong / lippen",
+		"score": "8,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D21",
+		"name": "Slikproblemen",
+		"score": "2,4",
+		"incidence": true,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D22",
+		"name": "Wormen / oxyuren / andere parasieten",
+		"score": "2,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D24",
+		"name": "Zwelling buik nao",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D25",
+		"name": "Verandering omvang /uitzetting buik",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D26",
+		"name": "Angst kanker spijsverteringsorganen",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D27",
+		"name": "Angst / andere ziekte spijsverteringsorg.",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D28",
+		"name": "Functiebep./ handicap spijsverteringsorg.",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D29",
+		"name": "And.sympt./ klacht. spijsverteringsorg.",
+		"score": "2,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D70",
+		"name": "Infectieuze diarree, dysenterie I;",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": ["M34"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D71",
+		"name": "Bof",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D72",
+		"name": "Virus hepatitis",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": ["M22"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D73",
+		"name": "Veronderstelde gastro-intest.inf.",
+		"score": "14,9",
+		"incidence": true,
+		"protocol": ["M34"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D74",
+		"name": "Maligne neoplasma maag",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D75",
+		"name": "Maligne neoplasma colon / rectum",
+		"score": "6,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D76",
+		"name": "Maligne neoplasma pancreas",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D77",
+		"name": "Mal. neopl. spijsv. org. and. / niet gesp.",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D78",
+		"name": "Benigne neoplasmata spijsvert. org.",
+		"score": "2,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D79",
+		"name": "Corpus alienum via mond / anus",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D80",
+		"name": "Andere letsels spijsvert.org.",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D81",
+		"name": "Aangeboren afwijking spijsvert.org.",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D82",
+		"name": "Ziekte tanden / tandvlees",
+		"score": "3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D83",
+		"name": "Ziekte mond / tong / lippen",
+		"score": "7,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D84",
+		"name": "Ziekte oesophagus",
+		"score": "19,7",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D85",
+		"name": "Ulcus duodeni",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D86",
+		"name": "Andere peptische ulcera",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D87",
+		"name": "Stoornissen maagfunctie",
+		"score": "15,4",
+		"incidence": false,
+		"protocol": ["M36"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D88",
+		"name": "Appendicitis",
+		"score": "1,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D89",
+		"name": "Hernia inguinalis",
+		"score": "7,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D90",
+		"name": "Hernia diaphragmatica / hiatus",
+		"score": "4,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D91",
+		"name": "Andere hernia abdominalis",
+		"score": "4,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D92",
+		"name": "Diverticulose / diverticulitis",
+		"score": "11,1",
+		"incidence": false,
+		"protocol": ["M99"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V Rol echo discutabel, liever CRP-test."
+	},
+	{
+		"icpc": "D93",
+		"name": "Spastisch colon / ibs",
+		"score": "19,8",
+		"incidence": false,
+		"protocol": ["M71"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "D94",
+		"name": "Colitis ulcerosa / chron. Enteritis",
+		"score": "7,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "D95",
+		"name": "Fissura ani/perianaal abces",
+		"score": "9,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Incisie"
+	},
+	{
+		"icpc": "D96",
+		"name": "Hepatomegalie",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": ["M22"],
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D97",
+		"name": "Cirrose / andere leverziekten neg.",
+		"score": "4,4",
+		"incidence": false,
+		"protocol": ["M22"],
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D98",
+		"name": "Cholecystitis / cholelithiasis",
+		"score": "2,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "D99",
+		"name": "And. ziekten spijsverteringsorganen",
+		"score": "5,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F01",
+		"name": "Pijn oog ",
+		"score": "1",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Event spleetlamp"
+	},
+	{
+		"icpc": "F02",
+		"name": "Rood oog ",
+		"score": "3,6",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Event spleetlamp, niet bij behandeling"
+	},
+	{
+		"icpc": "F03",
+		"name": "Afscheiding uit oog",
+		"score": "3",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F04",
+		"name": "Mouches volantes",
+		"score": "2,6",
+		"incidence": false,
+		"protocol": ["M12"],
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": "/V Bijz: Event spleetlamp"
+	},
+	{
+		"icpc": "F05",
+		"name": "Andere visus sympt. / klacht [ex f94]",
+		"score": "10,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F13",
+		"name": "Afwijkend gevoel aan oog",
+		"score": "14,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F14",
+		"name": "Afwijkende oogbewegingen",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F15",
+		"name": "Afwijkend aspect oog",
+		"score": "2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F16",
+		"name": "Symptomen / klachten oogleden",
+		"score": "4,5",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F17",
+		"name": "Symptomen / klachten van bril",
+		"score": "0,3",
+		"incidence": true,
+		"protocol": ["M12"],
+		"diagnostics": "B/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F18",
+		"name": "Symptomen / klachten van contactlens",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F27",
+		"name": "Angst voor oogziekte",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F28",
+		"name": "Functiebeperking / handicap oog",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F29",
+		"name": "Andere symptomen / klachten oog",
+		"score": "2,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B/Bijz",
+		"treatment": "Bijz",
+		"notes": ": Spleetlamp"
+	},
+	{
+		"icpc": "F70",
+		"name": "Infectieuze conjunctivitis",
+		"score": "17,5",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F71",
+		"name": "Allergische conjunctivitis",
+		"score": "11,9",
+		"incidence": false,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F72",
+		"name": "Blepharitis / hordeolum/ chalazion",
+		"score": "11,3",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Injectie/excisie chalazion"
+	},
+	{
+		"icpc": "F73",
+		"name": "And. inf. / ontst. oog [ex. herp / trach]",
+		"score": "2,8",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "F74",
+		"name": "Neoplasma oog / adnexen",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F75",
+		"name": "Kneuzing / bloeding oog",
+		"score": "2,3",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F76",
+		"name": "Corpus alienum oog",
+		"score": "3,4",
+		"incidence": true,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Oogboring"
+	},
+	{
+		"icpc": "F79",
+		"name": "Andere letsels oog",
+		"score": "2,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "F80",
+		"name": "Stenose traankanaal zuigeling",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V/Bijz",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F81",
+		"name": "Andere aangeboren afwijkingen oog",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F82",
+		"name": "Netvlies loslating",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F83",
+		"name": "Retinopathie",
+		"score": "4,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F84",
+		"name": "Macula degeneratie",
+		"score": "4,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F85",
+		"name": "Ulcus corneae (incl.herpetisch)",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": ["M57"],
+		"diagnostics": "B",
+		"treatment": "V/Bijz",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F86",
+		"name": "Trachoom",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F91",
+		"name": "Refractieafwijkingen",
+		"score": "18,1",
+		"incidence": false,
+		"protocol": ["M12"],
+		"diagnostics": "B/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F92",
+		"name": "Cataract",
+		"score": "21,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F93",
+		"name": "Glaucoom",
+		"score": "10,6",
+		"incidence": false,
+		"protocol": ["M57"],
+		"diagnostics": "V/Bijz",
+		"treatment": "V/Bijz",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F94",
+		"name": "Blindheid, elke graad / vorm",
+		"score": "1,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "F95",
+		"name": "Strabismus",
+		"score": "2,0",
+		"incidence": false,
+		"protocol": ["M12"],
+		"diagnostics": "B/Bijz",
+		"treatment": "V/Bijz",
+		"notes": " Bijz: Spleetlamp"
+	},
+	{
+		"icpc": "F99",
+		"name": "Andere ziekten oog",
+		"score": "13,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H01",
+		"name": "Oorpijn",
+		"score": "8,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H02",
+		"name": "Gehoor klachten",
+		"score": "7,8",
+		"incidence": false,
+		"protocol": ["M61"],
+		"diagnostics": "V",
+		"treatment": "B",
+		"notes": "/V V: voor aanpassing hoortoestel"
+	},
+	{
+		"icpc": "H03",
+		"name": "Oorsuizen / tinnitus",
+		"score": "4,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H04",
+		"name": "Afscheiding uit oor",
+		"score": "2,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H05",
+		"name": "Bloed in / uit oor",
+		"score": "0,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H13",
+		"name": "Verstopt gevoel oor",
+		"score": "3,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H15",
+		"name": "Zorgen over aspect oor",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H27",
+		"name": "Angst voor oorziekte",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H28",
+		"name": "Handicap/beperking gehoor",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H29",
+		"name": "Andere symptomen / klachten oor",
+		"score": "2,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H70",
+		"name": "Otitis externa",
+		"score": "20,9",
+		"incidence": true,
+		"protocol": ["M49"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " Oortamponnade is vervallen"
+	},
+	{
+		"icpc": "H71",
+		"name": "Otitis media acute / myringitis",
+		"score": "19,3",
+		"incidence": true,
+		"protocol": ["M09"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H72",
+		"name": "Otitis media sereuze / glue ear",
+		"score": "8,4",
+		"incidence": false,
+		"protocol": ["M18"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H73",
+		"name": "Tubair catarre / tubastenose",
+		"score": "6,2",
+		"incidence": false,
+		"protocol": ["M18"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H74",
+		"name": "Otitis media chron. / andere info. oor",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H75",
+		"name": "Neoplasmata oor",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H76",
+		"name": "Corpus alienum in oor",
+		"score": "0,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H77",
+		"name": "Perforatie trommelvlies",
+		"score": "2,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V Ook afwachtend beleid mogelijk"
+	},
+	{
+		"icpc": "H78",
+		"name": "Oppervlakkig letsel oor",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H79",
+		"name": "Ander letsel oor",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H80",
+		"name": "Aangeboren afwijkingen oor",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H81",
+		"name": "Overmatig cerumen",
+		"score": "47,7",
+		"incidence": true,
+		"protocol": ["M61"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H82",
+		"name": "Vertig. syndromen / labyrinthitis",
+		"score": "19,2",
+		"incidence": false,
+		"protocol": ["M75"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "H83",
+		"name": "Otosclerose",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H84",
+		"name": "Presbyacusis",
+		"score": "11,4",
+		"incidence": false,
+		"protocol": ["M61"],
+		"diagnostics": "A",
+		"treatment": "V",
+		"notes": " A: Audiometrie"
+	},
+	{
+		"icpc": "H85",
+		"name": "Acoustisch letsel / lawaai doofheid",
+		"score": "2,2",
+		"incidence": false,
+		"protocol": ["M61"],
+		"diagnostics": "A",
+		"treatment": "V",
+		"notes": " A: Audiometrie"
+	},
+	{
+		"icpc": "H86",
+		"name": "Doofheid alle graden neg.",
+		"score": "13",
+		"incidence": false,
+		"protocol": ["M61"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "H99",
+		"name": "Andere ziekten oor / mastoid",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K01",
+		"name": "Pijn toegeschreven aan hart",
+		"score": "5,2",
+		"incidence": true,
+		"protocol": ["M43"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " ECG vervallen"
+	},
+	{
+		"icpc": "K02",
+		"name": "Druk / beklemming toegeschr. aan hart",
+		"score": "4,1",
+		"incidence": true,
+		"protocol": ["M80"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " ECG vervallen"
+	},
+	{
+		"icpc": "K03",
+		"name": "And. pijn toegeschr. aan vaatstelsel",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K04",
+		"name": "Hartkloppingen / bewust van hartslag",
+		"score": "10,7",
+		"incidence": false,
+		"protocol": " B/",
+		"diagnostics": "A/Bijz",
+		"treatment": "B",
+		"notes": " A: Holter Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K05",
+		"name": "And. afw. / irregulaire hartslag",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": " B/",
+		"diagnostics": "A/Bijz",
+		"treatment": "B",
+		"notes": " A: Holter Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K06",
+		"name": "Opgezette aderen",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K07",
+		"name": "Gezwollen enkels / enkeloedeem",
+		"score": "11,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K24",
+		"name": "Angst voor hartaanval",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K25",
+		"name": "Angst voor hoge bloeddruk",
+		"score": "3,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K27",
+		"name": "Angst and. ziekte hartvaatstelsel",
+		"score": "2,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K28",
+		"name": "Functiebep./hand. hartvaatstelsel",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K29",
+		"name": "Andere symptomen hartvaatstelsel",
+		"score": "6,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "?",
+		"notes": ""
+	},
+	{
+		"icpc": "K70",
+		"name": "Infectieziekte hartvaatstelsel",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K71",
+		"name": "Acuut reuma/reumatische hartziekte",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K72",
+		"name": "Neoplasma hartvaatstelsel",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "?",
+		"treatment": "?",
+		"notes": ""
+	},
+	{
+		"icpc": "K73",
+		"name": "Aangeboren afwijking hart/ vaatstelsel",
+		"score": "2,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K74",
+		"name": "Angina pectoris",
+		"score": "22,6",
+		"incidence": false,
+		"protocol": ["M80"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " Instabiele angina pectoris wordt verwezen"
+	},
+	{
+		"icpc": "K75",
+		"name": "Acuut myocard infarct",
+		"score": "11,9",
+		"incidence": false,
+		"protocol": ["M80"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": " -"
+	},
+	{
+		"icpc": "K76",
+		"name": "And. / chron. Isch. hartziekten",
+		"score": "10,3",
+		"incidence": false,
+		"protocol": " Bijz/",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": " Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K77",
+		"name": "Decompensatio cordis",
+		"score": "12,6",
+		"incidence": false,
+		"protocol": ["M51"],
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K78",
+		"name": "Boezemfibrilleren /-fladderen",
+		"score": "17,7",
+		"incidence": false,
+		"protocol": ["M79"],
+		"diagnostics": "B/Bijz",
+		"treatment": "V",
+		"notes": " Bijz: ECG zelfstandigvinterpreteren"
+	},
+	{
+		"icpc": "K79",
+		"name": "Paroxysmale tachycardie",
+		"score": "4,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "Bijz",
+		"treatment": "V",
+		"notes": " Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K80",
+		"name": "Ectop. slagen / extrasyst. alle typen",
+		"score": "2,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "Bijz",
+		"treatment": "B",
+		"notes": " Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K81",
+		"name": "Hartgeruis nao",
+		"score": "2,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K82",
+		"name": "Cor pulmonale",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K83",
+		"name": "Klep aandoening niet reumat. nao",
+		"score": "7,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K84",
+		"name": "Andere hartziekten",
+		"score": "4,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K85",
+		"name": "Verhoogde bloeddruk [ex.k86/k87]",
+		"score": "11,8",
+		"incidence": false,
+		"protocol": ["M84"],
+		"diagnostics": "A",
+		"treatment": "B",
+		"notes": " A: 24h RR-registratie"
+	},
+	{
+		"icpc": "K86",
+		"name": "Hypertensie zonder orgaanbeschadiging",
+		"score": "128,3",
+		"incidence": false,
+		"protocol": ["M84"],
+		"diagnostics": "A",
+		"treatment": "B",
+		"notes": " -"
+	},
+	{
+		"icpc": "K87",
+		"name": "Hypertensie met orgaanbeschadiging",
+		"score": "23,1",
+		"incidence": false,
+		"protocol": ["M84"],
+		"diagnostics": "A/Bijz",
+		"treatment": "B",
+		"notes": "/V - Bijz: ECG zelfstandig interpreteren"
+	},
+	{
+		"icpc": "K88",
+		"name": "Orthostatische hypotensie",
+		"score": "3,5",
+		"incidence": false,
+		"protocol": ["M75"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K89",
+		"name": "Passagere cerebrale ischemie",
+		"score": "2,3",
+		"incidence": true,
+		"protocol": ["M103"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K90",
+		"name": "Cerebrovasc. accid. (cva)",
+		"score": "16,3",
+		"incidence": false,
+		"protocol": ["M103"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K91",
+		"name": "Atherosclerose [ex. coron., cerebr.]",
+		"score": "10,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "K92",
+		"name": "Andere ziekten perifere arterien",
+		"score": "13,6",
+		"incidence": false,
+		"protocol": ["M13"],
+		"diagnostics": "A",
+		"treatment": "V",
+		"notes": " A: Doppler onderzoek"
+	},
+	{
+		"icpc": "K93",
+		"name": "Longembolie / long infarct",
+		"score": "0,8",
+		"incidence": true,
+		"protocol": " M 86 diepe veneuze trombose B/",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "K94",
+		"name": "Thrombophlebitis / Phlebothrombosis",
+		"score": "6,9",
+		"incidence": false,
+		"protocol": ["M30"],
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Zwachtelen"
+	},
+	{
+		"icpc": "K95",
+		"name": "Varices benen [ex. ulc. crur. S97]",
+		"score": "20,2",
+		"incidence": false,
+		"protocol": ["M30"],
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Bijz: Scleroseren"
+	},
+	{
+		"icpc": "K96",
+		"name": "Hemorroiden",
+		"score": "21,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Barron ligatie"
+	},
+	{
+		"icpc": "K99",
+		"name": "Andere ziekten hartvaatstelsel",
+		"score": "8,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L01",
+		"name": "Nek symptomen / klachten",
+		"score": "22,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L02",
+		"name": "Rug symptomen / klachten",
+		"score": "28,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L03",
+		"name": "Lage rugpijn zonder uitstraling",
+		"score": "38,5",
+		"incidence": false,
+		"protocol": ["M54"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L04",
+		"name": "Borstkas symptomen / klachten",
+		"score": "28,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L05",
+		"name": "Flank symptomen / klachten",
+		"score": "3,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L06",
+		"name": "Oksel symptomen / klachten",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L07",
+		"name": "Kaak(gewricht) symptomen / klachten",
+		"score": "4,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L08",
+		"name": "Schouder symptomen / klachten",
+		"score": "28,6",
+		"incidence": false,
+		"protocol": ["M08"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L09",
+		"name": "Arm symptomen / klachten",
+		"score": "6,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L10",
+		"name": "Elleboog symptomen / klachten",
+		"score": "4,2",
+		"incidence": false,
+		"protocol": ["M60"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L11",
+		"name": "Pols symptomen / klachten",
+		"score": "8,8",
+		"incidence": false,
+		"protocol": ["M91"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L12",
+		"name": "Hand/vinger symptomen / klachten",
+		"score": "18,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L13",
+		"name": "Heup symptomen / klachten",
+		"score": "12,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L14",
+		"name": "Been/dijbeen symptomen/ klachten",
+		"score": "18,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L15",
+		"name": "Knie symptomen / klachten",
+		"score": "32,3",
+		"incidence": false,
+		"protocol": ["M65"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L16",
+		"name": "Enkel symptomen / klachten",
+		"score": "7,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L17",
+		"name": "Voet / teen symptomen / klachten",
+		"score": "31,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L18",
+		"name": "Spierpijn",
+		"score": "14",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L19",
+		"name": "Sympt. meerd./ niet gespec. spieren",
+		"score": "5,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L20",
+		"name": "Sympt. meerd./ niet gesp. gewrichten",
+		"score": "7,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L26",
+		"name": "Angst v. kanker bewegingsapparaat",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L27",
+		"name": "Angst v. andere ziekte bewegingsapparaat",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L28",
+		"name": "Handicap / beperking bewegingsapparaat",
+		"score": "2,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L29",
+		"name": "Andere/meerdere sympt./ kl. bewegingsapparaat",
+		"score": "7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L70",
+		"name": "Infectieziekten bewegingsapparaat",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L71",
+		"name": "Neoplasma bewegingsapparaat",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L72",
+		"name": "Fractuur radius / ulna",
+		"score": "4,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L73",
+		"name": "Fractuur tibia / fibula",
+		"score": "1,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L74",
+		"name": "Fractuur hand / voet",
+		"score": "5,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L75",
+		"name": "Fractuur femur",
+		"score": "1,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L76",
+		"name": "Andere fracturen",
+		"score": "7,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L77",
+		"name": "Verstuikingen / distorsies enkel",
+		"score": "10,1",
+		"incidence": true,
+		"protocol": ["M04"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Tapen"
+	},
+	{
+		"icpc": "L78",
+		"name": "Verstuikingen / distorsies knie",
+		"score": "4,9",
+		"incidence": true,
+		"protocol": ["M67"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Tapen"
+	},
+	{
+		"icpc": "L79",
+		"name": "Andere verstuikingen / distorsies",
+		"score": "2,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Tapen"
+	},
+	{
+		"icpc": "L80",
+		"name": "Luxaties / subluxaties",
+		"score": "2,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L81",
+		"name": "Andere traumata bewegingsapparaat",
+		"score": "21,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L82",
+		"name": "Aangeboren afwijkingen bewegingsapparaat",
+		"score": "6,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L83",
+		"name": "Syndromen cervicale wervelkolom",
+		"score": "7,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L84",
+		"name": "Arthrose / spondylose wervelkolom",
+		"score": "9,6",
+		"incidence": false,
+		"protocol": ["M54"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L85",
+		"name": "Verworven afwijkingen wervelkolom",
+		"score": "5",
+		"incidence": false,
+		"protocol": ["M54"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L86",
+		"name": "Lage rugpijn met uitstraling",
+		"score": "36,1",
+		"incidence": false,
+		"protocol": ["M55"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L87",
+		"name": "Ganglion gewricht / pees",
+		"score": "4,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A/Bijz",
+		"notes": " A: Punctie, Bijz: Chirurgie"
+	},
+	{
+		"icpc": "L88",
+		"name": "Rheumatoide arthritis / verwante aandoeningen",
+		"score": "12",
+		"incidence": false,
+		"protocol": ["M90"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L89",
+		"name": "Coxarthrosis",
+		"score": "17",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L90",
+		"name": "Gonarthrosis",
+		"score": "22,6",
+		"incidence": false,
+		"protocol": ["M66"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Injectie"
+	},
+	{
+		"icpc": "L91",
+		"name": "Andere artrose / verwante aandoeningen",
+		"score": "17,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Injectie"
+	},
+	{
+		"icpc": "L92",
+		"name": "Schoudersyndromen / phs",
+		"score": "28,3",
+		"incidence": false,
+		"protocol": ["M08"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Cyriax inj."
+	},
+	{
+		"icpc": "L93",
+		"name": "Epicondylitis lateralis",
+		"score": "13,7",
+		"incidence": false,
+		"protocol": ["M60"],
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Injectie corticoster."
+	},
+	{
+		"icpc": "L94",
+		"name": "Osgood-schlatter andere osteochondrop.",
+		"score": "1,6",
+		"incidence": false,
+		"protocol": ["M65"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L95",
+		"name": "Osteoporosis",
+		"score": "21,3",
+		"incidence": false,
+		"protocol": ["M69"],
+		"diagnostics": "A",
+		"treatment": "B",
+		"notes": "/A A: Geprotocolleerde opsporing"
+	},
+	{
+		"icpc": "L96",
+		"name": "Acute traumata meniscus kniebanden",
+		"score": "5,2",
+		"incidence": true,
+		"protocol": ["M66"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "L97",
+		"name": "Chronisch inwendig trauma knie",
+		"score": "3,8",
+		"incidence": false,
+		"protocol": ["M67"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L98",
+		"name": "Verworven afwijkingen extremiteiten",
+		"score": "22,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "L99",
+		"name": "Andere ziekten bewegingsapparaat",
+		"score": "70,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N01",
+		"name": "Hoofdpijn [ex. N02, N89, R09]",
+		"score": "19,2",
+		"incidence": false,
+		"protocol": ["M19"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N02",
+		"name": "Spanningshoofdpijn",
+		"score": "7,1",
+		"incidence": false,
+		"protocol": ["M19"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N03",
+		"name": "Aangezichtshoofdpijn",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N04",
+		"name": "Restless legs",
+		"score": "4,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N05",
+		"name": "Tintelen vingers / voeten / tenen",
+		"score": "2,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N06",
+		"name": "And. sensibiliteitsst. onwill. / onwill. bew.",
+		"score": "4,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N07",
+		"name": "Convulsies stuipen (incl. koorts-)",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": ["M29"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N16",
+		"name": "Andere afwijkingen reuk / smaak",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N17",
+		"name": "Vertigo / duizeligheid [ex.h82]",
+		"score": "15,3",
+		"incidence": false,
+		"protocol": ["M75"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N18",
+		"name": "Verlamming krachtsverlies [ex.a04]",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N19",
+		"name": "Spraak / fonatie stoornis",
+		"score": "3,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N26",
+		"name": "Angst voor kanker zenuwstelsel",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N27",
+		"name": "Angst voor andere ziekte zenuwstelsel",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N28",
+		"name": "Functiebep. / hand. zenuwstelsel",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N29",
+		"name": "And. sympt. / klacht. zenuwstelsel",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N70",
+		"name": "Poliomyelitis / and. enterovirus inf.",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N71",
+		"name": "Meningitis / encephalitis",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N72",
+		"name": "Tetanus",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": " B: Vaccinatie"
+	},
+	{
+		"icpc": "N73",
+		"name": "And. infectieziekten zenuwstelsel",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N74",
+		"name": "Maligne neoplasma zenuwstelsel",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N75",
+		"name": "Benigne neoplasma zenuwstelsel",
+		"score": "1,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N76",
+		"name": "Niet gespec. neoplasma zenuwstelsel",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N79",
+		"name": "Hersenschudding",
+		"score": "2,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "N80",
+		"name": "Ander letsel hoofd [ex. fractuur]",
+		"score": "3,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N81",
+		"name": "Andere letsels zenuwstelsel",
+		"score": "0,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N85",
+		"name": "Aangeboren afwijkingen zenuwstelsel",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N86",
+		"name": "Multiple sclerose",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N87",
+		"name": "Parkinsonisme, ziekte van Parkinson",
+		"score": "2,7",
+		"incidence": false,
+		"protocol": ["M98"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N88",
+		"name": "Epilepsie alle vormen",
+		"score": "9,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N89",
+		"name": "Migraine",
+		"score": "22,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N90",
+		"name": "Cluster headache",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": ["M19"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N91",
+		"name": "Facialis parese / bell’s palsy",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": " M 93 Perifere aangezichtsverlamming ",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N92",
+		"name": "Trigeminus neuralgie",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "N93",
+		"name": "Carpaal tunnel syndroom",
+		"score": "10,3",
+		"incidence": false,
+		"protocol": " M 91 Hand en polsklachten ",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Corticosteroid injectie"
+	},
+	{
+		"icpc": "N94",
+		"name": "Andere perif. neuritis / neuropathie",
+		"score": "12,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "N99",
+		"name": "Andere ziekten zenuwstelsel",
+		"score": "3,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P01",
+		"name": "Angstig / nerveus / gespannen gevoel",
+		"score": "16,9",
+		"incidence": false,
+		"protocol": ["M102"]
+	},
+	{
+		"icpc": "P02",
+		"name": "Crisis / voorbijg. stress reactie",
+		"score": "8,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P03",
+		"name": "Down / depressief gevoel",
+		"score": "10,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": " M 44 Depressie, + ook POH-GGZ"
+	},
+	{
+		"icpc": "P04",
+		"name": "Prikkelbaar / boos gevoel / gedrag",
+		"score": "2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P05",
+		"name": "Zich oud voelen / gedragen",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P06",
+		"name": "Slapeloosheid / andere slaapstoornis",
+		"score": "26,7",
+		"incidence": false,
+		"protocol": ["M23"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P07",
+		"name": "Libido verlies / vermindering",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": ["M87"],
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Seksuologische hulpverlening"
+	},
+	{
+		"icpc": "P08",
+		"name": "Seksuele bevred. verlies / vermindering",
+		"score": "1,4",
+		"incidence": false,
+		"protocol": ["M87"],
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Seksuologische hulpverlening"
+	},
+	{
+		"icpc": "P09",
+		"name": "Bezorgdheid over seksuele voorkeur",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": " ET 107 ",
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Seksuologische hulpverlening"
+	},
+	{
+		"icpc": "P10",
+		"name": "Stamelen / stotteren / tics",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P11",
+		"name": "Eetproblemen bij kind",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P12",
+		"name": "Enuresis",
+		"score": "3,2",
+		"incidence": false,
+		"protocol": ["M59"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P13",
+		"name": "Encopresis",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P15",
+		"name": "Chronisch alcoholmisbruik",
+		"score": "6,8",
+		"incidence": false,
+		"protocol": ["M10"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "P16",
+		"name": "Acuut alcoholmisbruik / intoxicatie",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": ["M10"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P17",
+		"name": "Tabaksmisbruik",
+		"score": "26,6",
+		"incidence": false,
+		"protocol": ["M85"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A MIS is basiszorg Systematische interventie = A"
+	},
+	{
+		"icpc": "P18",
+		"name": "Geneesmiddelmisbruik",
+		"score": "2,3",
+		"incidence": false,
+		"protocol": ["M23"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P19",
+		"name": "Drugsmisbruik",
+		"score": "3,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P20",
+		"name": "Geheugen / concentr. / oriëntatie stoornis",
+		"score": "10,3",
+		"incidence": false,
+		"protocol": ["M21"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": " Rol huisarts (POH-GGZ)"
+	},
+	{
+		"icpc": "P21",
+		"name": "Overactief kind / hyperkin. syndroom",
+		"score": "10,3",
+		"incidence": false,
+		"protocol": ["M104"],
+		"diagnostics": "A",
+		"treatment": "A",
+		"notes": "/ V Rol huisarts (POH-GGZ)"
+	},
+	{
+		"icpc": "P22",
+		"name": "Andere zorgen gedrag kind",
+		"score": "11,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P23",
+		"name": "Andere zorgen gedrag adolescent",
+		"score": "2,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P24",
+		"name": "Specifiek leerprobleem",
+		"score": "8,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P25",
+		"name": "Levensfaseprobleem volwassene",
+		"score": "1,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P27",
+		"name": "Angst voor psychische ziekte",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P28",
+		"name": "Functiebep. / handicap psych. problemen",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P29",
+		"name": "Andere psychische sympt. / klacht",
+		"score": "7,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": " Rol huisarts (POH-GGZ)"
+	},
+	{
+		"icpc": "P70",
+		"name": "Seniele dementie / Alzheimer",
+		"score": "5,8",
+		"incidence": false,
+		"protocol": ["M21"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V Rol huisarts (POH-GGZ)"
+	},
+	{
+		"icpc": "P71",
+		"name": "Andere organische psychosen",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": ["M77"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P72",
+		"name": "Schizofrenie alle vormen",
+		"score": "2,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P73",
+		"name": "Affectieve psychosen",
+		"score": "2,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P74",
+		"name": "Angststoornis / angsttoestand",
+		"score": "18,8",
+		"incidence": false,
+		"protocol": ["M62"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "P75",
+		"name": "Hysterie / hypochondrie",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "P76",
+		"name": "Depressie",
+		"score": "34",
+		"incidence": false,
+		"protocol": ["M44"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "P77",
+		"name": "Suïcide poging",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P78",
+		"name": "Neurasthenie / surmenage",
+		"score": "16,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P79",
+		"name": "Andere neurotische stoornis / aandoen.",
+		"score": "3,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "P80",
+		"name": "Persoonlijkheids- / karakterstoornissen",
+		"score": "7,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": "/A Rol huisarts (POH-GGZ)"
+	},
+	{
+		"icpc": "P85",
+		"name": "Mentale retardatie / intell. achterstand",
+		"score": "3,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P98",
+		"name": "Andere / niet-gespec. psychosen",
+		"score": "2,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "P99",
+		"name": "Andere psychische stoornissen",
+		"score": "5,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R01",
+		"name": "Pijn toegeschreven aan luchtwegen",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R02",
+		"name": "Dyspnoe / benauwdheid",
+		"score": "11,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R03",
+		"name": "Piepende ademhaling",
+		"score": "1,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R04",
+		"name": "Andere problemen ademhaling",
+		"score": "4,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R05",
+		"name": "Hoesten",
+		"score": "62,5",
+		"incidence": true,
+		"protocol": ["M78"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R06",
+		"name": "Epstaxis / neusbloeding",
+		"score": "5,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R07",
+		"name": "Niezen / neus-verstopping / loopneus",
+		"score": "6,3",
+		"incidence": true,
+		"protocol": ["M48"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R08",
+		"name": "Andere symptomen / klachten neus",
+		"score": "6,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R09",
+		"name": "Sympt. / klacht.sinussen (incl. pijn)",
+		"score": "3,9",
+		"incidence": true,
+		"protocol": ["M33"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R21",
+		"name": "Sympt. / klachten keel",
+		"score": "20,7",
+		"incidence": true,
+		"protocol": ["M11"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R22",
+		"name": "Sympt. / klachten tonsillen",
+		"score": "1,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R23",
+		"name": "Sympt. / klachten stem",
+		"score": "3,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R24",
+		"name": "Haemoptoe",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R25",
+		"name": "Abnormaal sputum / slijm",
+		"score": "0,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R26",
+		"name": "Angst voor kanker luchtwegen",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R27",
+		"name": "Angst v. andere ziekte luchtwegen",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R28",
+		"name": "Functiebep. / handicap luchtwegen",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R29",
+		"name": "Andere sympt. / klacht. luchtwegen",
+		"score": "1,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R70",
+		"name": "Tuberculose luchtwegen [ex.a70]",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R71",
+		"name": "Kinkhoest",
+		"score": "1,3",
+		"incidence": true,
+		"protocol": ["M78"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R72",
+		"name": "Streptokok. angina / roodvonk",
+		"score": "1,2",
+		"incidence": true,
+		"protocol": ["M11"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R73",
+		"name": "Furunkel / abces neus",
+		"score": "0,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R74",
+		"name": "Acute infectie bovenste luchtwegen",
+		"score": "70,2",
+		"incidence": true,
+		"protocol": ["M11"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R75",
+		"name": "Acute / chronische sinusitus",
+		"score": "28,1",
+		"incidence": true,
+		"protocol": ["M33"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R76",
+		"name": "Acute tonsillitis",
+		"score": "10,1",
+		"incidence": true,
+		"protocol": ["M11"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R77",
+		"name": "Acute laryngitis / tracheitis",
+		"score": "2,4",
+		"incidence": true,
+		"protocol": ["M11"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R78",
+		"name": "Acute bronchitis / bronchiolitis",
+		"score": "23,9",
+		"incidence": true,
+		"protocol": ["M78"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R80",
+		"name": "Influenza bewezen [ex. pneumonie]",
+		"score": "3,5",
+		"incidence": true,
+		"protocol": ["M35"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Influenzavaccinatie"
+	},
+	{
+		"icpc": "R81",
+		"name": "Pneumonie",
+		"score": "13,5",
+		"incidence": true,
+		"protocol": ["M78"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R82",
+		"name": "Pleuritis alle vormen [ex. R70]",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R83",
+		"name": "Andere infecties luchtwegen",
+		"score": "2,9",
+		"incidence": false,
+		"protocol": ["M78"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R84",
+		"name": "Maligne neoplasma bronchus / long",
+		"score": "2,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R85",
+		"name": "Andere maligne neoplasma luchtwegen",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R86",
+		"name": "Benigne neoplasma luchtwegen",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R87",
+		"name": "Corpus alienum neus / larynx / bronch.",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R88",
+		"name": "Ander letsel luchtwegen",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R89",
+		"name": "Aangeboren afwijkingen luchtwegen",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R90",
+		"name": "Hypertrofie / chron.inf. tons. / adenoid",
+		"score": "5,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R91",
+		"name": "Chron. bronchitis / bronchiectasiën",
+		"score": "5,6",
+		"incidence": false,
+		"protocol": ["M27"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R93",
+		"name": "Pleuravocht nao",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "R95",
+		"name": "Emfyseem / copd",
+		"score": "29,4",
+		"incidence": false,
+		"protocol": ["M27"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Disease management; spirometrie"
+	},
+	{
+		"icpc": "R96",
+		"name": "Astma",
+		"score": "80,1",
+		"incidence": false,
+		"protocol": ["M24"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Disease management; spirometrie"
+	},
+	{
+		"icpc": "R97",
+		"name": "Hooikoorts / allergische rhinitis",
+		"score": "67,3",
+		"incidence": false,
+		"protocol": ["M48"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R98",
+		"name": "Hyperventilatie",
+		"score": "4,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "R99",
+		"name": "Andere ziekten luchtwegen",
+		"score": "4,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S01",
+		"name": "Pijn / gevoeligheid huid",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S02",
+		"name": "Pruritis / jeuk [ex.d05, x16]",
+		"score": "12,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S03",
+		"name": "Wratten",
+		"score": "30,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S04",
+		"name": "Lok.zwelling / papel / knobb.huid / subc",
+		"score": "8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S05",
+		"name": "Mult.zwell. / papels / knobb.huid / subc",
+		"score": "1,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S06",
+		"name": "Lokale roodheid / erytheem huid",
+		"score": "13,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S07",
+		"name": "Gegen. roodheid / erytheem huid",
+		"score": "2,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S08",
+		"name": "Andere veranderingen in kleur huid",
+		"score": "1,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S09",
+		"name": "Lokale inf. vinger / teen / paronychia",
+		"score": "6,4",
+		"incidence": true,
+		"protocol": ["M68"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S10",
+		"name": "Furunkel / karbunkel / cellulitis lok.",
+		"score": "5,2",
+		"incidence": true,
+		"protocol": ["M68"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S11",
+		"name": "Andere lokale infecties huid / subcutis",
+		"score": "10,3",
+		"incidence": true,
+		"protocol": ["M68"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S12",
+		"name": "Beet / steek insect",
+		"score": "9,7",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S13",
+		"name": "Beet mens / dier",
+		"score": "4,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S14",
+		"name": "Brandwond / verbranding huid",
+		"score": "4,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S15",
+		"name": "Corpus alienum huid / subcutis",
+		"score": "2,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S16",
+		"name": "Buil / kneuz. / contusie intacte huid",
+		"score": "9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S17",
+		"name": "Schaafwond / schram / blaar",
+		"score": "8,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S18",
+		"name": "Scheurwond / snijwond",
+		"score": "20,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S19",
+		"name": "Andere letsels van de huid / subcutis",
+		"score": "3,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S20",
+		"name": "Likdoorns / eeltknobbels",
+		"score": "4,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S21",
+		"name": "Andere sympt. / klacht. aspect huid",
+		"score": "10,2",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S22",
+		"name": "Symptomen / klachten nagels",
+		"score": "2,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S23",
+		"name": "Haaruitval / alopecia",
+		"score": "4,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S24",
+		"name": "Andere symptomen / klachten haar",
+		"score": "2,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S26",
+		"name": "Angst voor kanker huid / subcutis",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S27",
+		"name": "Angst voor andere ziekte huid / subcutis",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S28",
+		"name": "Functiebeperking/ handicap huid/ subcutis",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S29",
+		"name": "Andere symp. / klacht. huid / subcutis",
+		"score": "6,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S70",
+		"name": "Herpes zoster",
+		"score": "5,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S71",
+		"name": "Herpes simplex [ex.f85,x90,y72]",
+		"score": "2,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S72",
+		"name": "Scabiës / andere aand. door mijten",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S73",
+		"name": "Pediculosis / andere huid infestatie",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S74",
+		"name": "Dermatomycosen",
+		"score": "42,3",
+		"incidence": false,
+		"protocol": ["M64"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S75",
+		"name": "Moniliasis / candidiasis [ex.x72,y75]",
+		"score": "9,7",
+		"incidence": true,
+		"protocol": ["M64"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S76",
+		"name": "And.infectie huid / subc. / erysipelas",
+		"score": "9",
+		"incidence": true,
+		"protocol": ["M68"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S77",
+		"name": "Maligne neplasma huid / subst.",
+		"score": "22,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S78",
+		"name": "Lipoom",
+		"score": "7,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S79",
+		"name": "Andere benigne neopl.huid / subcutis",
+		"score": "24,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S80",
+		"name": "And / niet gespec.neopl. huid/subcutis",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S81",
+		"name": "Hemangiomen / lymfangiomen",
+		"score": "4,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S82",
+		"name": "Naevus / moedervlek",
+		"score": "53,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S83",
+		"name": "And. aangeb. afwijking huid / subcutis",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "S84",
+		"name": "Impetigo / impetiginisatie",
+		"score": "12,2",
+		"incidence": true,
+		"protocol": ["M68"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S85",
+		"name": "Pilonidaal cyste / fistel",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": "/A A: Incisie"
+	},
+	{
+		"icpc": "S86",
+		"name": "Seborroisch eczeem / roos",
+		"score": "19,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S87",
+		"name": "Constitutioneel eczeem",
+		"score": "65,2",
+		"incidence": false,
+		"protocol": ["M37"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S88",
+		"name": "Contact eczeem / ander eczeem",
+		"score": "81,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S89",
+		"name": "Luier eczeem",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S90",
+		"name": "Pityriasis rosea",
+		"score": "1,6",
+		"incidence": true,
+		"protocol": ["M64"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S91",
+		"name": "Psoriasis",
+		"score": "19,1",
+		"incidence": false,
+		"protocol": ["M39"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S92",
+		"name": "Ziekten zweetklieren",
+		"score": "3,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S93",
+		"name": "Atheroom kyste / epitheel kyste",
+		"score": "13",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S94",
+		"name": "Unguis incarnatus/ andere nagelaandoen.",
+		"score": "5,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Chirurgisch verwijderen"
+	},
+	{
+		"icpc": "S95",
+		"name": "Mollusca contagiosa",
+		"score": "3,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S96",
+		"name": "Acne",
+		"score": "19,4",
+		"incidence": false,
+		"protocol": ["M15"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A A: Isotretinoine"
+	},
+	{
+		"icpc": "S97",
+		"name": "Ulc.cruris / decubitus / chron. ulc.",
+		"score": "7,3",
+		"incidence": false,
+		"protocol": ["M16"],
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Zwachtelen"
+	},
+	{
+		"icpc": "S98",
+		"name": "Urticaria",
+		"score": "15,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "S99",
+		"name": "Andere ziekten huid / subc.weefsel",
+		"score": "46,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T01",
+		"name": "Overmatige dorst",
+		"score": "0,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T02",
+		"name": "Overmatige eetlust",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T03",
+		"name": "Verminderde eetlust",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T04",
+		"name": "Voedingsprobl.zuig. / kind [ex.p11]",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": ["M47"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T05",
+		"name": "Voedingsprobl.volwassene [ex.t06]",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T06",
+		"name": "Anorexia nervosa / boulimie",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T07",
+		"name": "Gewichtstoename",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": ["M95"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T08",
+		"name": "Gewichtsverlies",
+		"score": "5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T10",
+		"name": "Achterbl.verwachte fysiol.ontwikk.",
+		"score": "2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T11",
+		"name": "Dehydratie",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T15",
+		"name": "Knobbel / zwelling schildklier",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T26",
+		"name": "Angst v. kanker endocriene klieren",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T27",
+		"name": "Angst and. ziekte endo. / metab. / voed.",
+		"score": "1,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T28",
+		"name": "Functiebep. / hand. endo. / metab. / voed.",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T29",
+		"name": "And. sympt. / klacht. endo. / metab. / voed.",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T70",
+		"name": "Infecties endocriene klieren",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T71",
+		"name": "Maligne neoplasma schildklier",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T72",
+		"name": "Benigne neoplasma schildklier",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T73",
+		"name": "Andere / niet gespec. neopl. endo. kl.",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T78",
+		"name": "Persist.ductus thyreoglossus / kyste",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T80",
+		"name": "And. aangeb. afw. endo. kl. / metab.",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T81",
+		"name": "Struma [ez. t85, t86]",
+		"score": "3,5",
+		"incidence": false,
+		"protocol": ["M31"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T82",
+		"name": "Adipositas (quet.index =30)",
+		"score": "13",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": " Diëtist/POH"
+	},
+	{
+		"icpc": "T83",
+		"name": "Overgewicht (quet.index",
+		"score": "<30",
+		"incidence": false,
+		"protocol": ") 11,2 ",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V A: Begeleiding huisarts naast operatie"
+	},
+	{
+		"icpc": "T85",
+		"name": "Hyperthyreoïdie / thyreotoxicose",
+		"score": "5,3",
+		"incidence": false,
+		"protocol": ["M31"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": "/A A: Hyperthyreoïdie"
+	},
+	{
+		"icpc": "T86",
+		"name": "Hypothyreoïdie / myxoedeem",
+		"score": "21,8",
+		"incidence": false,
+		"protocol": ["M31"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T87",
+		"name": "Hypoglykemie",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": ["M01"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T88",
+		"name": "Renale glucosurie",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T90",
+		"name": "Diabetes mellitus",
+		"score": "66,3",
+		"incidence": false,
+		"protocol": ["M01"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/A B: Behandeling DM type 2 A: Disease management A: Insuline-afhankelijke DM"
+	},
+	{
+		"icpc": "T91",
+		"name": "Vitamine- / voedingsdeficiënties",
+		"score": "26,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "T92",
+		"name": "Jicht",
+		"score": "15,1",
+		"incidence": false,
+		"protocol": ["M90"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T93",
+		"name": "Vetstofwisselingsstoornissen",
+		"score": "52,3",
+		"incidence": false,
+		"protocol": ["M84"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "T99",
+		"name": "And. endo./ metab./ voed. ziekten/st.",
+		"score": "4,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U01",
+		"name": "Pijnlijke mictie",
+		"score": "4,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U02",
+		"name": "Frequente mictie / aandrang",
+		"score": "11",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U04",
+		"name": "Urine incontinentie [ex.p12)",
+		"score": "16,4",
+		"incidence": false,
+		"protocol": ["M46"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U05",
+		"name": "Andere mictie problemen",
+		"score": "7,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U06",
+		"name": "Hematurie",
+		"score": "3,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U07",
+		"name": "Andere symptomen /klachten urine",
+		"score": "1,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U13",
+		"name": "Andere symptomen / klachten blaas",
+		"score": "1,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U14",
+		"name": "Symptomen / klachten nieren",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U26",
+		"name": "Angst voor kanker urinewegen",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U27",
+		"name": "Angst v. andere ziekte urinewegen",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U28",
+		"name": "Functiebep. / hand. urinewegen",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U29",
+		"name": "Andere sympt. / klachten urinewegen",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U70",
+		"name": "Acute pyelonephritis / pyelitis",
+		"score": "1,5",
+		"incidence": true,
+		"protocol": ["M05"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U71",
+		"name": "Cystitis / urineweginfecties",
+		"score": "68,8",
+		"incidence": true,
+		"protocol": ["M05"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U72",
+		"name": "Niet specifieke urethritis",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U75",
+		"name": "Maligne neoplasma nier",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U76",
+		"name": "Maligne neoplasma blaas",
+		"score": "2,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U77",
+		"name": "Andere maligne neopl. urinewegen",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U78",
+		"name": "Benigne neoplasma urinewegen",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U79",
+		"name": "Niet gespec. neopl. urinewegen",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U80",
+		"name": "Letsels urinewegen",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U85",
+		"name": "Aangeboren afwijkingen urinewegen",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U88",
+		"name": "Glomerulonephritis / nefrose",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U90",
+		"name": "Orthostatische proteinurie",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U95",
+		"name": "Urolithiasis (alle vormen/lok.)",
+		"score": "7,7",
+		"incidence": false,
+		"protocol": ["M63"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "U98",
+		"name": "Afwijkende uitslag urine ond. Nao",
+		"score": "1,8",
+		"incidence": true,
+		"protocol": " B/",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "U99",
+		"name": "Andere ziekten urinewegen",
+		"score": "15,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W01",
+		"name": "Vraag bestaan zwangerschap",
+		"score": "1,2",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B/Bijz",
+		"notes": " Begeleiding zwangerschap is vervallen Echo = Bijz."
+	},
+	{
+		"icpc": "W02",
+		"name": "Angst zwanger te zijn",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W03",
+		"name": "Bloedverlies tijdens zwangerschap",
+		"score": "0,3",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W05",
+		"name": "Misselijk / braken in zwangerschap",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W10",
+		"name": "Morning after pil postcoit.anticonceptie.",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": ["M02"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W11",
+		"name": "Anticonceptie: orale anticonceptie",
+		"score": "59,7",
+		"incidence": false,
+		"protocol": ["M02"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W12",
+		"name": "Anticonceptie: iud",
+		"score": "24,3",
+		"incidence": false,
+		"protocol": ["M02"],
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Plaatsen IUD"
+	},
+	{
+		"icpc": "W13",
+		"name": "Sterilisatie (vrouw)",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W14",
+		"name": "Andere anticonceptie (vrouw)",
+		"score": "12,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W15",
+		"name": "Sub- / infertiliteit klacht (vrouw)",
+		"score": "5,4",
+		"incidence": false,
+		"protocol": ["M25"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W17",
+		"name": "Hevig bloedverlies post-partum",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W18",
+		"name": "And. klachten post-partum / kraambed",
+		"score": "0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W19",
+		"name": "Symptomen / klachten borstvoeding",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W20",
+		"name": "And.sympt./klacht.borsten/zwang./Krb.",
+		"score": "0,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W27",
+		"name": "Angst complicaties zwang. / bevalling",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W28",
+		"name": "Functiebeperk. / hand. t.g.v. zwang.",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W29",
+		"name": "And. sympt. / klacht. zwang. / bev. / krb. / ac.",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W70",
+		"name": "Puerperale infecties / sepsis",
+		"score": "0,1",
+		"incidence": true,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W71",
+		"name": "Andere infecties zwang. / krb. / ac. [ex.w70]",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W72",
+		"name": "Maligne neopl. i.v.m. zwangerschap",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W73",
+		"name": "Benigne neopl. i.v.m. zwangerschap",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W75",
+		"name": "Zwang. complicerende letsels",
+		"score": "<0,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W76",
+		"name": "Zwang. compl. aangeb. afw. moeder",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W77",
+		"name": "Zwang. compl. niet obst. factoren",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W78",
+		"name": "Zwangerschap: bevestigd",
+		"score": "16,8",
+		"incidence": false,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W79",
+		"name": "Ongewenste zwangerschap: bevestigd",
+		"score": "1,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W80",
+		"name": "Ectopische zwangerschap",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": " B/",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W81",
+		"name": "Toxicose / (pre-)eclampsie",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W82",
+		"name": "Spontane abortus",
+		"score": "1,8",
+		"incidence": true,
+		"protocol": ["M03"],
+		"diagnostics": "B/Bijz",
+		"treatment": "B",
+		"notes": " Bijz: Echo"
+	},
+	{
+		"icpc": "W83",
+		"name": "Abortus provocatus",
+		"score": "0,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W84",
+		"name": "Zwangerschap met verhoogd risico",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W90",
+		"name": "Normale bevalling levendgeborene",
+		"score": "9,5",
+		"incidence": false,
+		"protocol": ["M74"],
+		"diagnostics": "Bijz",
+		"treatment": "Bijz",
+		"notes": ""
+	},
+	{
+		"icpc": "W91",
+		"name": "Normale bevalling doodgeborene",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W92",
+		"name": "Gecompl. bevalling levendgeborene",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W93",
+		"name": "Gecompl. bevalling doodgeborene",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W94",
+		"name": "Mastitis puerperalis",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "W95",
+		"name": "Andere aand. borsten kraambed",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W96",
+		"name": "Andere complicaties kraambed",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": ["M32"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "W99",
+		"name": "And. ziekten i.v.m. zwang. / bev. / krb.",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X01",
+		"name": "Pijn gesl. org. vrouw",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X02",
+		"name": "Pijnlijke menstruatie",
+		"score": "5,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X03",
+		"name": "Intermenstruele pijn",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X04",
+		"name": "Pijnlijke coitus",
+		"score": "1,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X05",
+		"name": "Amenorroe/ hypomenorroe / oligomen.",
+		"score": "4",
+		"incidence": false,
+		"protocol": ["M58"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X06",
+		"name": "Menoraggie",
+		"score": "8,9",
+		"incidence": false,
+		"protocol": ["M28"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X07",
+		"name": "Onregelmatige / frequente menstruatie",
+		"score": "8,8",
+		"incidence": false,
+		"protocol": ["M28"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X08",
+		"name": "Intermenstrueel bloedverlies",
+		"score": "2,9",
+		"incidence": false,
+		"protocol": ["M28"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X09",
+		"name": "Premenstruele symptomen / klachten",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X10",
+		"name": "Uitstel van de menstruatie",
+		"score": "2,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X11",
+		"name": "Climacteriële symptomen / klachten",
+		"score": "13,3",
+		"incidence": false,
+		"protocol": ["M73"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X12",
+		"name": "Postmenopauzaal bloedverlies",
+		"score": "1,9",
+		"incidence": false,
+		"protocol": ["M28"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X13",
+		"name": "Bloedverlies na coitus",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X14",
+		"name": "Vaginale afscheiding",
+		"score": "8,6",
+		"incidence": false,
+		"protocol": ["M38"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X15",
+		"name": "Andere symptomen / klachten vagina",
+		"score": "6,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X16",
+		"name": "Symptomen / klachten vulva",
+		"score": "3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X17",
+		"name": "Sympt./ klacht./ kleine bekken (vrouw)",
+		"score": "1,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X18",
+		"name": "Pijn in de borsten (vrouw)",
+		"score": "3,5",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X19",
+		"name": "Knobbel / zwelling borsten (vrouw)",
+		"score": "5,1",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X20",
+		"name": "Symptomen / klachten tepel (vrouw)",
+		"score": "1,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X21",
+		"name": "And. sympt. / klacht. borsten (vrouw)",
+		"score": "3,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X23",
+		"name": "Angst voor geslachtsziekten (vrouw)",
+		"score": "5,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X24",
+		"name": "Angst voor seksueel disfunct. (vrouw)",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B/Bijz",
+		"notes": " Huisarts / seksuoloog"
+	},
+	{
+		"icpc": "X25",
+		"name": "Angst voor kanker geslachtsorganen (vrouw)",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": ["M06"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X26",
+		"name": "Angst voor borstkanker",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X27",
+		"name": "Angst and. ziekten gesl. org. / borsten (vrouw)",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X28",
+		"name": "Functiebep. / hand. gesl. org. (vrouw)",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X29",
+		"name": "And. sympt. / klacht. gesl. org. (vrouw)",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X37",
+		"name": "Preventief uitstrijkje",
+		"score": "0",
+		"incidence": false,
+		"protocol": ["M06"],
+		"diagnostics": "A",
+		"treatment": "B",
+		"notes": "/V "
+	},
+	{
+		"icpc": "X70",
+		"name": "Lues gesl. org. vrouw",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": ["M50"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X71",
+		"name": "Gonorroe gesl. org. vrouw",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": ["M38"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X72",
+		"name": "Candidiasis urogenitale bewezen",
+		"score": "13,6",
+		"incidence": true,
+		"protocol": ["M38"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X73",
+		"name": "Trichomonas urogenitale bewezen",
+		"score": "0,1",
+		"incidence": true,
+		"protocol": ["M38"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X74",
+		"name": "Ontstekingen klein bekken/pid",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": ["M50"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X75",
+		"name": "Maligne neoplasma cervix uteri",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": ["M06"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X76",
+		"name": "Maligne neopl. borsten (vrouw)",
+		"score": "11,6",
+		"incidence": false,
+		"protocol": ["M07"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X77",
+		"name": "And. maligne neopl. gesl. org. (vrouw)",
+		"score": "2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X78",
+		"name": "Benigne neopl. uterus / cervix uteri",
+		"score": "3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X79",
+		"name": "Ben. neopl. borsten (vrouw)",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X80",
+		"name": "Andere ben. neopl. gesl. org. (vrouw)",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X81",
+		"name": "And. / niet gespec. neopl. gesl. org.",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X82",
+		"name": "Letsels geslachtsorganen (vrouw)",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X83",
+		"name": "Aangeboren afw. gesl. org. (vrouw)",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X84",
+		"name": "Vaginitis / vulvitis nao",
+		"score": "7,7",
+		"incidence": true,
+		"protocol": ["M38"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X85",
+		"name": "Cervicitis / and. ziekten cervix",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": " M 06 Vroegdiag cervixcarcinoom ",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X86",
+		"name": "Afwijkende cervix uitstrijk",
+		"score": "5,5",
+		"incidence": false,
+		"protocol": " M 06 Vroegdiag cervixcarcinoom ",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": " Zie ook X37"
+	},
+	{
+		"icpc": "X87",
+		"name": "Prolaps vagina / uterus",
+		"score": "7,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "A",
+		"notes": " A: Pessarium aanmeten"
+	},
+	{
+		"icpc": "X88",
+		"name": "Fibroaden. / polykyst. afw. borsten",
+		"score": "8,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "X89",
+		"name": "Premenstrueel spanningssyndroom",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X90",
+		"name": "Herpes genitalis (vrouw)",
+		"score": "1",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X91",
+		"name": "Condylomata acuminata (vrouw)",
+		"score": "1",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "X99",
+		"name": "And. ziekten gesl. org. / borst. (vrouw)",
+		"score": "5,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y01",
+		"name": "Pijn in penis I;",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y02",
+		"name": "Pijn testis / scrotum",
+		"score": "0,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y03",
+		"name": "Afscheiding penis / urethra",
+		"score": "0,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y04",
+		"name": "Andere symptomen / klachten penis",
+		"score": "3",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y05",
+		"name": "Symptomen / klachten scrotum / testes",
+		"score": "2,3",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y06",
+		"name": "Symptomen / klachten prostaat",
+		"score": "7,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y07",
+		"name": "Sympt. / klacht. potentie",
+		"score": "7,1",
+		"incidence": false,
+		"protocol": ["M87"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y08",
+		"name": "Ander seksueel probleem man (excl Y07)",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y10",
+		"name": "Sub-/infertiliteit (man)",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": ["M25"],
+		"diagnostics": "A",
+		"treatment": "V",
+		"notes": " A: Uitgebreide diagnostiek"
+	},
+	{
+		"icpc": "Y13",
+		"name": "Sterilisatie (man)",
+		"score": "1,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Bijz: Sterilisatie man"
+	},
+	{
+		"icpc": "Y14",
+		"name": "Andere anticonceptie (man)",
+		"score": "0,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y16",
+		"name": "Symptomen / klachten borsten (man)",
+		"score": "0,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y24",
+		"name": "Angst voor sexueel dysfunct. (man)",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y25",
+		"name": "Angst voor geslachtsziekte (man)",
+		"score": "4,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y26",
+		"name": "Angst voor kanker gesl. org. (man)",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y27",
+		"name": "Angst and. ziekten gesl. org. / borst. (man)",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y28",
+		"name": "Functiebep. / hand. gesl. org. (man)",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y29",
+		"name": "And. sympt. / klacht. gesl. org. (man)",
+		"score": "1,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y70",
+		"name": "Lues man",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y71",
+		"name": "Gonorroe man",
+		"score": "0,2",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y72",
+		"name": "Herpes genitalis",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y73",
+		"name": "Prostatitis / vesiculitis seminalis",
+		"score": "1,8",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y74",
+		"name": "Orchitis / epididymitis",
+		"score": "1,6",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y75",
+		"name": "Balanitis",
+		"score": "2,9",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y76",
+		"name": "Condylomata acuminata (man)",
+		"score": "1,2",
+		"incidence": true,
+		"protocol": ["M82"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": ""
+	},
+	{
+		"icpc": "Y77",
+		"name": "Maligne neoplasmata prostaat",
+		"score": "5,3",
+		"incidence": false,
+		"protocol": ["M42"],
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y78",
+		"name": "And. mal. neopl. gesl. org. / borst. (man)",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y79",
+		"name": "Benigne neopl. gesl. org. / borst. (man)",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y80",
+		"name": "Letsels geslachtsorganen (man)",
+		"score": "0,4",
+		"incidence": true,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y81",
+		"name": "Phimosis / slurf preputium",
+		"score": "4,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "Bijz",
+		"notes": " Bijz: Circumcisie"
+	},
+	{
+		"icpc": "Y82",
+		"name": "Hypospadie",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y83",
+		"name": "Cryptorch. / niet ingedaalde testis",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y84",
+		"name": "And. aangeb. afw. gesl. org. / borst. (man)",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "V",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y85",
+		"name": "Benigne prostaat hypertrofie",
+		"score": "8,9",
+		"incidence": false,
+		"protocol": ["M42"],
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Y86",
+		"name": "Hydrokele",
+		"score": "0,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Y99",
+		"name": "And. ziekten gesl. org. / borst. (man)",
+		"score": "3,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z01",
+		"name": "Armoede / financiële problemen",
+		"score": "0,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z02",
+		"name": "Problemen met voedsel / water",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z03",
+		"name": "Problemen huisvesting / buurt",
+		"score": "1,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z04",
+		"name": "Probl. sociale / culturele systeem (ook voor: laaggeletterdheid)",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z05",
+		"name": "Problemen met werksituatie",
+		"score": "3,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z06",
+		"name": "Problemen met werkloosheid",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z07",
+		"name": "Problemen met opleiding (Z.07.10: analfabeet)",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z08",
+		"name": "Problemen soc. verzek. / welzijnszorg",
+		"score": "0,3",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z09",
+		"name": "Problemen met justitie / politie",
+		"score": "0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z10",
+		"name": "Probl. toegank./beschikb. gez. zorg",
+		"score": "2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z11",
+		"name": "Problemen met ziek zijn",
+		"score": "0,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z12",
+		"name": "Relatieproblemen met partner",
+		"score": "8,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z13",
+		"name": "Problemen met gedrag partner",
+		"score": "0,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z14",
+		"name": "Problemen met ziekte van partner",
+		"score": "3,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z15",
+		"name": "Verlies / overlijden van partner",
+		"score": "5,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z16",
+		"name": "Relatieproblemen met kind",
+		"score": "2,4",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z18",
+		"name": "Problemen met ziekte kind",
+		"score": "1,7",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z19",
+		"name": "Verlies / overlijden van kind",
+		"score": "1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z20",
+		"name": "Relatieproblemen ouders / familie",
+		"score": "1,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z21",
+		"name": "Problemen gedrag ouders / familie",
+		"score": "1,2",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z22",
+		"name": "Problemen ziekte ouders / familie",
+		"score": "2,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z23",
+		"name": "Verlies / overlijden ouders / familie",
+		"score": "2,9",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "B",
+		"notes": "/V"
+	},
+	{
+		"icpc": "Z24",
+		"name": "Relatieproblemen met vrienden",
+		"score": "0,5",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z25",
+		"name": "Problemen t.g.v. geweld",
+		"score": "1,8",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z27",
+		"name": "Angst een sociaal prob. te hebben",
+		"score": "<0,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "?",
+		"notes": ""
+	},
+	{
+		"icpc": "Z28",
+		"name": "Sociale functiebeperking / handicap",
+		"score": "2,1",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "V",
+		"notes": ""
+	},
+	{
+		"icpc": "Z29",
+		"name": "Andere sociale problemen neg",
+		"score": "3,6",
+		"incidence": false,
+		"protocol": "",
+		"diagnostics": "B",
+		"treatment": "?",
+		"notes": ""
+	}
+]

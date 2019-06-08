@@ -10,7 +10,7 @@ const config = {
   databaseURL: 'https://meditor-one.firebaseio.com',
   projectId: 'meditor-one',
   storageBucket: 'meditor-one.appspot.com',
-  messagingSenderId: '821857467011'
+  messagingSenderId: '821857467011',
 }
 
 const firebaseApp = firebase.initializeApp(config)

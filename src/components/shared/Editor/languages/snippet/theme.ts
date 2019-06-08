@@ -11,7 +11,7 @@ let theme = {
   secondary: '880e4f',
   purpleDark: '311b92',
   purpleLight: 'bc477b',
-  warning: 'e65100'
+  warning: 'e65100',
 }
 
 monaco.editor.defineTheme(LANGUAGE_ID, {
@@ -65,12 +65,12 @@ monaco.editor.defineTheme(LANGUAGE_ID, {
     { token: 'operator', fontStyle: 'bold', foreground: theme.greyDark },
     { token: 'invalid', foreground: 'cd3131' }, // theme.error
 
-    { token: 'string', fontStyle: 'underline' }
+    { token: 'string', fontStyle: 'underline' },
   ],
 
   colors: {
     focusBorder: theme.primary,
-    'inputOption.activeBorder': theme.primary
+    'inputOption.activeBorder': theme.primary,
     // 'editor.background': `#${theme.greyLight}`
     // 'editor.findMatchBackground': '#ff0000',
     // 'editor.findMatchBorder': '#ff0000',
@@ -161,5 +161,5 @@ monaco.editor.defineTheme(LANGUAGE_ID, {
     // 'scrollbarSlider.activeBackground': '#ff0000',
     // 'scrollbarSlider.background': '#ff0000',
     // 'scrollbarSlider.hoverBackground': '#ff0000',
-  }
+  },
 })

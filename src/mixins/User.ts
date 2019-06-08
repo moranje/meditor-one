@@ -2,8 +2,8 @@ import User from '@/store/models/User'
 
 export default {
   computed: {
-    $user () {
+    $user() {
       return User.query().first()
-    }
-  }
+    },
+  },
 }

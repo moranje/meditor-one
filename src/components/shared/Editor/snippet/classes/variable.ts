@@ -1,22 +1,63 @@
-import Marker from '@/components/Shared/Editor/snippet/classes/marker'
-import TransformableMarker from '@/components/Shared/Editor/snippet/classes/transformable-marker'
-import Choice from '@/components/Shared/Editor/snippet/classes/choice'
+import {
+  Marker,
+  TransformableMarker,
+} from '@/components/Shared/Editor/snippet/classes'
 
 export default class Variable extends TransformableMarker {
-  constructor() {
-    super('placeholder')
+  name: string | null
+  block: boolean
+  constructor(children, options) {
+    super('placeholder', children || [])
+
+    Object.assign(
+      this,
+      { name: null, block: false }, // default values
+      options
+    )
   }
 
-  clone(): Marker {
-    return new Variable()
+  clone(children: Marker[] = this.children): Marker {
+    return new Variable(children, {
+      name: this.name,
+      block: this.block,
+      transform: this.transform,
+    })
   }
 
   toString(): string {
-    let transformString = ''
     if (this.transform) {
-      transformString = `${this.transform}`
+      return `\${${this.name}${this.transform}}`
     }
 
-    return ''
+    if (this.block === false) {
+      // $name
+      return `$${this.name}`
+    }
+
+    if (this.children.length > 0) {
+      // ${name:placeholder}
+      return `\${${this.name}:${this.children.reduce(
+        (previous, current) => `${previous}${current}`,
+        ''
+      )}}`
+    }
+
+    // ${1}
+    return `\${${this.name}}`
+  }
+
+  toText(): string {
+    if (this.transform) {
+      return this.transform.toText()
+    }
+
+    if (this.block === false) {
+      return ''
+    }
+
+    return this.children.reduce(
+      (previous, current) => `${previous}${current.toText()}`,
+      ''
+    )
   }
 }

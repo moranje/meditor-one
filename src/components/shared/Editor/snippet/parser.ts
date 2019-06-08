@@ -1,20 +1,25 @@
 import nearley from 'nearley'
-import * as grammar from '@/components/Shared/Editor/snippet-tree/grammar'
+import * as grammar from '@/components/Shared/Editor/snippet/grammar'
 import { Marker, Snippet } from '@/components/Shared/Editor/snippet/classes'
 
 export class SnippetParser {
-  private _ast: Snippet
+  private _root: Snippet
+  private _context: { snippetFiles?: any; actions?: any }
 
-  private setTabstopDefaults(result) {
+  constructor(context: { snippetFiles?: any; actions?: any }) {
+    this._context = context
+  }
+
+  get root(): Snippet {
+    return this._root
+  }
+
+  private _setTabstopDefaults(result) {
     return result
   }
 
-  private insertFinalTabstop(result) {
+  private _insertFinalTabstop(result) {
     return result
-  }
-
-  get ast(): Snippet {
-    return this._ast
   }
 
   parse(value: string) {
@@ -26,28 +31,19 @@ export class SnippetParser {
       throw new Error(`Parser error:\n\n ${error.message}`)
     }
 
-    let result = this.setTabstopDefaults(parser.results)
-    this._ast = this.insertFinalTabstop(result)
+    let result = this._setTabstopDefaults(parser.results)
+    let [root] = this._insertFinalTabstop(result)
+
+    root.resolve(this._context, root)
+    this._root = root
 
     return this
   }
-
-  // Hook for resolving external actions objects
-  resolve(context: { snippetFiles: any; actions: any }) {
-    // @ts-ignore
-    this._ast = this._ast.resolve(context)
-
-    return this
-  }
-
-  // Possible transforms: expansions, static actions, dynamic (actions,
-  // expressions, tranforms, choice)
-  // transform(transforms: ASTTransform[]): Snippet {}
 
   walk(
-    marker: Marker[] = this._ast.children,
-    visitor: (marker: Marker, root: Marker) => boolean,
-    root: Marker = this._ast
+    marker: Marker[] = this._root.children,
+    visitor: (marker: Marker, root: Snippet) => boolean,
+    root: Snippet = this._root
   ): void {
     const stack = [...marker]
 
@@ -62,6 +58,11 @@ export class SnippetParser {
   }
 
   toString() {
-    return `${this.ast}`
+    return `${this.root}`
+  }
+
+  // Hook for resolving external actions objects
+  resolve() {
+    this._root.resolve(this._context, this._root)
   }
 }

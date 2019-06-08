@@ -1,5 +1,5 @@
 export default class M1Error extends Error {
-  constructor (message: string, type: string) {
+  constructor(message: string, type: string) {
     super(message)
 
     this.name = type || this.constructor.name

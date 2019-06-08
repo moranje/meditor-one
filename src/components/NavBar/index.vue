@@ -1,72 +1,110 @@
 <template lang="html">
-  <VToolbar
-    ref="navbar"
-    app
-    fixed
-    color="primary"
-    dark
-  >
-    <BaseIcon
-      icon-color="#eee"
-      height="36"
-      width="36"
-      class="hidden-lg-and-up"
-      @click="navigate"
-    />
+  <VToolbar ref="navbar" app fixed color="primary" dark>
+    <VToolbarTitle v-show="fileName">
+      {{ fileName }}
+    </VToolbarTitle>
 
     <VSpacer />
 
-    <VBtn
-      v-show="$route.params.folderId"
-      icon
-      @click="add"
-    >
+    <VBtn v-show="$route.params.folderId" icon @click="add">
       <VIcon>
         mdi-file-plus
       </VIcon>
     </VBtn>
 
-    <VBtn
-      icon
-      to="/login"
-    >
-      <VIcon :color="loginColor">
-        mdi-account-circle-outline
-      </VIcon>
-    </VBtn>
-    <resize-observer @notify="handleResize" />
+    <!-- Dropdown should contain links to account (practice info), docs and login/out -->
+
+    <VMenu offset-y nudge-bottom="14">
+      <template v-slot:activator="{ on }">
+        <VBtn dark icon v-on="on">
+          <VIcon :color="loginColor">
+            mdi-account-circle-outline
+          </VIcon>
+        </VBtn>
+      </template>
+
+      <VList>
+        <VListTile to="/account" avatar>
+          <VListTileAction>
+            <VIcon>
+              mdi-account-circle-outline
+            </VIcon>
+          </VListTileAction>
+
+          <VListTileContent>
+            <VListTileTitle>Account</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+        <VListTile to="/docs" avatar>
+          <VListTileAction>
+            <VIcon>
+              mdi-book-open-outline
+            </VIcon>
+          </VListTileAction>
+
+          <VListTileContent>
+            <VListTileTitle>Docs</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+        <VListTile v-if="!$user" to="/login" avatar>
+          <VListTileAction>
+            <VIcon>
+              mdi-login
+            </VIcon>
+          </VListTileAction>
+
+          <VListTileContent>
+            <VListTileTitle>Login</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+        <VListTile v-if="$user" avatar @click="logout">
+          <VListTileAction>
+            <VIcon>
+              mdi-logout
+            </VIcon>
+          </VListTileAction>
+
+          <VListTileContent>
+            <VListTileTitle>Logout</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+      </VList>
+    </VMenu>
+    <ResizeObserver @notify="handleResize" />
   </VToolbar>
 </template>
 
 <script lang="js">
-import BaseIcon from '@/components/Shared/BaseIcon'
+import User from '@/store/models/User'
 import File from '@/store/models/File'
 import Folder from '@/store/models/Folder'
 import Editor from '@/store/models/Editor'
-import { db } from '@/plugins/firebase'
+import UI from '@/store/models/UI'
+import { db, firebase } from '@/plugins/firebase'
 
 export default {
   name: 'NavBar',
-
-  components: {
-    BaseIcon
-  },
 
   computed: {
     loginColor () {
       if (this.$user) return 'success'
 
       return 'error'
-    }
+    },
+
+    fileName() {
+      if (this.$route.params.fileId) {
+        let file = File.find(this.$route.params.fileId)
+
+        if (file) return file.name
+      }
+
+      return null
+    },
   },
 
   mounted () {
-    Editor.insertOrUpdate({
-      data: [
-        Object.assign({ id: 'snippet' }, this.getSize()),
-        Object.assign({ id: 'status' }, this.getSize())
-      ]
-    })
+    this.handleResize()
   },
 
   methods: {
@@ -84,52 +122,62 @@ export default {
           name: '',
           value: '',
           ownerId: this.$user.uid,
-          parentId: parent.id
-        }
+          parentId: parent.id,
+        },
       })
 
       // Add relationship data to parent. Also uncollapse parent to edit child.
       Folder.update({
         where: parent.id,
         data: {
-          fileIds: [ref.id, ...parent.fileIds]
-        }
+          fileIds: [ref.id, ...parent.fileIds],
+        },
       })
     },
 
     handleResize () {
-      Editor.insertOrUpdate({
+      UI.insertOrUpdate({
         data: [
-          Object.assign({ id: 'snippet' }, this.getSize()),
-          Object.assign({ id: 'status' }, this.getSize())
-        ]
+          {
+            id: 'viewport',
+            width: Math.max(
+              document.documentElement.clientWidth,
+              window.innerWidth || 0
+            ),
+            height: Math.max(
+              document.documentElement.clientHeight,
+              window.innerHeight || 0
+            ),
+          },
+          {
+            id: 'navbar',
+            width: this.$refs.navbar.$el.clientWidth,
+            height: this.$refs.navbar.$el.clientHeight,
+          },
+        ],
       })
     },
 
-    getSize () {
-      return {
-        navbar: {
-          width: this.$el.clientWidth,
-          height: this.$el.clientHeight
-        },
-        viewport: {
-          width: Math.max(
-            document.documentElement.clientWidth,
-            window.innerWidth || 0
-          ),
-          height: Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0
-          )
-        }
-      }
-    }
-  }
+    logout () {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          User.deleteAll()
+          // This is able to delete all records appearently
+          // File.deleteAll();
+          // Folder.deleteAll();
+        })
+        .catch((error) => {
+          // An error happened.
+          throw error
+        })
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .nav-bar {
-
-  }
+.nav-bar {
+}
 </style>

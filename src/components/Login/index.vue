@@ -1,27 +1,13 @@
 <template lang="html">
-  <VLayout
-    fill-height
-    align-center
-    justify-center
-  >
-    <VFlex
-      xs12
-      sm8
-      md4
-    >
+  <VLayout fill-height align-center justify-center>
+    <VFlex xs12 sm8 md4>
       <VCard class="elevation-12">
-        <VToolbar
-          dark
-          color="primary"
-        >
+        <VToolbar dark color="primary">
           <VToolbarTitle>Account</VToolbarTitle>
         </VToolbar>
         <VCardText v-show="!$user">
           <VLayout align-center>
-            <VFlex
-              xs12
-              text-xs-center
-            >
+            <VFlex xs12 text-xs-center>
               <VBtn
                 outline
                 color="primary"
@@ -34,9 +20,9 @@
             </VFlex>
           </VLayout>
 
-          <br>
+          <br />
           <VDivider />
-          <br>
+          <br />
 
           <VForm>
             <VTextField
@@ -57,33 +43,21 @@
           </VForm>
         </VCardText>
 
-        <VCardText
-          v-show="$user"
-          class="text-xs-center"
-        >
+        <VCardText v-show="$user" class="text-xs-center">
           Momenteel ben je ingelogd.
         </VCardText>
 
         <VCardActions v-show="!$user">
           <VSpacer />
-          <VBtn
-            color="primary"
-            @click="loginWithEmailAndPassword"
-          >
+          <VBtn color="primary" @click="loginWithEmailAndPassword">
             Log in
           </VBtn>
         </VCardActions>
 
         <VCardActions v-show="$user">
           <VLayout align-center>
-            <VFlex
-              xs12
-              text-xs-center
-            >
-              <VBtn
-                color="primary"
-                @click="logout"
-              >
+            <VFlex xs12 text-xs-center>
+              <VBtn color="primary" @click="logout">
                 Log uit
               </VBtn>
             </VFlex>
@@ -104,7 +78,7 @@ export default {
   name: 'Login',
 
   metaInfo: {
-    title: 'Log in'
+    title: 'Log in',
   },
 
   props: [],
@@ -151,7 +125,7 @@ export default {
         })
         .catch((error) => {
           throw error
-        // ...
+          // ...
         })
     },
 
@@ -169,13 +143,12 @@ export default {
           // An error happened.
           throw error
         })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .login {
-
-  }
+.login {
+}
 </style>

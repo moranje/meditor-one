@@ -4,5 +4,5 @@ export const LANGUAGE_ID = 'snippet'
 
 monaco.languages.register({
   id: LANGUAGE_ID,
-  aliases: ['Snippet']
+  aliases: ['Snippet'],
 })

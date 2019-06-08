@@ -1,12 +1,12 @@
 interface Action {
-  command: any;
-  title?: string;
+  command: any
+  title?: string
 }
 
-export default function (): Action[] {
+export default function(): Action[] {
   return [
     {
-      command: {}
-    }
+      command: {},
+    },
   ]
 }

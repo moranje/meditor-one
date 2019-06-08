@@ -1,7 +1,5 @@
 <template lang="html">
-  <article
-    class="folder-list-container"
-  >
+  <article class="folder-list-container">
     <VTreeview
       v-model="tree"
       :open="collapsed"
@@ -17,17 +15,11 @@
       @update:open="openFolder"
       @update:active="activated"
     >
-      <template
-        slot="prepend"
-        slot-scope="{ item, open }"
-      >
-        <VIcon> {{ open ? "mdi-folder-open" : "mdi-folder" }} </VIcon>
+      <template slot="prepend" slot-scope="{ item, open }">
+        <VIcon> {{ open ? 'mdi-folder-open' : 'mdi-folder' }} </VIcon>
       </template>
 
-      <template
-        slot="label"
-        slot-scope="{ item }"
-      >
+      <template slot="label" slot-scope="{ item }">
         <VTextField
           v-if="item.editable"
           :ref="item.id"
@@ -50,15 +42,14 @@
         </div>
       </template>
 
-      <template
-        slot="append"
-        slot-scope="{ item, active }"
-      >
+      <template slot="append" slot-scope="{ item, active }">
         <ListActions
           v-show="active || item.editable"
           :edit-mode="item.editable"
           @add="add(item)"
-          @edit="item.editable ? focusLose($event, item) : focusGain($event, item)"
+          @edit="
+            item.editable ? focusLose($event, item) : focusGain($event, item)
+          "
           @remove="remove(item)"
         />
       </template>
@@ -77,26 +68,26 @@ export default {
   name: 'FolderList',
 
   components: {
-    ListActions
+    ListActions,
   },
 
   props: {
     items: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
 
     collapsed: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
   data() {
     return {
       tree: [],
       activeFolder: [],
-      hidden: true
+      hidden: true,
     }
   },
 
@@ -114,10 +105,10 @@ export default {
   watch: {
     '$route' (to, from) {
       if (to.name === 'templates') {
-        console.log('ROUTE WILL BE ACTIVATED', this, to.params.folderId)
+        // console.log('ROUTE WILL BE ACTIVATED', this, to.params.folderId)
         this.activeFolder = [to.params.folderId]
       }
-    }
+    },
   },
 
   mounted () {},
@@ -136,7 +127,7 @@ export default {
         Folder.update({
           where: record => rootFolders.indexOf(record.id) !== -1,
 
-          data: { collapsed: true }
+          data: { collapsed: true },
         })
       }
 
@@ -145,7 +136,7 @@ export default {
         Folder.update({
           where: record => folder.parent.folderIds.indexOf(record.id) !== -1,
 
-          data: { collapsed: true }
+          data: { collapsed: true },
         })
       }
 
@@ -153,20 +144,20 @@ export default {
       if (id) {
         Folder.update({
           where: id,
-          data: { collapsed }
+          data: { collapsed },
         })
       }
     },
 
     activated([id]) {
-      console.log('ACTIVATED', { folderId: this.$route.params.folderId, activeFolder: this.activeFolder })
+      // console.log('ACTIVATED', { folderId: this.$route.params.folderId, activeFolder: this.activeFolder })
 
       if (id) {
-        console.log('WITH ID', arguments)
+        // console.log('WITH ID', arguments)
         this.$router.push({ path: `/templates/${id}` })
         // this.activeFolder = [id]
       } else if (this.$route.params.folderId && this.activeFolder.indexOf(this.$route.params.folderId) === -1) {
-        console.log('WITHOUT ID', id)
+        // console.log('WITHOUT ID', id)
         // debugger
         this.activeFolder.push(this.$route.params.folderId)
       }
@@ -180,8 +171,8 @@ export default {
           id: ref.id,
           name: '',
           ownerId: this.$user.uid,
-          parentId: item.id
-        }
+          parentId: item.id,
+        },
       })
 
       // Add relationship data to parent. Also uncollapse parent to edit child.
@@ -189,8 +180,8 @@ export default {
         where: item.id,
         data: {
           folderIds: [ref.id, ...item.folderIds],
-          collapsed: false
-        }
+          collapsed: false,
+        },
       })
     },
 
@@ -212,7 +203,7 @@ export default {
       } else {
         Folder.update({
           where: item.id,
-          data: { name: value, editable: false }
+          data: { name: value, editable: false },
         })
       }
     },
@@ -233,7 +224,7 @@ export default {
         Folder.update({
           id: item.parentId,
           collapsed: true,
-          folderIds: parent.folderIds
+          folderIds: parent.folderIds,
         })
       }
     },
@@ -249,68 +240,67 @@ export default {
       if (diffTarget) return { id: diffTarget, collapsed: true }
 
       return { id: null, collapsed: null }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-  .folder-list-container {
-    overflow-y: hidden;
-    height: calc(100% - 64px - 201px); // 100% - navbar - navigation links
+.folder-list-container {
+  overflow-y: hidden;
+  height: calc(100% - 64px - 201px); // 100% - navbar - navigation links
+}
+
+.folder-list {
+  overflow-y: scroll;
+  height: 100%;
+
+  .v-treeview-node__root:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
   }
 
-  .folder-list {
-    overflow-y: scroll;
-    height: 100%;
+  .v-treeview-node--active {
+    background: rgba(0, 0, 0, 0) !important;
 
-    .v-treeview-node__root:hover {
-      background: rgba(0,0,0,0.04) !important;
-    }
-
-    .v-treeview-node--active {
-      background: rgba(0, 0, 0, 0) !important;
-
-      .v-icon.mdi {
-        color: #1565c0; // Primary
-      }
-
-      .label-display {
-        color: #1565c0; // Primary
-      }
-    }
-
-    // .v-treeview-node {
-    //   margin-left: 0;
-    // }
-    .v-treeview-node__children {
-      margin-left: -26px;
-
-      // .v-treeview-node__root {
-      //   margin-left: 0;
-      // }
-
-      .v-treeview-node--leaf {
-        // margin-left: 24px;
-      }
-    }
-
-    .v-treeview-node__label {
-      width: 180px;
+    .v-icon.mdi {
+      color: #1565c0; // Primary
     }
 
     .label-display {
-      font-size: 14px;
-      font-weight: 500;
-
-      &.text-truncate {
-        padding: 0 12px;
-      }
+      color: #1565c0; // Primary
     }
-
-    .v-treeview-node__label {
-      margin-left: 0;
-    }
-
   }
+
+  // .v-treeview-node {
+  //   margin-left: 0;
+  // }
+  .v-treeview-node__children {
+    margin-left: -26px;
+
+    // .v-treeview-node__root {
+    //   margin-left: 0;
+    // }
+
+    .v-treeview-node--leaf {
+      // margin-left: 24px;
+    }
+  }
+
+  .v-treeview-node__label {
+    width: 180px;
+  }
+
+  .label-display {
+    font-size: 14px;
+    font-weight: 500;
+
+    &.text-truncate {
+      padding: 0 12px;
+    }
+  }
+
+  .v-treeview-node__label {
+    margin-left: 0;
+  }
+}
 </style>

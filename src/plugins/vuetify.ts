@@ -1,7 +1,9 @@
 import Vue from 'vue'
 // @ts-ignore
 import Vuetify from 'vuetify/lib'
-import 'vuetify/src/stylus/app.styl'
+import 'vuetify/dist/vuetify.min.css'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@mdi/font/css/materialdesignicons.css'
 import nl from 'vuetify/src/locale/nl'
 // @ts-ignore
 import colors from 'vuetify/es5/util/colors'
@@ -16,12 +18,12 @@ Vue.use(Vuetify, {
     info: colors.cyan.lighten1,
     success: colors.green.lighten1,
     light: colors.grey.lighten2,
-    dark: colors.grey.darken3
+    dark: colors.grey.darken3,
   },
   customProperties: true,
   iconfont: 'mdi',
   lang: {
     locales: { nl },
-    current: 'nl'
-  }
+    current: 'nl',
+  },
 })

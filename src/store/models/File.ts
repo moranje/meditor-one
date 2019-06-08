@@ -3,6 +3,9 @@ import { db } from '@/plugins/firebase'
 import Folder from '@/store/models/Folder'
 
 export default class File extends Model {
+  static entity = 'files'
+  static primaryKey = 'id'
+
   id: string
   name: string
   value: string
@@ -11,10 +14,6 @@ export default class File extends Model {
   parent: Folder
   parentId: string
   ownerId: string
-
-  static entity = 'files'
-
-  static primaryKey = 'id'
 
   static fields(): any {
     return {
@@ -26,7 +25,7 @@ export default class File extends Model {
       ownerId: this.string(null),
       parentId: this.string(null),
 
-      parent: this.belongsTo(Folder, 'parentId')
+      parent: this.belongsTo(Folder, 'parentId'),
     }
   }
 

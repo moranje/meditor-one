@@ -10,14 +10,14 @@ export default {
   lineNumbers: 'on',
   matchBrackets: true,
   minimap: {
-    enabled: false
+    enabled: false,
   },
   quickSuggestions: true,
   readOnly: false,
   renderWhitespace: 'boundary',
   scrollbar: {
     horizontal: 'hidden',
-    vertical: 'hidden'
+    vertical: 'hidden',
   },
   suggestSelection: 'recentlyUsedByPrefix',
   scrollBeyondLastLine: false,
@@ -27,5 +27,5 @@ export default {
   useTabStops: true,
   value: '',
   wordWrap: 'on',
-  wrappingIndent: 'indent'
+  wrappingIndent: 'indent',
 }

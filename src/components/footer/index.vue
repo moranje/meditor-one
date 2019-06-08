@@ -1,40 +1,29 @@
 <template lang="html">
-  <VFooter
-    app
-    fixed
-    inset
-    height="56"
-  >
-    <VLayout
-      justify-center
-      align-center
-    >
+  <VFooter app fixed inset height="56">
+    <VLayout align-center justify-space-around>
       <span>&copy; {{ year }}</span>
+      <ModeDisplay />
     </VLayout>
   </VFooter>
 </template>
 
 <script lang="js">
+import ModeDisplay from './ModeDisplay'
+
 export default {
   name: 'Footer',
-  props: [],
+  components: {
+    ModeDisplay,
+  },
   data () {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
     }
   },
-  computed: {
-
-  },
-  mounted () {},
-  methods: {
-
-  }
 }
 </script>
 
 <style scoped lang="scss">
-  .footer {
-
-  }
+.footer {
+}
 </style>

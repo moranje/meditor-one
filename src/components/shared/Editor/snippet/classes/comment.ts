@@ -1,4 +1,4 @@
-import Marker from '@/components/Shared/Editor/snippet/classes/marker'
+import { Marker } from '@/components/Shared/Editor/snippet/classes'
 
 export default class Comment extends Marker {
   constructor(public value) {

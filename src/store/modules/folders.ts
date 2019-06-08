@@ -11,7 +11,7 @@ const getters = {}
 const mutations = {}
 
 const actions = {
-  fetchAll () {
+  fetchAll() {
     let user = User.query().first()
 
     if (user) {
@@ -26,12 +26,12 @@ const actions = {
     } else {
       Promise.reject(new Error('No user found'))
     }
-  }
+  },
 }
 
 export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 }

@@ -1,0 +1,38 @@
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import ListActions from '../index.vue'
+import Vuetify, { VIcon } from 'vuetify/lib'
+
+describe('Component: ListActions', () => {
+  let wrapper
+
+  beforeEach(() => {
+    // const localVue = createLocalVue()
+
+    // localVue.use(Vuetify)
+
+    // local state
+    // const state = {}
+
+    wrapper = shallowMount(ListActions, {
+      // localVue,
+      stubs: {
+        VIcon,
+      },
+    })
+  })
+
+  it('is a Vue instance', () => {
+    expect(wrapper.isVueInstance()).toBeTruthy()
+  })
+
+  it('should emit edit event when edit icon is clicked', done => {
+    let edit = wrapper.find('.action-edit')
+    wrapper.find('.action-edit').trigger('click')
+    edit.trigger('click')
+    wrapper.vm.$nextTick().then(() => {
+      console.log(wrapper.emitted('edit'))
+      expect(wrapper.emitted('edit')).toBeTruthy()
+      done()
+    })
+  })
+})

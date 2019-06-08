@@ -15,28 +15,49 @@ export default new Router({
       name: 'home',
       beforeEnter: (to, from, next) => {
         next('/status')
-      }
+      },
     },
     {
       path: '/status',
       name: 'status',
       component: () =>
-        import(/* webpackChunkName: "status" */ './components/Status/index.vue')
+        import(
+          /* webpackChunkName: "status" */ './components/Status/index.vue'
+        ),
+    },
+    {
+      path: '/docs',
+      name: 'docs',
+      component: () =>
+        import(/* webpackChunkName: "docs" */ './components/Docs/index.vue'),
+      children: [
+        {
+          path: ':docFile',
+          component: () =>
+            import(
+              /* webpackChunkName: "doc-file" */ './components/Docs/Document/index.vue'
+            ),
+        },
+      ],
     },
     {
       path: '/templates/:folderId',
       name: 'templates',
       component: () =>
-        import(/* webpackChunkName: "templates" */ './components/Templates/index.vue'),
+        import(
+          /* webpackChunkName: "templates" */ './components/Templates/index.vue'
+        ),
       children: [
         {
           // UserProfile will be rendered inside User's <router-view>
           // when /user/:id/profile is matched
           path: ':fileId',
           component: () =>
-            import(/* webpackChunkName: "template" */ './components/Templates/File/index.vue')
-        }
-      ]
+            import(
+              /* webpackChunkName: "template" */ './components/Templates/File/index.vue'
+            ),
+        },
+      ],
       // beforeEnter: function(to, from, next) {
       //   let user = User.query().first();
 
@@ -54,14 +75,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: () =>
-        import(/* webpackChunkName: "templates" */ './components/Login/index.vue')
+        import(
+          /* webpackChunkName: "templates" */ './components/Login/index.vue'
+        ),
     },
     {
       // will match everything
       path: '*',
       beforeEnter: (to, from, next) => {
         next('/status')
-      }
-    }
-  ]
+      },
+    },
+  ],
 })

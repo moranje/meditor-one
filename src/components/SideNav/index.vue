@@ -1,31 +1,22 @@
 <template lang="html">
   <VNavigationDrawer
+    v-if="$vuetify.breakpoint.mdAndUp"
     ref="sidenav"
     v-model="drawer"
     :mini-variant="isMini"
     fixed
+    stateless
     app
     class="side-nav"
     @update:mini-variant="handleResize"
   >
-    <VToolbar
-      flat
-      class="transparent"
-    >
+    <VToolbar flat class="transparent">
       <VAvatar tile>
-        <BaseIcon
-          icon-color="rgba(0,0,0,0.54)"
-          height="36"
-          width="36"
-        />
+        <BaseIcon icon-color="rgba(0,0,0,0.54)" height="36" width="36" />
       </VAvatar>
 
       <VSpacer />
-      <VBtn
-        v-show="!isMini"
-        icon
-        @click.stop="isMini = true"
-      >
+      <VBtn v-show="!isMini" icon @click.stop="isMini = true">
         <VIcon>mdi-chevron-left</VIcon>
       </VBtn>
     </VToolbar>
@@ -38,11 +29,16 @@
           <VListTileTitle>STATUS</VListTileTitle>
         </VListTileContent>
       </VListTile>
+      <VListTile to="/docs">
+        <VListTileAction>
+          <VIcon>mdi-book-open-outline</VIcon>
+        </VListTileAction>
+        <VListTileContent>
+          <VListTileTitle>DOCS</VListTileTitle>
+        </VListTileContent>
+      </VListTile>
       <VDivider />
-      <VListTile
-        :inactive="!isMini"
-        @click="navigate"
-      >
+      <VListTile :inactive="!isMini" @click="navigate">
         <VListTileAction v-show="isMini">
           <VIcon>mdi-folder-multiple</VIcon>
         </VListTileAction>
@@ -50,11 +46,7 @@
           <VListTileTitle>TEMPLATES</VListTileTitle>
         </VListTileContent>
         <VListTileAction>
-          <VBtn
-            icon
-            ripple
-            @click="addFolder"
-          >
+          <VBtn icon ripple @click="addFolder">
             <VIcon color="grey lighten-1">
               mdi-plus
             </VIcon>
@@ -62,13 +54,9 @@
         </VListTileAction>
       </VListTile>
     </VList>
-    <FolderList
-      v-show="!isMini"
-      :items="folders"
-      :collapsed="collapsed"
-    />
+    <FolderList v-show="!isMini" :items="folders" :collapsed="collapsed" />
 
-    <resize-observer @notify="handleResize" />
+    <ResizeObserver @notify="handleResize" />
   </VNavigationDrawer>
 </template>
 
@@ -77,6 +65,7 @@
 import User from '@/store/models/User'
 import Folder from '@/store/models/Folder'
 import Editor from '@/store/models/Editor'
+import UI from '@/store/models/UI'
 
 import { db } from '@/plugins/firebase'
 import BaseIcon from '@/components/Shared/BaseIcon'
@@ -89,12 +78,12 @@ export default {
 
   components: {
     FolderList,
-    BaseIcon
+    BaseIcon,
   },
 
   data: () => ({
-    isMini: false,
-    drawer: {}
+    isMini: true,
+    drawer: {},
   }),
 
   computed: {
@@ -111,16 +100,11 @@ export default {
       return Folder.all()
         .filter(folder => folder.collapsed === false)
         .map(folder => folder.id)
-    }
+    },
   },
 
   mounted () {
-    Editor.insertOrUpdate({
-      data: [
-        Object.assign({ id: 'snippet' }, this.getSize()),
-        Object.assign({ id: 'status' }, this.getSize())
-      ]
-    })
+    this.handleResize()
   },
 
   methods: {
@@ -135,48 +119,43 @@ export default {
       const ref = db.collection(`owner/folders/${this.$user.uid}`).doc()
 
       Folder.insert({
-        data: { id: ref.id, name: '', ownerId: this.$user.uid }
+        data: { id: ref.id, name: '', ownerId: this.$user.uid },
       })
     },
 
     handleResize () {
-      Editor.insertOrUpdate({
+      UI.insertOrUpdate({
         data: [
-          Object.assign({ id: 'snippet' }, this.getSize()),
-          Object.assign({ id: 'status' }, this.getSize())
-        ]
+          {
+            id: 'viewport',
+            width: Math.max(
+              document.documentElement.clientWidth,
+              window.innerWidth || 0
+            ),
+            height: Math.max(
+              document.documentElement.clientHeight,
+              window.innerHeight || 0
+            ),
+          },
+          {
+            id: 'sidenav',
+            width: this.$refs.sidenav.$el.clientWidth,
+            height: this.$refs.sidenav.$el.clientHeight,
+          },
+        ],
       })
     },
-
-    getSize () {
-      return {
-        sidenav: {
-          width: this.$el.clientWidth,
-          height: this.$el.clientHeight
-        },
-        viewport: {
-          width: Math.max(
-            document.documentElement.clientWidth,
-            window.innerWidth || 0
-          ),
-          height: Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0
-          )
-        }
-      }
-    }
-  }
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .side-nav .v-list {
-    padding-bottom: 0;
-  }
+.side-nav .v-list {
+  padding-bottom: 0;
+}
 
-  .m1-logo {
-    width: 36px;
-    height: 36px;
-  }
+.m1-logo {
+  width: 36px;
+  height: 36px;
+}
 </style>

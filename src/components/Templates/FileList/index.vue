@@ -1,38 +1,75 @@
 <template lang="html">
   <VList
-    ref="filelist"
+    ref="filenav"
     three-line
     subheader
     class="file-list"
     transition="slide-x-transition"
   >
-    <template
-      v-for="file in files"
-    >
+    <template v-for="file in files">
       <VListTile
         :key="file.id"
         avatar
         :to="{ path: `/templates/${$route.params.folderId}/${file.id}` }"
       >
-        <VListTileAvatar class="three-line-avatar">
+        <!-- <VListTileAvatar class="three-line-avatar hidden-md-and-down">
           <VIcon class="grey lighten-1 white--text">
             mdi-file
           </VIcon>
-        </VListTileAvatar>
+        </VListTileAvatar> -->
 
         <VListTileContent>
-          <VListTileTitle>
+          <VListTileTitle class="action-container">
             <TextLabel
+              class="action-text"
               :item="file"
               @text-focus="focus($event, file)"
               @text-blur="blur($event, file)"
             />
+
+            <VBtn
+              v-aria="aria.edit"
+              icon
+              ripple
+              class="edit action-icon"
+              @click="file.editable ? blur($event, file) : focus($event, file)"
+            >
+              <VIcon
+                size="20"
+                :color="!file.editable ? 'grey lighten-1' : 'primary'"
+              >
+                mdi-pencil
+              </VIcon>
+            </VBtn>
+            <VBtn
+              v-aria="aria.del"
+              icon
+              ripple
+              class="delete action-icon"
+              @click="remove(file)"
+            >
+              <VIcon size="20" color="grey lighten-1">
+                mdi-delete
+              </VIcon>
+            </VBtn>
           </VListTileTitle>
           <VListTileSubTitle>{{ file.value }}</VListTileSubTitle>
         </VListTileContent>
 
-        <VListTileAction>
-          <VBtn
+        <!-- <VListTileAction>
+          <VIcon
+            size="20"
+            :color="!file.editable ? 'grey lighten-1' : 'primary'"
+          >
+            mdi-pencil
+          </VIcon>
+          <VIcon
+            size="20"
+            color="grey lighten-1"
+          >
+            mdi-delete
+          </VIcon> -->
+        <!-- <VBtn
             icon
             ripple
             class="edit"
@@ -41,9 +78,9 @@
             <VIcon :color="!file.editable ? 'grey lighten-1' : 'primary'">
               mdi-pencil
             </VIcon>
-          </VBtn>
-        </VListTileAction>
-        <VListTileAction>
+          </VBtn> -->
+        <!-- </VListTileAction> -->
+        <!-- <VListTileAction>
           <VBtn
             icon
             ripple
@@ -54,22 +91,22 @@
               mdi-delete
             </VIcon>
           </VBtn>
-        </VListTileAction>
+        </VListTileAction> -->
       </VListTile>
 
-      <v-divider
-        :key="`divider-${file.id}`"
-      />
+      <VDivider :key="`divider-${file.id}`" />
     </template>
 
-    <resize-observer @notify="handleResize" />
+    <ResizeObserver @notify="handleResize" />
   </VList>
 </template>
 
 <script lang="js">
+import { directiveAria } from 'vue-a11y-utils'
 import File from '@/store/models/File'
 import Folder from '@/store/models/Folder'
 import Editor from '@/store/models/Editor'
+import UI from '@/store/models/UI'
 
 import { db } from '@/plugins/firebase'
 import TextLabel from '@/components/Shared/TextLabel'
@@ -78,17 +115,35 @@ export default {
   name: 'FileList',
 
   metaInfo: {
-    title: 'Templates'
+    title: 'Templates',
+  },
+
+  directives: {
+    aria: directiveAria,
   },
 
   components: {
-    TextLabel
+    TextLabel,
   },
 
   props: {
     files: {
       type: Array,
-      default: () => []
+      default: () => ([]),
+    },
+  },
+
+  data: function() {
+    return {
+      aria: {
+        edit: {
+          label: 'wijzig naam van template',
+        },
+
+        del: {
+          label: 'verwijder template',
+        },
+      },
     }
   },
 
@@ -96,31 +151,25 @@ export default {
 
   },
 
-  watch: {
-    files(...args) {
-      console.log('FILES', args)
-    }
-  },
+  // watch: {
+  //   files(...args) {
+  //     // console.log('FILES', args)
+  //   },
+  // },
 
   mounted () {
-    Editor.insertOrUpdate({
-      data: [
-        Object.assign({ id: 'snippet' }, this.getSize()),
-        Object.assign({ id: 'status' }, this.getSize())
-      ]
-    })
+    this.handleResize()
   },
 
   destroyed () {
-    Editor.insertOrUpdate({
+    UI.insertOrUpdate({
       data: [
-        Object.assign({ id: 'snippet' }, this.getSize(), {
-          filelist: { width: 0, height: 0 }
-        }),
-        Object.assign({ id: 'status' }, this.getSize(), {
-          filelist: { width: 0, height: 0 }
-        })
-      ]
+        {
+          id: 'filenav',
+          width: 0,
+          height: 0,
+        },
+      ],
     })
   },
 
@@ -159,54 +208,72 @@ export default {
         Folder.update({
           id: file.parentId,
           collapsed: true,
-          fileIds: parent.fileIds
+          fileIds: parent.fileIds,
         })
       }
     },
 
     handleResize () {
-      Editor.insertOrUpdate({
+      UI.insertOrUpdate({
         data: [
-          Object.assign({ id: 'snippet' }, this.getSize()),
-          Object.assign({ id: 'status' }, this.getSize())
-        ]
+          {
+            id: 'viewport',
+            width: Math.max(
+              document.documentElement.clientWidth,
+              window.innerWidth || 0
+            ),
+            height: Math.max(
+              document.documentElement.clientHeight,
+              window.innerHeight || 0
+            ),
+          },
+          {
+            id: 'filenav',
+            width: this.$el.clientWidth,
+            height: this.$el.clientHeight,
+          },
+        ],
       })
     },
-
-    getSize () {
-      return {
-        filelist: {
-          width: this.$el.clientWidth,
-          height: this.$el.clientHeight
-        },
-        viewport: {
-          width: Math.max(
-            document.documentElement.clientWidth,
-            window.innerWidth || 0
-          ),
-          height: Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0
-          )
-        }
-      }
-    }
-  }
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .file-list {
-    overflow-y: scroll;
-    height: 100%;
+.file-list {
+  overflow-y: scroll;
+  height: 100%;
 
-    .v-list__tile__action {
-      min-width: 36px;
-    }
-
-    .three-line-avatar {
-      margin-top: 0;
-    }
-
+  .v-list__tile__action {
+    min-width: 36px;
   }
+
+  .three-line-avatar {
+    margin-top: 0;
+  }
+}
+
+.action-container {
+  display: flex;
+
+  .action-text {
+    width: calc(100% - 48px);
+  }
+
+  .action-icon {
+    position: relative;
+    top: -4px;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    color: transparent;
+    // padding: 0 2px 0 2px
+
+    &:hover {
+      .v-icon {
+        color: rgba(0, 0, 0, 0.54) !important;
+      }
+    }
+  }
+}
 </style>

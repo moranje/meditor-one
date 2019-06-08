@@ -18,13 +18,13 @@ interface CodeLens {
 emitter.on(`${LANGUAGE_ID}.change`, ({ editor, args }) => {
   if (disposable) disposable.dispose()
 
-  console.log(`${LANGUAGE_ID}.change`, args)
+  // console.log(`${LANGUAGE_ID}.change`, args)
 })
 
 emitter.on(`${LANGUAGE_ID}.keyDown`, ({ editor, args }) => {
   if (disposable) disposable.dispose()
 
-  console.log(`${LANGUAGE_ID}.keyDown`, args)
+  // console.log(`${LANGUAGE_ID}.keyDown`, args)
 })
 
 export default function(editor: any) {

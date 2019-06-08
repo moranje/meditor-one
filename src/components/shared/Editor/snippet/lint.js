@@ -1,100 +1,382 @@
-function snippet([$first, $rest]) {
-  return new Snippet(
-    null,
-    [$first, ...[].concat(...$rest)].filter(element => element)
-  )
+function createSnippet([$first, $rest]) {
+  return new Snippet([$first, ...[].concat(...$rest)].filter(Boolean))
 }
 
-function text([$text]) {
+function createText([$text]) {
   let [first] = $text
 
   if (!first) {
-    return new Text('') // TODO:  find a better way to catch this
+    return
   }
 
   return new Text($text.map(partial => partial.value).join(''))
 }
 
-function escaped([$escaped]) {
+function createEscaped([$escaped]) {
   // Unescape token, offsets the offset and col by 1
   return Object.assign($escaped, {
-    value: $escaped.value.charAt(1)
+    value: $escaped.value.charAt(1),
   })
 }
 
-function comment([$comment]) {
+function createComment([$comment]) {
   return new Comment($comment.value)
 }
 
-function placeholderSimple([$dollar, $int]) {}
+function createPlaceholderSimple([$dollar, $int]) {
+  return new Placeholder(null, { index: +$int.value })
+}
 
-function placeholderNamedSimple([
+function createPlaceholderNamedSimple([
   $dollar,
-  $namedInt,
+  $int,
   $openTag,
-  $intName,
-  $closeTag
-]) {}
+  $name,
+  $closeTag,
+]) {
+  return new Placeholder(null, {
+    index: +$int.value,
+    name: $name.value,
+  })
+}
 
-function placeholderBlock([$dollar, $open, $int, $close]) {}
+function createPlaceholderBlock([$dollar, $open, $int, $close]) {
+  return new Placeholder(null, { index: +$int.value, block: true })
+}
 
-function placeholderNamedBlock([
+function createPlaceholderNamedBlock([
   $dollar,
   $open,
-  $namedInt,
+  $int,
   $openTag,
-  $intName,
+  $name,
   $closeTag,
-  $close
-]) {}
+  $close,
+]) {
+  return new Placeholder(null, {
+    index: +$int.value,
+    name: $name.value,
+    block: true,
+  })
+}
 
-function placeholderBlockWithArg([
+function createPlaceholderBlockWithArgument([
   $dollar,
   $open,
   $int,
   $colon,
-  $snippet,
-  $close
-]) {}
+  $Snippet,
+  $close,
+]) {
+  return new Placeholder([$Snippet], {
+    index: +$int.value,
+    block: true,
+  })
+}
 
-function placeholderNamedBlockWithArg([
+function createPlaceholderNamedBlockWithArgument([
   $dollar,
   $open,
-  $namedInt,
+  $int,
   $openTag,
-  $intName,
+  $name,
   $closeTag,
   $colon,
-  $snippet,
-  $close
-]) {}
+  $Snippet,
+  $close,
+]) {
+  return new Placeholder([$Snippet], {
+    index: +$int.value,
+    name: $name.value,
+    block: true,
+  })
+}
 
-function placeholderTransform([$dollar, $open, $int, $transform, $close]) {}
+function createPlaceholderTransform([
+  $dollar,
+  $open,
+  $int,
+  $Transform,
+  $close,
+]) {
+  return new Placeholder(null, {
+    index: +$int.value,
+    block: true,
+    transform: $Transform,
+  })
+}
 
-function choice() {}
+function createChoice([
+  $dollar,
+  $open,
+  $int,
+  $pipeOpen,
+  $ChoiceOption,
+  $ChoiceOptions,
+  $pipeClose,
+  $close,
+]) {
+  if (!$ChoiceOption) {
+    $ChoiceOption = new Text('')
+  }
 
-function variableSimple() {}
+  return new Choice(
+    [
+      $ChoiceOption,
+      ...$ChoiceOptions.map(([colon, choiceOption]) => choiceOption),
+    ],
+    {
+      index: +$int.value,
+    }
+  )
+}
 
-function variableBlock() {}
+function createVariableSimple([$dollar, $name]) {
+  return new Variable(null, {
+    name: $name.value,
+  })
+}
 
-function variableBlockWithArg() {}
+function createVariableBlock([$dollar, $open, $name, $close]) {
+  return new Variable(null, {
+    name: $name.value,
+    block: true,
+  })
+}
 
-function variableTransform() {}
+function createVariableBlockWithArgument([
+  $dollar,
+  $open,
+  $name,
+  $colon,
+  $Snippet,
+  $close,
+]) {
+  return new Variable([$Snippet], {
+    name: $name.value,
+    block: true,
+  })
+}
 
-function expansion() {}
+function createVariableTransform([$dollar, $open, $name, $Transform, $close]) {
+  return new Variable(null, {
+    name: $name.value,
+    block: true,
+    transform: $Transform,
+  })
+}
 
-function slot() {}
+function createExpansion([
+  $dollar,
+  $open,
+  $exclamation,
+  $int,
+  $colon,
+  $name,
+  $close,
+]) {
+  return new Expansion([], {
+    index: +$int.value,
+    name: $name.value,
+  })
+}
 
-function action() {}
+function createExpansionWithArgument([
+  $dollar,
+  $open,
+  $exclamation,
+  $int,
+  $colon,
+  $name,
+  $Expansion,
+  $close,
+]) {
+  return new Expansion([], {
+    index: +$int.value,
+    name: $name.value,
+    args: $Expansion,
+  })
+}
 
-function placeholderExpression() {}
+function createSlot([$dollar, $exclamation, $nameOrInt]) {
+  return new Slot({
+    name: $nameOrInt.value,
+  })
+}
 
-function variableExpression() {}
+function createAction([$dollar, $open, $pound, $name, $close]) {
+  return new Action({
+    name: $name.value,
+  })
+}
 
-function result() {}
+function createActionWithArguments([
+  $dollar,
+  $open,
+  $pound,
+  $name,
+  $Args,
+  $close,
+]) {
+  return new Action({
+    name: $name.value,
+    args: $Args.map(([$colon, TextArgument]) => TextArgument),
+  })
+}
 
-function transform() {}
+function createPlaceholderEvaluation([
+  $dollar,
+  $open,
+  $int,
+  $firstColon,
+  $operator,
+  $secondColon,
+  $TextArgument,
+  $close,
+]) {
+  return new Evaluation({
+    index: +$int.value,
+    operator: $operator.value,
+    comparator: $TextArgument,
+  })
+}
 
-function choiceOption() {}
+function createVariableEvaluation([
+  $dollar,
+  $open,
+  $name,
+  $firstColon,
+  $operator,
+  $secondColon,
+  $TextArgument,
+  $close,
+]) {
+  return new Evaluation({
+    name: $name.value,
+    operator: $operator.value,
+    comparator: $TextArgument,
+  })
+}
 
-function choiceOptionExpansion() {}
+function createCondition([$Evaluation, $Evaluations, $equals, $Expansion]) {
+  return new Condition({
+    evaluations: [
+      $Evaluation,
+      ...$Evaluations.map(([$operator, $evaluation]) => $evaluation),
+    ],
+    operators: $Evaluations.map(([$operator]) => $operator.value),
+    consequent: $Expansion,
+  })
+}
+
+function createTransform([
+  $slash,
+  $pattern,
+  $secondSlash,
+  $replacement,
+  $Replacements,
+  $thirdSlash,
+  $flags,
+]) {
+  let children = []
+
+  if ($replacement) children.push(new Text($replacement.value))
+  $Replacements.forEach(([$FormatString, $text]) => {
+    children.push($FormatString)
+
+    if ($text) children.push(new Text($text.value))
+  })
+
+  return new Transform(children, {
+    pattern: new RegExp(
+      $pattern.value.replace(/\$|}|\\/g, '\\$&'),
+      $flags ? $flags.value : ''
+    ),
+  })
+}
+
+function createFormatStringSimple([$dollar, $int]) {
+  return new FormatString({
+    index: +$int.value,
+  })
+}
+
+function createFormatStringBlock([$dollar, $open, $int, $close]) {
+  return new FormatString({
+    index: +$int.value,
+    block: true,
+  })
+}
+
+function createFormatStringCaseModifier([
+  $dollar,
+  $open,
+  $int,
+  $colon,
+  $caseModifier,
+  $close,
+]) {
+  return new FormatString({
+    index: +$int.value,
+    block: true,
+    shorthandName: $caseModifier.value.replace('/', ''),
+  })
+}
+
+function createFormatStringIfCondition([
+  $dollar,
+  $open,
+  $int,
+  $colon,
+  $plus,
+  $condition,
+  $close,
+]) {
+  return new FormatString({
+    index: +$int.value,
+    block: true,
+    ifValue: $condition.value,
+  })
+}
+
+function createFormatStringIfElseCondition([
+  $dollar,
+  $open,
+  $int,
+  $firstColon,
+  $questionmark,
+  $ifCondition,
+  $secondColon,
+  $elseCondition,
+  $close,
+]) {
+  return new FormatString({
+    index: +$int.value,
+    block: true,
+    ifValue: $ifCondition.value,
+    elseValue: $elseCondition.value,
+  })
+}
+
+function createFormatStringElseCondition([
+  $dollar,
+  $open,
+  $int,
+  $colon,
+  $minus,
+  $condition,
+  $close,
+]) {
+  return new FormatString({
+    index: +$int.value,
+    block: true,
+    elseValue: $condition.value,
+  })
+}
+
+function createExpansionArgument([$newline, $slash, $name, $colon, $Snippet]) {
+  return new ExpansionArgument({
+    name: $name.value,
+    arg: $Snippet,
+  })
+}

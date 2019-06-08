@@ -1,5 +1,6 @@
 <template lang="html">
   <Editor
+    uid="snippet"
     :value="value"
     language="snippet"
     :visible="visible"
@@ -16,7 +17,7 @@ export default {
   name: 'File',
 
   components: {
-    Editor
+    Editor,
   },
 
   computed: {
@@ -30,22 +31,21 @@ export default {
 
     visible () {
       return !this.$wait.waiting('user records')
-    }
+    },
   },
 
   methods: {
     update (value) {
       File.update({
         id: this.$route.params.fileId,
-        value
+        value,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .file {
-
-  }
+.file {
+}
 </style>

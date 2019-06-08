@@ -1,7 +1,7 @@
-import Marker from '@/components/Shared/Editor/snippet/classes/marker'
+import { Marker } from '@/components/Shared/Editor/snippet/classes'
 
 export default class Text extends Marker {
-  constructor(public value) {
+  constructor(public value: string) {
     super('text')
   }
 
@@ -22,6 +22,6 @@ export default class Text extends Marker {
   }
 
   toText(): string {
-    return this.value // Should strip escape characters
+    return this.value.replace('\\\\', '\\') // Should strip escape characters
   }
 }

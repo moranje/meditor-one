@@ -1,9 +1,8 @@
 <template lang="html">
-  <VLayout
-    class="status"
-  >
+  <VLayout class="status">
     <VFlex xs12>
       <Editor
+        uid="status"
         :value="value"
         :visible="true"
         language="status"
@@ -22,34 +21,33 @@ export default {
   name: 'Status',
 
   metaInfo: {
-    title: 'Status'
+    title: 'Status',
   },
 
   components: {
-    Editor: EditorComponent
+    Editor: EditorComponent,
   },
 
   computed: {
-    value () {
+    value() {
       let status = Editor.find('status')
 
-      if (status.instance) return status.instance.getValue()
+      if (status && status.instance) return status.instance.getValue()
 
       return ''
-    }
+    },
   },
 
   methods: {
-    update (value) {
+    update(value) {
       // console.log('UPDATE STATUS', value);
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-  .status {
-    overflow-y: hidden;
-    height: calc(100vh - 64px - 56px);
-  }
+.status {
+  overflow-y: hidden;
+}
 </style>

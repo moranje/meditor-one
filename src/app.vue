@@ -1,10 +1,11 @@
 <template>
   <VApp>
     <SideNav />
-    <NavBar />
+    <NavBar ref="navbar" />
 
     <VContent>
       <RouterView :key="$route.fullPath" />
+      <ResizeObserver @notify="handleResize" />
     </VContent>
     <Footer />
   </VApp>
@@ -15,6 +16,7 @@ import { firebase } from '@/plugins/firebase'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 import User from '@/store/models/User'
+import UI from '@/store/models/UI'
 
 import SideNav from '@/components/SideNav'
 import NavBar from '@/components/NavBar'
@@ -27,19 +29,19 @@ export default {
     // if no subcomponents specify a metaInfo.title, this title will be used
     title: 'Meditor One',
     // all titles will be injected into this template
-    titleTemplate: '%s'
+    titleTemplate: '%s',
   },
 
   components: {
     SideNav,
     NavBar,
-    Footer
+    Footer,
   },
 
-  created () {
+  created() {
     this.$wait.start('user records')
 
-    firebase.auth().onAuthStateChanged(async (user) => {
+    firebase.auth().onAuthStateChanged(async user => {
       if (user) {
         // First add user since it is needed for fetch calls
         await User.create({ data: user })
@@ -56,12 +58,33 @@ export default {
     })
   },
 
-  mounted () {
+  mounted() {
     // window.addEventListener('resize', this.resize);
   },
 
   methods: {
-
-  }
+    handleResize() {
+      UI.insertOrUpdate({
+        data: [
+          {
+            id: 'viewport',
+            width: Math.max(
+              document.documentElement.clientWidth,
+              window.innerWidth || 0
+            ),
+            height: Math.max(
+              document.documentElement.clientHeight,
+              window.innerHeight || 0
+            ),
+          },
+          {
+            id: 'navbar',
+            width: this.$refs.navbar.$el.clientWidth,
+            height: this.$refs.navbar.$el.clientHeight,
+          },
+        ],
+      })
+    },
+  },
 }
 </script>
