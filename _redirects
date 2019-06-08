@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+http://admiring-galileo-339b94.netlify.com/* http://m1.oranje.wtf/:splat 301!
