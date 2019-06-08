@@ -5,7 +5,8 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 const config = {
-  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  // Needs not be hidden
+  apiKey: 'AIzaSyCWn_A-3XbZTI40rsvjOTuG0I1VKq2O8nI',
   authDomain: 'meditor-one.firebaseapp.com',
   databaseURL: 'https://meditor-one.firebaseio.com',
   projectId: 'meditor-one',
