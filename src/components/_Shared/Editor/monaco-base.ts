@@ -2,7 +2,7 @@ import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import status from './languages/status'
 import snippet from './languages/snippet'
 import docSnippet from './languages/doc-snippet'
-import { emitter } from '@/components/Shared/emitter'
+import { emitter } from './node_modules/@/components/_Shared/emitter'
 
 interface EditorOptions {
   language: string

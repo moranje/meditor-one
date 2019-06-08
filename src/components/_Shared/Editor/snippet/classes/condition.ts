@@ -2,7 +2,7 @@ import {
   Marker,
   Evaluation,
   Snippet,
-} from '@/components/Shared/Editor/snippet/classes'
+} from './node_modules/@/components/_Shared/Editor/snippet/classes'
 
 export default class Condition extends Marker {
   evaluations: Evaluation[]

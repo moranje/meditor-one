@@ -1,11 +1,11 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import slug from 'speakingurl'
-import { emitter } from '@/components/Shared/emitter'
-import File from '@/store/models/File'
+import { emitter } from './node_modules/@/components/_Shared/emitter'
+import File from './node_modules/@/store/models/File'
 import { LANGUAGE_ID } from './language'
 import { SnippetParser } from '../../snippet/parser'
 import MonacoSnippetController from '../../snippet/monaco-controller'
-import Editor from '@/store/models/Editor'
+import Editor from './node_modules/@/store/models/Editor'
 
 interface Suggestion {
   label: string

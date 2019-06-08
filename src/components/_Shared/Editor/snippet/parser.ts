@@ -1,6 +1,6 @@
 import nearley from 'nearley'
-import * as grammar from '@/components/Shared/Editor/snippet/grammar'
-import { Marker, Snippet } from '@/components/Shared/Editor/snippet/classes'
+import * as grammar from './node_modules/@/components/_Shared/Editor/snippet/grammar'
+import { Marker, Snippet } from './node_modules/@/components/_Shared/Editor/snippet/classes'
 
 export class SnippetParser {
   private _root: Snippet
