@@ -1,6 +1,6 @@
 import { Choice } from './classes'
-import { SnippetParser } from './node_modules/@/components/_Shared/Editor/snippet/parser'
-import SnippetSession from './node_modules/@/components/_Shared/Editor/snippet/session'
+import { SnippetParser } from '@/components/Shared/Editor/snippet/parser'
+import SnippetSession from '@/components/Shared/Editor/snippet/session'
 
 export default class SnippetController {
   private _inSnippetMode: boolean = false

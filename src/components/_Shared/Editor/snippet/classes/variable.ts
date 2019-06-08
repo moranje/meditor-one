@@ -1,7 +1,7 @@
 import {
   Marker,
   TransformableMarker,
-} from '@/components/Shared/Editor/snippet/classes'
+} from '@/components/_Shared/Editor/snippet/classes'
 
 export default class Variable extends TransformableMarker {
   name: string | null

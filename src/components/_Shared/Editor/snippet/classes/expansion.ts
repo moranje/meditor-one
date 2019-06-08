@@ -1,9 +1,9 @@
-import { SnippetParser } from '@/components/Shared/Editor/snippet/parser'
+import { SnippetParser } from '@/components/_Shared/Editor/snippet/parser'
 import {
   Marker,
   ExpansionArgument,
   Snippet,
-} from '@/components/Shared/Editor/snippet/classes'
+} from '@/components/_Shared/Editor/snippet/classes'
 
 export default class Expansion extends Snippet {
   index: number

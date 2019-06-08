@@ -1,5 +1,5 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { emitter } from './node_modules/@/components/_Shared/emitter'
+import { emitter } from '@/components/_Shared/emitter'
 import { LANGUAGE_ID } from './language'
 
 let disposable = null

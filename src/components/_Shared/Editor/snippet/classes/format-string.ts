@@ -1,4 +1,4 @@
-import { Marker, Snippet } from './node_modules/@/components/_Shared/Editor/snippet/classes'
+import { Marker, Snippet } from '@/components/Shared/Editor/snippet/classes'
 
 export default class FormatString extends Marker {
   index: number

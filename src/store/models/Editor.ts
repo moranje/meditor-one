@@ -1,5 +1,5 @@
 import { Model } from '@vuex-orm/core'
-import MonacoSnippetController from '@/components/Shared/Editor/snippet/monaco-controller'
+import MonacoSnippetController from '@/components/_Shared/Editor/snippet/monaco-controller'
 
 export default class Editor extends Model {
   static entity = 'editor'

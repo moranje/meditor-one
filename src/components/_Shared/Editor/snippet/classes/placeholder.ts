@@ -2,7 +2,7 @@ import {
   Marker,
   TransformableMarker,
   Snippet,
-} from '@/components/Shared/Editor/snippet/classes'
+} from '@/components/_Shared/Editor/snippet/classes'
 import { SnippetParser } from '../parser'
 import Text from './text'
 

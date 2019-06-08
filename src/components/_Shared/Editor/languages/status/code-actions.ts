@@ -1,7 +1,7 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { emitter } from './node_modules/@/components/_Shared/emitter'
+import { emitter } from '@/components/Shared/emitter'
 import { LANGUAGE_ID } from './language'
-import Editor from './node_modules/@/store/models/Editor'
+import Editor from '@/store/models/Editor'
 
 interface Action {
   command: any

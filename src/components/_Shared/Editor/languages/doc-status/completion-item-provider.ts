@@ -1,6 +1,6 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import slug from 'speakingurl'
-import { emitter } from '@/components/Shared/emitter'
+import { emitter } from '@/components/_Shared/emitter'
 import File from '@/store/models/File'
 import { LANGUAGE_ID } from './language'
 import { SnippetParser } from '../../snippet/parser'

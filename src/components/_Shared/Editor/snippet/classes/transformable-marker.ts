@@ -1,7 +1,7 @@
 import {
   EditableMarker,
   Transform,
-} from '@/components/Shared/Editor/snippet/classes'
+} from '@/components/_Shared/Editor/snippet/classes'
 
 export default abstract class TransformableMarker extends EditableMarker {
   public transform: Transform

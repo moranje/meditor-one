@@ -1,10 +1,10 @@
-import SnippetSession from './node_modules/@/components/_Shared/Editor/snippet/session'
-import './node_modules/@/components/_Shared/Editor/snippet/snippet-session.css'
-import { IActiveCodeEditor } from './node_modules/vs/editor/browser/editorBrowser'
-import { registerThemingParticipant } from './node_modules/vs/platform/theme/common/themeService'
-import * as colors from './node_modules/vs/platform/theme/common/colorRegistry'
+import SnippetSession from '@/components/Shared/Editor/snippet/session'
+import '@/components/Shared/Editor/snippet/snippet-session.css'
+import { IActiveCodeEditor } from 'vs/editor/browser/editorBrowser'
+import { registerThemingParticipant } from 'vs/platform/theme/common/themeService'
+import * as colors from 'vs/platform/theme/common/colorRegistry'
 import { Snippet, Choice, Selection } from './classes'
-import { SnippetParser } from './node_modules/@/components/_Shared/Editor/snippet/parser'
+import { SnippetParser } from '@/components/Shared/Editor/snippet/parser'
 import MonacoSelection from './classes/monaco-selection'
 
 registerThemingParticipant((theme, collector) => {

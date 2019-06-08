@@ -1,5 +1,5 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { emitter } from '@/components/Shared/emitter'
+import { emitter } from '@/components/_Shared/emitter'
 import { LANGUAGE_ID } from './language'
 import equal from 'fast-deep-equal'
 

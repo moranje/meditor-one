@@ -1,4 +1,4 @@
-import { Marker } from './node_modules/@/components/_Shared/Editor/snippet/classes'
+import { Marker } from '@/components/Shared/Editor/snippet/classes'
 
 export default class ChoiceOption extends Marker {
   constructor() {
