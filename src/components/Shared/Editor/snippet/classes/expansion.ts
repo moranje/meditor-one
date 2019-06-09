@@ -62,8 +62,8 @@ export default class Expansion extends Snippet {
 
   toString(): string {
     if (this.resolved) {
-      if (this.args.length > 0) {
-      }
+      // if (this.args.length > 0) {
+      // }
 
       return this.children.reduce((previous, current) => {
         return `${previous}${current}`

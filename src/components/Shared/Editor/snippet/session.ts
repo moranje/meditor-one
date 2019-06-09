@@ -62,11 +62,11 @@ export default class SnippetSession {
     return this._snippet.placeholders.length > 0
   }
 
-  get choice(): Choice | undefined {
-    if (this._markerBuckets[this._markerBucketIndex][0] instanceof Choice) {
-      return this._markerBuckets[this._markerBucketIndex][0] as Choice
-    }
-  }
+  // get choice(): Choice | undefined {
+  //   if (this._markerBuckets[this._markerBucketIndex][0] instanceof Choice) {
+  //     return this._markerBuckets[this._markerBucketIndex][0] as Choice
+  //   }
+  // }
 
   // TODO: this should be called when text changes in the editor
   onTextChanged(offset: number, overwrite: number, input?: string) {

@@ -16,7 +16,7 @@ export default abstract class EditableMarker extends Marker {
   }
 
   get snippet(): Snippet | null {
-    if (this.children[0] instanceof Snippet) return <Snippet> this.children[0]
+    if (this.children[0] instanceof Snippet) return this.children[0] as Snippet
 
     return null
   }

@@ -117,6 +117,8 @@ module.exports = {
     ],
 
     '@typescript-eslint/member-naming': ['error', { private: '^_' }],
+
+    'vue-a11y/no-autofocus': 'off'
   },
 
   parserOptions: {

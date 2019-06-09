@@ -3,24 +3,19 @@
   "version": "0.0.0-development",
   "private": true,
   "author": "moranje",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moranje/meditor-one.git"
-  },
-  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "./build build.sh",
+    "build": "./build/build.sh",
     "lint": "vue-cli-service lint",
     "build:grammar": "nearleyc src/components/Shared/Editor/snippet/grammar.ne -o src/components/Shared/Editor/snippet/grammar.ts",
+    "commit": "npx git-cz",
     "component": "./helper/create-component.sh",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "prepush": "npm run build",
+    "semantic-release": "semantic-release",
+    "test:debug": "node --inspect-brk node_modules/.bin/vue-cli-service test:unit --no-cache --watch --runInBand",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "test:debug": "node --inspect-brk node_modules/.bin/vue-cli-service test:unit --no-cache --watch --runInBand",
-    "commit": "npx git-cz",
-    "semantic-release": "semantic-release",
-    "prepush": "npm run build",
     "update": "updtr"
   },
   "dependencies": {
@@ -68,7 +63,8 @@
     "@types/normalizr": "^2.0.18",
     "@types/speakingurl": "^13.0.2",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-babel": "3.8.0",
+    "@vue/cli-plugin-e2e-cypress": "3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-pwa": "^3.8.0",
     "@vue/cli-plugin-typescript": "^3.8.1",
@@ -112,6 +108,26 @@
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.2.2"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "MIT",
   "lint-staged": {
     "*.js": [
       "vue-cli-service lint",
@@ -122,26 +138,8 @@
       "git add"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./cz-config.js"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "release": {
+    "branch": "development",
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
@@ -160,5 +158,9 @@
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moranje/meditor-one.git"
   }
 }
