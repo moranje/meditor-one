@@ -1,18 +1,26 @@
 {
   "name": "meditor-one",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "private": true,
+  "author": "moranje",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moranje/meditor-one.git"
+  },
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "./build build.sh",
     "lint": "vue-cli-service lint",
     "build:grammar": "nearleyc src/components/Shared/Editor/snippet/grammar.ne -o src/components/Shared/Editor/snippet/grammar.ts",
-    "build:snippet": "cpx src/plugins/snippet/* node_modules",
     "component": "./helper/create-component.sh",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "test:debug": "node --inspect-brk node_modules/.bin/vue-cli-service test:unit --no-cache --watch --runInBand",
+    "commit": "npx git-cz",
+    "semantic-release": "semantic-release",
+    "prepush": "npm run build",
     "update": "updtr"
   },
   "dependencies": {
@@ -50,6 +58,11 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "@semantic-release/changelog": "3.0.2",
+    "@semantic-release/exec": "3.3.2",
+    "@semantic-release/git": "7.0.8",
     "@types/jest": "^24.0.13",
     "@types/nearley": "^2.11.0",
     "@types/normalizr": "^2.0.18",
@@ -68,6 +81,9 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
+    "commitizen": "3.1.1",
+    "cz-conventional-changelog": "2.1.0",
+    "cz-customizable": "6.2.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-vuetify": "^0.2.0",
@@ -76,6 +92,7 @@
     "eslint-plugin-vue": "^5.2.2",
     "eslint-plugin-vue-a11y": "^0.0.31",
     "flatted": "^2.0.0",
+    "husky": "2.4.0",
     "jest": "^24.8.0",
     "lint-staged": "8.2.0",
     "monaco-editor-core": "^0.17.0",
@@ -84,6 +101,8 @@
     "prettier": "1.18.2",
     "raw-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "semantic-release": "^15.13.12",
+    "semantic-release-cli": "5.1.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^24.0.2",
@@ -93,9 +112,6 @@
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.2.2"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.js": [
       "vue-cli-service lint",
@@ -104,6 +120,45 @@
     "*.vue": [
       "vue-cli-service lint",
       "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
     ]
   }
 }
