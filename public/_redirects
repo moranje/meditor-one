@@ -1,4 +1,5 @@
 # Redirect default Netlify subdomain to primary domain
 https://admiring-galileo-339b94.netlify.com/* https://www.meditor.one/:splat 301!
 
+# SPA mode
 /*    /index.html   200
