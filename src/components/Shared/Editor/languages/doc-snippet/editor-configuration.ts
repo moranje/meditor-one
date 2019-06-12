@@ -3,7 +3,7 @@ export default {
   autoClosingBrackets: false,
   automaticLayout: true,
   folding: true,
-  fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
+  fontFamily: "'Fira Code', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
   fontSize: '14',
   fontWeight: 'initial',

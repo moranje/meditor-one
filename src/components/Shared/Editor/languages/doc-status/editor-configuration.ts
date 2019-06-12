@@ -2,7 +2,7 @@ export default {
   acceptSuggestionOnEnter: 'smart',
   autoClosingBrackets: true,
   folding: true,
-  fontFamily: "'Roboto Mono', Monaco, Consolas, 'Courier New', monospace",
+  fontFamily: "'Fira Code', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
   fontSize: '14',
   fontWeight: 'initial',
