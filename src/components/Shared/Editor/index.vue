@@ -4,16 +4,15 @@
       <VProgressCircular :size="70" :width="7" color="primary" indeterminate />
     </VFlex>
     <article ref="editor" v-show="visible" class="editor" />
-    <ResizeObserver @notify="handleResize" />
   </VLayout>
 </template>
 
 <script lang="js">
 import { setup } from './monaco-base'
 import Editor from '@/store/models/Editor'
-import UI from '@/store/models/UI'
 import { emitter } from '@/components/Shared/emitter'
 import uniqid from 'uniqid'
+import wrap from 'wrap-ansi'
 
 export default {
   name: 'Editor',
@@ -60,61 +59,16 @@ export default {
       return editor.instance
     },
 
-    viewport() {
-      return UI.find('viewport')
-    },
-
-    navbar() {
-      const navbar = UI.find('navbar')
-
-      if (navbar) return navbar.height
-
-      return 0
-    },
-
-    sidenav() {
-      const sidenav = UI.find('sidenav')
-
-      if (sidenav) return sidenav.width
-
-      return 0
-    },
-
-    filenav() {
-      const filenav = UI.find('filenav')
-
-      if (filenav) return filenav.width
-
-      return 0
-    },
-
-    lines() {
-      if (!this.editor) return 0
-
-      return this.editor.getModel().getLineCount()
-    },
-
     width () {
-      if (!this.viewport || !this.sidenav) return 0
+      if (this.$store.getters.main) return this.$store.getters.main.width
 
-      if (this.filenav) {
-        return this.viewport.width - this.sidenav - this.filenav
-      }
-
-      return this.viewport.width - this.sidenav
+      return 0
     },
 
     height () {
-      const LINE_HEIGHT = 20
-      const FOOTER = 56
+      if (this.$store.getters.main) return this.$store.getters.main.height
 
-      if (this.linesAsHeight) {
-        return LINE_HEIGHT * +this.lines
-      }
-
-      if (!this.viewport || !this.navbar) return 0
-
-      return this.viewport.height - this.navbar - FOOTER
+      return 0
     },
   },
 
@@ -125,6 +79,14 @@ export default {
 
         if (val !== value) this.editor.setValue(value)
       }
+    },
+
+    width(width) {
+      this.setEditorDimensions({ height: this.height, width })
+    },
+
+    height(height) {
+      this.setEditorDimensions({ height, width: this.width })
     },
 
     visible (isVisible) {
@@ -155,7 +117,11 @@ export default {
     //   console.error(err)
     // })
 
-    instance.layout({ width: this.width, height: this.height })
+    this.setEditorDimensions()
+  },
+
+  beforeDestroy() {
+    this.unloadEvents()
   },
 
   methods: {
@@ -164,6 +130,11 @@ export default {
       this.editor.onDidChangeModelContent((...args) => this.change(args))
       this.editor.onKeyDown((...args) => this.change(args))
       this.editor.onDidChangeCursorPosition((...args) => this.changeCursor(args))
+      // this.editor.onDidLayoutChange((...args) => this.setEditorDimensions(args))
+    },
+
+    unloadEvents() {
+
     },
 
     blur () {
@@ -182,27 +153,18 @@ export default {
       this.$emit('changeCursor', args)
     },
 
-    handleResize() {
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-        ],
-      })
-
-      // Hack: a way to identify the height including wrapped lines
-      let selector = this.$refs.editor.querySelector('.overflow-guard .margin')
-      if (this.linesAsHeight && selector) {
-        this.editor.layout({ height: selector.clientHeight, width: this.width })
+    setEditorDimensions(dimensions) {
+      if (this.linesAsHeight) {
+        // Calculate line height based on input value
+        let height = wrap(this.value, 100, {
+          wordWrap: true,
+          trim: true,
+        }).split('\n').length * 20
+        this.editor.layout({ height, width: this.width })
+      } else if (dimensions) {
+        this.editor.layout(dimensions)
+      } else {
+        this.editor.layout({ width: this.width, height: this.height })
       }
     },
   },

@@ -14,8 +14,6 @@
 
           <VDivider :key="`divider-${doc.name}`" />
         </template>
-
-        <ResizeObserver @notify="handleResize" />
       </VList>
     </VFlex>
 
@@ -24,12 +22,12 @@
     <VFlex class="doc-file" xs9>
       <RouterView />
     </VFlex>
+    <ResizeObserver @notify="didResize" />
   </VLayout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import UI from '@/store/models/UI'
 import sortBy from 'lodash.sortby'
 
 export default Vue.extend({
@@ -62,71 +60,42 @@ export default Vue.extend({
   }),
 
   computed: {
-    viewport() {
-      const viewport = UI.find('viewport')
-
-      if (viewport) return viewport.height
-
-      return 0
-    },
-
-    navbar() {
-      const navbar = UI.find('navbar')
-
-      if (navbar) return navbar.height
-
-      return 0
-    },
-
     height() {
-      const FOOTER = 56
+      if (this.$store.getters.main) return this.$store.getters.main.height
 
-      if (!this.viewport || !this.navbar) return 0
-
-      return this.viewport - this.navbar - FOOTER
+      return 0
     },
   },
 
   mounted() {
-    this.handleResize()
+    this.didResize()
   },
 
   destroyed() {
-    UI.insertOrUpdate({
-      data: [
-        {
-          id: 'filenav',
-          width: 0,
-          height: 0,
-        },
-      ],
+    this.$store.commit('removeElement', {
+      position: 'left',
+      index: 2,
+    })
+    this.$store.commit('removeElement', {
+      position: 'left',
+      index: 1,
     })
   },
 
   methods: {
-    handleResize() {
-      const MARGIN = 20
-      const DIVIDER = 1
+    didResize() {
+      this.$store.commit('addElement', {
+        element: this.$refs.docList.$el,
+        position: 'left',
+        index: 1,
+      })
 
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-          {
-            id: 'filenav',
-            width: this.$refs.docList.$el.clientWidth + 2 * MARGIN + DIVIDER,
-            height: this.$refs.docList.$el.clientHeight,
-          },
-        ],
+      this.$store.commit('addElement', {
+        element: {
+          clientWidth: 40,
+        },
+        position: 'left',
+        index: 2,
       })
     },
   },

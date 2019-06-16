@@ -10,6 +10,7 @@
         language="status"
       />
     </VFlex>
+    <ResizeObserver @notify="didResize" />
   </VLayout>
 </template>
 
@@ -42,6 +43,8 @@ export default {
     update(value) {
       // console.log('UPDATE STATUS', value);
     },
+
+    didResize() {},
   },
 }
 </script>

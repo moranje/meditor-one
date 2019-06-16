@@ -70,7 +70,8 @@
         </VListTile>
       </VList>
     </VMenu>
-    <ResizeObserver @notify="handleResize" />
+
+    <ResizeObserver @notify="didResize" />
   </VToolbar>
 </template>
 
@@ -103,13 +104,21 @@ export default {
     },
   },
 
-  mounted () {
-    this.handleResize()
+  mounted() {
+    this.didResize()
   },
 
   methods: {
     navigate () {
       this.$router.push('status')
+    },
+
+    didResize() {
+      this.$store.commit('addElement', {
+        element: this.$refs.navbar.$el,
+        position: 'top',
+        index: 0,
+      })
     },
 
     add () {
@@ -132,29 +141,6 @@ export default {
         data: {
           fileIds: [ref.id, ...parent.fileIds],
         },
-      })
-    },
-
-    handleResize () {
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-          {
-            id: 'navbar',
-            width: this.$refs.navbar.$el.clientWidth,
-            height: this.$refs.navbar.$el.clientHeight,
-          },
-        ],
       })
     },
 

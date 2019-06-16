@@ -97,7 +97,7 @@
       <VDivider :key="`divider-${file.id}`" />
     </template>
 
-    <ResizeObserver @notify="handleResize" />
+    <ResizeObserver @notify="didResize" />
   </VList>
 </template>
 
@@ -158,22 +158,25 @@ export default {
   // },
 
   mounted () {
-    this.handleResize()
+    this.didResize()
   },
 
   destroyed () {
-    UI.insertOrUpdate({
-      data: [
-        {
-          id: 'filenav',
-          width: 0,
-          height: 0,
-        },
-      ],
+    this.$store.commit('removeElement', {
+      position: 'left',
+      index: 1,
     })
   },
 
   methods: {
+    didResize() {
+      this.$store.commit('addElement', {
+        element: this.$refs.filenav.$el,
+        position: 'left',
+        index: 1,
+      })
+    },
+
     focus (event, item) {
       File.update({ where: item.id, data: { editable: true } }).then(() => {
         document.querySelector(`#${item.id}`).focus()
@@ -211,29 +214,6 @@ export default {
           fileIds: parent.fileIds,
         })
       }
-    },
-
-    handleResize () {
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-          {
-            id: 'filenav',
-            width: this.$el.clientWidth,
-            height: this.$el.clientHeight,
-          },
-        ],
-      })
     },
   },
 }

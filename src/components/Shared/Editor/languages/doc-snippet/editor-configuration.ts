@@ -27,6 +27,7 @@ export default {
   theme: 'vs',
   useTabStops: true,
   value: '',
-  wordWrap: 'on',
+  wordWrap: 'wordWrapColumn',
+  wordWrapColumn: 100,
   wrappingIndent: 'indent',
 }

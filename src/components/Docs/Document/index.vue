@@ -13,20 +13,14 @@ export default Vue.extend({
     Markdown,
   },
 
-  props: {},
-
   data: () => ({
     value: '',
   }),
-
-  computed: {},
 
   async created() {
     let value = await import(`raw-loader!./${this.$route.params.docFile}.md`)
     this.value = value.default
   },
-
-  methods: {},
 })
 </script>
 

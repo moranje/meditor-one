@@ -1,13 +1,16 @@
 <template>
   <VApp>
     <SideNav />
+
     <NavBar ref="navbar" />
 
     <VContent>
       <RouterView :key="$route.fullPath" />
-      <ResizeObserver @notify="handleResize" />
     </VContent>
+
     <Footer />
+
+    <ResizeObserver @notify="didResize" />
   </VApp>
 </template>
 
@@ -16,7 +19,6 @@ import { firebase } from '@/plugins/firebase'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 import User from '@/store/models/User'
-import UI from '@/store/models/UI'
 
 import SideNav from '@/components/SideNav'
 import NavBar from '@/components/NavBar'
@@ -59,30 +61,20 @@ export default {
   },
 
   mounted() {
-    // window.addEventListener('resize', this.resize);
+    this.didResize()
   },
 
   methods: {
-    handleResize() {
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-          {
-            id: 'navbar',
-            width: this.$refs.navbar.$el.clientWidth,
-            height: this.$refs.navbar.$el.clientHeight,
-          },
-        ],
+    didResize() {
+      this.$store.commit('addDocument', {
+        width: Math.max(
+          document.documentElement.clientWidth,
+          window.innerWidth || 0
+        ),
+        height: Math.max(
+          document.documentElement.clientHeight,
+          window.innerHeight || 0
+        ),
       })
     },
   },

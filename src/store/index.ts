@@ -2,16 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
 
-// Models
+// Vuex-ORM models
 import User from '@/store/models/User'
 import Editor from '@/store/models/Editor'
 import Folder from '@/store/models/Folder'
 import File from '@/store/models/File'
-import UI from '@/store/models/UI'
 
-// Modules
+// Vuex-ORM modules
 import folders from '@/store/modules/folders'
 import files from '@/store/modules/files'
+
+// Regular Vuex modules
+import ui from '@/store/modules/ui'
 
 Vue.use(Vuex)
 
@@ -24,11 +26,13 @@ database.register(User)
 database.register(Editor)
 database.register(Folder, folders)
 database.register(File, files)
-database.register(UI)
 
 // Create Vuex Store and register database through Vuex ORM.
 const store = new Vuex.Store({
   plugins: [VuexORM.install(database)],
+  modules: {
+    ui,
+  },
 })
 
 export default store

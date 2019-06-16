@@ -29,20 +29,10 @@ export default {
   },
 
   computed: {
-    viewport() {
-      return UI.find('viewport')
-    },
-
-    navbar() {
-      return UI.find('navbar')
-    },
-
     height () {
-      const FOOTER = 56
+      if (this.$store.getters.main) return this.$store.getters.main.height
 
-      if (!this.viewport || !this.navbar) return 0
-
-      return this.viewport.height - this.navbar.height - FOOTER
+      return 0
     },
 
     files () {
@@ -52,12 +42,6 @@ export default {
         .orderBy('name')
         .all()
     },
-  },
-
-  mounted () {},
-
-  methods: {
-
   },
 }
 </script>

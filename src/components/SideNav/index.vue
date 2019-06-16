@@ -1,10 +1,9 @@
 <template lang="html">
   <VNavigationDrawer
     ref="sidenav"
-    v-if="$vuetify.breakpoint.mdAndUp"
     v-model="drawer"
     :mini-variant="isMini"
-    @update:mini-variant="handleResize"
+    @update:mini-variant="didResize"
     fixed
     stateless
     app
@@ -56,7 +55,7 @@
     </VList>
     <FolderList v-show="!isMini" :items="folders" :collapsed="collapsed" />
 
-    <ResizeObserver @notify="handleResize" />
+    <ResizeObserver @notify="didResize" />
   </VNavigationDrawer>
 </template>
 
@@ -65,7 +64,6 @@
 import User from '@/store/models/User'
 import Folder from '@/store/models/Folder'
 import Editor from '@/store/models/Editor'
-import UI from '@/store/models/UI'
 
 import { db } from '@/plugins/firebase'
 import BaseIcon from '@/components/Shared/BaseIcon'
@@ -103,8 +101,32 @@ export default {
     },
   },
 
+  watch: {
+    '$vuetify.breakpoint.mdAndUp': function(isMdAndUp) {
+      console.log('$vuetify.breakpoint.mdAndUp', isMdAndUp)
+
+      this.drawer = isMdAndUp
+
+      if (isMdAndUp) {
+        this.didResize()
+      } else {
+        this.$store.commit('removeElement', {
+          position: 'left',
+          index: 0,
+        })
+      }
+    },
+  },
+
   mounted () {
-    this.handleResize()
+    this.didResize()
+  },
+
+  destroy () {
+    this.$store.commit('removeElement', {
+      position: 'left',
+      index: 0,
+    })
   },
 
   methods: {
@@ -123,27 +145,15 @@ export default {
       })
     },
 
-    handleResize () {
-      UI.insertOrUpdate({
-        data: [
-          {
-            id: 'viewport',
-            width: Math.max(
-              document.documentElement.clientWidth,
-              window.innerWidth || 0
-            ),
-            height: Math.max(
-              document.documentElement.clientHeight,
-              window.innerHeight || 0
-            ),
-          },
-          {
-            id: 'sidenav',
-            width: this.$refs.sidenav.$el.clientWidth,
-            height: this.$refs.sidenav.$el.clientHeight,
-          },
-        ],
-      })
+    didResize () {
+      // FIXME: when the breakpoint kicks in
+      if (this.$refs.sidenav && this.$vuetify.breakpoint.mdAndUp) {
+        this.$store.commit('addElement', {
+          element: this.$refs.sidenav.$el,
+          position: 'left',
+          index: 0,
+        })
+      }
     },
   },
 }
