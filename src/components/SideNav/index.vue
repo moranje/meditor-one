@@ -11,7 +11,7 @@
   >
     <VToolbar flat class="transparent">
       <VAvatar tile>
-        <BaseIcon icon-color="rgba(0,0,0,0.54)" height="36" width="36" />
+        <BaseIcon icon-color="rgba(0,0,0,0.54)" height="36" width="48" />
       </VAvatar>
 
       <VSpacer />
