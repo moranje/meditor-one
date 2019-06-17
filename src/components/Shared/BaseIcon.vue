@@ -3,36 +3,36 @@
     :width="width"
     :height="height"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 82 80"
+    viewBox="0 0 82 82"
     style="vertical-align: middle;"
   >
     <title :id="iconName" lang="nl">{{ iconName }} icon</title>
     <g :fill="iconColor">
-      <g transform="translate(-4 -15)">
+      <g transform="translate(-8 -16)">
         <text
           id="m1-logo-m"
-          font-family="Futura-Medium, Futura"
-          font-size="72"
+          font-family="Fira Code"
+          font-size="90"
           class="m1-logo-element"
         >
           <tspan y="75">
-            M
+            m
           </tspan>
         </text>
         <text
           id="m1-logo-1"
-          font-family="Futura-Medium, Futura"
+          font-family="Fira Code"
           font-size="72"
           class="m1-logo-element"
         >
-          <tspan x="48.6" y="94">
+          <tspan x="48" y="94">
             1
           </tspan>
         </text>
         <path
           id="m1-logo-cursor"
-          :style="`stroke-width: 4; stroke: ${iconColor}`"
-          d="M84.5 16.5L84.5 93.5"
+          :style="`stroke-width: 5; stroke: ${iconColor}`"
+          d="M90 10L90 100"
           class="m1-logo-element"
         >
           <animate
