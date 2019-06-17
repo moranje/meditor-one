@@ -81,7 +81,7 @@ export default {
 
   data: () => ({
     isMini: true,
-    drawer: {},
+    drawer: false,
   }),
 
   computed: {
@@ -103,8 +103,6 @@ export default {
 
   watch: {
     '$vuetify.breakpoint.mdAndUp': function(isMdAndUp) {
-      console.log('$vuetify.breakpoint.mdAndUp', isMdAndUp)
-
       this.drawer = isMdAndUp
 
       if (isMdAndUp) {
@@ -116,6 +114,10 @@ export default {
         })
       }
     },
+  },
+
+  created() {
+    this.drawer = this.$vuetify.breakpoint.mdAndUp
   },
 
   mounted () {
