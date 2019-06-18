@@ -116,11 +116,8 @@ export default {
     },
   },
 
-  created() {
-    this.drawer = this.$vuetify.breakpoint.mdAndUp
-  },
-
   mounted () {
+    this.drawer = this.$vuetify.breakpoint.mdAndUp
     this.didResize()
   },
 
