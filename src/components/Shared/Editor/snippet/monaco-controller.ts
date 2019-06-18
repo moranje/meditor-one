@@ -101,7 +101,8 @@ export default class MonacoSnippetController extends SnippetController {
         this._editor.onDidChangeModelContent((...args) => {
           let model = this._editor.getModel()
           let last = args[0].changes[args[0].changes.length - 1]
-          this._session.onTextChanged(
+
+          this._session && this._session.onTextChanged(
             model.getOffsetAt({
               column: last.range.startColumn,
               lineNumber: last.range.startLineNumber,
@@ -112,6 +113,7 @@ export default class MonacoSnippetController extends SnippetController {
 
           args[0].isFlush && this.cancel()
         }),
+
         this._editor.onDidChangeModel(() => this.cancel()),
         this._editor.onDidChangeCursorSelection(() => this.updateState()),
       ]
