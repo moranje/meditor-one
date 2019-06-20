@@ -30,6 +30,7 @@ export default class Choice extends Placeholder {
   }
 
   toText(): string {
+    if (this.childIndex === -1) return ''
     // console.log('toText()', this.children[this.childIndex])
     return `${this.children[this.childIndex].toText()}`
   }
