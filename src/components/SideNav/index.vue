@@ -10,9 +10,7 @@
     class="side-nav"
   >
     <VToolbar flat class="transparent">
-      <VAvatar tile>
-        <BaseIcon icon-color="rgba(0,0,0,0.54)" height="36" width="48" />
-      </VAvatar>
+      <BaseIcon icon-color="rgba(0,0,0,0.54)" height="48" width="48" />
 
       <VSpacer />
       <VBtn v-show="!isMini" @click.stop="isMini = true" icon>
@@ -158,9 +156,15 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.side-nav .v-list {
-  padding-bottom: 0;
+<style lang="scss">
+.side-nav {
+  .v-list {
+    padding-bottom: 0;
+  }
+
+  .v-toolbar .v-toolbar__content {
+    padding: 0 16px;
+  }
 }
 
 .m1-logo {
