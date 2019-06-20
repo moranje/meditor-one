@@ -28,6 +28,8 @@ export default class Editor extends Model {
   static afterUpdate(model: any) {
     if (model.snippetModeActionCommand && model.snippetMode) {
       model.snippetModeActionCommand.set(model.snippetMode)
+    } else if (model.snippetModeActionCommand && !model.snippetMode) {
+      model.snippetModeActionCommand.reset()
     }
   }
 }
