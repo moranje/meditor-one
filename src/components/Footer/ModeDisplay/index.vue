@@ -1,8 +1,6 @@
 <template>
   <section v-if="mode">
-    <div class="mode-display">
-      {{ mode }}
-    </div>
+    <div class="mode-display">{{ mode }}</div>
   </section>
 </template>
 
@@ -24,6 +22,8 @@ export default Vue.extend({
 
     mode() {
       if (this.$route && this.$route.name !== 'status') return
+
+      if (!this.editor) return 'Text mode'
 
       return `${this.editor.snippetMode ? 'Snippet' : 'Text'} mode`
     },
