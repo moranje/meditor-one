@@ -3,6 +3,6 @@
 /coverage/
 /dist/
 /test/unit/coverage/
-src/components/Shared/Editor/snippet/grammar.ts
+src/snippet-service/grammar.ts
 
 /snippet-tree/
