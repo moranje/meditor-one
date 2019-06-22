@@ -1,25 +1,26 @@
-export default {
-  acceptSuggestionOnEnter: 'smart',
-  autoClosingBrackets: true,
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+
+export default <monaco.editor.IEditorConstructionOptions>{
+  // acceptSuggestionOnEnter: 'smart',
+  automaticLayout: true,
   folding: true,
   fontFamily: "'Fira Code', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
-  fontSize: '14',
+  fontSize: 14,
   fontWeight: 'initial',
-  language: 'plaintext',
-  lineHeight: '20',
-  lineNumbers: 'on',
-  matchBrackets: true,
+  lineHeight: 20,
+  lineNumbers: 'off',
+  matchBrackets: false,
   minimap: {
     enabled: false,
   },
-  quickSuggestions: true,
-  readOnly: false,
+  quickSuggestions: false,
+  readOnly: true,
   renderWhitespace: 'boundary',
   scrollbar: {
-    horizontal: 'hidden',
     vertical: 'hidden',
   },
+  selectionHighlight: false,
   suggestSelection: 'recentlyUsedByPrefix',
   scrollBeyondLastLine: false,
   showFoldingControls: 'always',
@@ -27,6 +28,7 @@ export default {
   theme: 'vs',
   useTabStops: true,
   value: '',
-  wordWrap: 'on',
+  wordWrap: 'wordWrapColumn',
+  wordWrapColumn: 100,
   wrappingIndent: 'indent',
 }

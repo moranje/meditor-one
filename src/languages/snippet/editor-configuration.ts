@@ -1,13 +1,14 @@
-export default {
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+
+export default <monaco.editor.IEditorConstructionOptions>{
   acceptSuggestionOnEnter: 'smart',
-  autoClosingBrackets: true,
+  autoClosingBrackets: 'always',
   folding: true,
   fontFamily: "'Fira Code', Monaco, Consolas, 'Courier New', monospace",
   fontLigatures: true,
-  fontSize: '14',
+  fontSize: 14,
   fontWeight: 'initial',
-  language: 'plaintext',
-  lineHeight: '20',
+  lineHeight: 20,
   lineNumbers: 'on',
   matchBrackets: true,
   minimap: {

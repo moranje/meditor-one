@@ -1,17 +1,16 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { emitter } from '@/components/Shared/emitter'
-import { LANGUAGE_ID } from './language'
+import { EditorProvider } from '../language-manager'
 import Editor from '@/store/models/Editor'
+import { dispose } from 'vs/base/common/lifecycle'
 
-interface Action {
-  command: any
-  title?: string
-  arguments?: any[]
+const disposables = {
+  init: null,
+  changes: null,
+  actions: [],
 }
 
-let disposable = null
-let actions = []
-const COMMANDS = [
+// Preloaded actions
+const ACTIONS: monaco.editor.IActionDescriptor[] = [
   {
     id: 'jump-to-next-snippet-placeholder',
     label: 'Next snippet placeholder',
@@ -20,11 +19,9 @@ const COMMANDS = [
     keybindingContext: null,
     contextMenuOrder: 1.5,
     run: function(editor) {
-      // console.log('Next snippet placeholder initialized')
       let controller = Editor.find('status').controller
 
       if (controller) {
-        // console.log('Next tabstop', controller, controller.next())
         controller.next()
       }
 
@@ -39,11 +36,9 @@ const COMMANDS = [
     keybindingContext: null,
     contextMenuOrder: 1.5,
     run: function(editor) {
-      // console.log('Next snippet placeholder initialized')
       let controller = Editor.find('status').controller
 
       if (controller) {
-        // console.log('Next tabstop', controller, controller.next())
         controller.prev()
       }
 
@@ -59,11 +54,9 @@ const COMMANDS = [
     keybindingContext: null,
     contextMenuOrder: 1.5,
     run: function(editor) {
-      // console.log('Next snippet placeholder initialized')
       let controller = Editor.find('status').controller
 
       if (controller) {
-        // console.log('Next tabstop', controller, controller.next())
         controller.cancel()
       }
 
@@ -72,22 +65,40 @@ const COMMANDS = [
   },
 ]
 
-emitter.on(`${LANGUAGE_ID}.loaded`, ({ editor, args }) => {
-  if (disposable) disposable.dispose()
+let commands: monaco.languages.Command[] = []
 
-  if (actions.length === 0) initActions(editor)
+export default {
+  init(language, editor) {
+    if (disposables.init) disposables.init.dispose()
 
-  disposable = monaco.languages.registerCodeActionProvider(LANGUAGE_ID, {
-    // @ts-ignore
-    provideCodeActions: () => actions,
-  })
-})
+    if (commands.length === 0) initActions(editor)
+
+    disposables.init = monaco.languages.registerCodeActionProvider(language, {
+      // @ts-ignore
+      provideCodeActions: () => commands,
+    })
+  },
+
+  change(language, editor, args) {},
+
+  destroy(editor) {
+    if (disposables.init) disposables.init.dispose()
+    if (disposables.changes) disposables.changes.dispose()
+
+    if (disposables.actions.length > 0) {
+      disposables.actions.forEach(disposable => disposable.dispose())
+    }
+  },
+} as EditorProvider
 
 function initActions(editor) {
-  COMMANDS.forEach(command => {
-    actions.push({
-      id: editor.addAction(command),
-      title: command.id,
+  ACTIONS.forEach((action, i) => {
+    if (disposables.actions[i]) disposables.actions[i].dispose()
+    disposables.actions[i] = editor.addAction(action)
+
+    commands.push({
+      id: disposables.actions[i],
+      title: action.id,
     })
   })
 }
