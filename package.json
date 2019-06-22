@@ -12,7 +12,7 @@
     "test:debug": "node --inspect-brk node_modules/.bin/vue-cli-service test:unit --no-cache --watch --runInBand",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "build:grammar": "nearleyc src/components/Shared/Editor/snippet/grammar.ne -o src/components/Shared/Editor/snippet/grammar.ts",
+    "build:grammar": "nearleyc src/snippet-service/grammar.ne -o src/snippet-service/grammar.ts",
     "commit": "npx git-cz",
     "build:tests": "npm run lint && npm run test:unit",
     "build:compilation": "npm run build:grammar && vue-cli-service build",
