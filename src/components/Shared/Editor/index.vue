@@ -8,7 +8,8 @@
 </template>
 
 <script lang="js">
-import { setup } from './monaco-base'
+// import { setup } from './monaco-base'
+import { setup, teardown } from '@/languages/language-manager'
 import Editor from '@/store/models/Editor'
 import { emitter } from '@/components/Shared/emitter'
 import uniqid from 'uniqid'
@@ -43,6 +44,10 @@ export default {
       default: '',
     },
   },
+
+  data: () => ({
+    listeners: [],
+  }),
 
   computed: {
     editorId() {
@@ -94,8 +99,8 @@ export default {
     },
   },
 
-  mounted () {
-    let instance = setup(this.$refs.editor, {
+  async mounted () {
+    let instance = await setup(this.language, this.$refs.editor, {
       value: this.value,
       language: this.language,
       theme: this.language,
@@ -111,30 +116,34 @@ export default {
         instance,
       }],
     }).then(() => {
+      this.setEditorDimensions()
       this.loadEvents()
     })
-    // .catch(err => {
-    //   console.error(err)
-    // })
-
-    this.setEditorDimensions()
+      .catch(err => {
+        console.error(err)
+      })
   },
 
-  beforeDestroy() {
+  async beforeDestroy() {
     this.unloadEvents()
+    await teardown(this.language, this.editor).catch(err => console.log(err))
   },
 
   methods: {
     loadEvents () {
-      this.editor.onDidBlurEditorText((...args) => this.blur(args))
-      this.editor.onDidChangeModelContent((...args) => this.change(args))
-      this.editor.onKeyDown((...args) => this.change(args))
-      this.editor.onDidChangeCursorPosition((...args) => this.changeCursor(args))
-      // this.editor.onDidLayoutChange((...args) => this.setEditorDimensions(args))
+      this.listeners.push(
+        this.editor.onDidBlurEditorText((...args) => this.blur(args)),
+        this.editor.onDidChangeModelContent((...args) => this.change(args)),
+        this.editor.onKeyDown((...args) => this.change(args)),
+      // this.editor.onDidChangeCursorPosition((...args) => this.changeCursor(args)),
+      // this.editor.onDidLayoutChange((...args) => this.setEditorDimensions(args)),
+      )
     },
 
     unloadEvents() {
+      this.listeners.forEach(listener => listener.dispose())
 
+      this.listeners = []
     },
 
     blur () {
@@ -154,6 +163,8 @@ export default {
     },
 
     setEditorDimensions(dimensions) {
+      if (!this.editor) return
+
       if (this.linesAsHeight) {
         // Calculate line height based on input value
         let height = wrap(this.value, 100, {
