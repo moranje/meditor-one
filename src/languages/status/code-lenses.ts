@@ -5,7 +5,6 @@ import { EditorProvider } from '../language-manager'
 let disposables = {
   init: null,
   changes: null,
-  commands: {},
 }
 let tokenCache = null
 
@@ -15,35 +14,26 @@ export default {
   },
 
   change(language, editor, args) {
-    // let tokens = monaco.editor
-    //   .tokenize(editor.getModel().getValue(), language)
-    //   .flat()
-    //   .filter(token => /heading.*?/.test(token.type))
-    // // Only update codelenses if heading tokens have changed
-    // if (equal(tokens, tokenCache)) return
-    // if (disposables.init) disposables.init.dispose()
-    // if (Object.keys(disposables.commands).length > 0) {
-    //   Object.keys(disposables.commands).forEach(key =>
-    //     disposables.commands[key].dispose()
-    //   )
-    // }
-    // tokenCache = monaco.editor
-    //   .tokenize(editor.getModel().getValue(), language)
-    //   .flat()
-    //   .filter(token => /heading.*?/.test(token.type))
-    // disposables.init = monaco.languages.registerCodeLensProvider(language, {
-    //   provideCodeLenses: headingLenses.bind(null, editor, language),
-    // })
+    let tokens = monaco.editor
+      .tokenize(editor.getModel().getValue(), language)
+      .flat()
+      .filter(token => /heading.*?/.test(token.type))
+    // Only update codelenses if heading tokens have changed
+    if (equal(tokens, tokenCache)) return
+    if (disposables.init) disposables.init.dispose()
+
+    tokenCache = monaco.editor
+      .tokenize(editor.getModel().getValue(), language)
+      .flat()
+      .filter(token => /heading.*?/.test(token.type))
+    disposables.init = monaco.languages.registerCodeLensProvider(language, {
+      provideCodeLenses: headingLenses.bind(null, editor, language),
+    })
   },
 
   destroy(editor) {
     if (disposables.init) disposables.init.dispose()
     if (disposables.changes) disposables.changes.dispose()
-    if (Object.keys(disposables.commands).length > 0) {
-      Object.keys(disposables.commands).forEach(key =>
-        disposables.commands[key].dispose()
-      )
-    }
   },
 } as EditorProvider
 
@@ -79,7 +69,7 @@ function headingLenses(
       if (token && /heading.medication.status/.test(token.type)) {
         lens.push(
           addCommand(
-            'Opschonen',
+            'Medicatie opschonen',
             line,
             editor,
             (line => {
@@ -93,7 +83,7 @@ function headingLenses(
       if (token && /heading.history.status/.test(token.type)) {
         lens.push(
           addCommand(
-            'Opschonen',
+            'Voorgeschiedenis opschonen',
             line,
             editor,
             (line => {
@@ -127,12 +117,9 @@ function headingLenses(
 }
 
 function addCommand(name: string, line: number, editor: any, func: any) {
-  if (disposables.commands[name]) disposables.commands[name].dispose()
-  disposables.commands[name] = editor.addCommand('code lens', func, '')
-
   return <monaco.languages.ICodeLensSymbol>{
     command: {
-      id: disposables.commands[name],
+      id: editor.addCommand('code lens', func, ''),
       title: name,
     },
     range: {
