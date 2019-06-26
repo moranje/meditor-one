@@ -34,6 +34,7 @@ export default {
   destroy(editor) {
     if (disposables.init) disposables.init.dispose()
     if (disposables.changes) disposables.changes.dispose()
+    tokenCache = null
   },
 } as EditorProvider
 
