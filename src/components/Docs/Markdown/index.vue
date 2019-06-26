@@ -2,11 +2,9 @@
 import Vue from 'vue'
 import VueWithCompiler from 'vue/dist/vue.esm'
 import MarkdownIt from 'markdown-it'
-import MarkdownItIcons from 'markdown-it-icons'
 import MarkdownItContainer from 'markdown-it-container'
 import CodeBlock from '../CodeBlock/index.vue'
 import 'github-markdown-css'
-import 'markdown-it-icons/dist/index.css'
 
 export default Vue.extend({
   name: 'Markdown',
@@ -24,36 +22,34 @@ export default Vue.extend({
   },
 
   data: () => ({
-    base: new MarkdownIt()
-      .use(MarkdownItIcons, 'font-awesome')
-      .use(MarkdownItContainer, 'snippet', {
-        validate: function(params) {
-          return params.trim().match(/^snippet\s+.*$/)
-        },
-        render: (tokens, index) => {
-          var match = tokens[index].info.trim().match(/^snippet\s+(.*)$/)
+    base: new MarkdownIt().use(MarkdownItContainer, 'snippet', {
+      validate: function(params) {
+        return params.trim().match(/^snippet\s+.*$/)
+      },
+      render: (tokens, index) => {
+        var match = tokens[index].info.trim().match(/^snippet\s+(.*)$/)
 
-          if (tokens[index].type === 'container_snippet_open') {
-            let idx = index + 1 // Start after opening token
-            let content = ''
+        if (tokens[index].type === 'container_snippet_open') {
+          let idx = index + 1 // Start after opening token
+          let content = ''
 
-            // stop before closing token
-            while (tokens[idx].type !== 'container_snippet_close') {
-              if (tokens[idx].type === 'inline') {
-                // Add removed newlines
-                content += `${tokens[idx].content}\n\n`
-              }
-              idx += 1
+          // stop before closing token
+          while (tokens[idx].type !== 'container_snippet_close') {
+            if (tokens[idx].type === 'inline') {
+              // Add removed newlines
+              content += `${tokens[idx].content}\n\n`
             }
-
-            return `<code-block class="code-block" title="${
-              match[1]
-            }" md="${content.trim()}" type="snippet">`
-          } else {
-            return '</code-block>'
+            idx += 1
           }
-        },
-      }),
+
+          return `<code-block class="code-block" title="${
+            match[1]
+          }" md="${content.trim()}" type="snippet">`
+        } else {
+          return '</code-block>'
+        }
+      },
+    }),
   }),
 
   computed: {
