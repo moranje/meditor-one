@@ -32,6 +32,8 @@ export default {
   destroy(editor) {
     if (disposables.init) disposables.init.dispose()
     if (disposables.changes) disposables.changes.dispose()
+    files = null
+    suggestions = null
   },
 } as EditorProvider
 
@@ -99,6 +101,16 @@ function provideCompletionItems() {
           },
         }
       }),
+
+      // suggestions: files.map(file => {
+      //   return <monaco.languages.CompletionItem>{
+      //     label: `${slug(file.parent.name)}-${slug(file.name)}`,
+      //     insertText: file.value,
+      //     insertTextRules:
+      //       monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+      //     kind: monaco.languages.CompletionItemKind.Snippet,
+      //   }
+      // }),
     }
   }
 
